@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .ssssss{
+        position: relative;
+    }
+</style>
+<body>
+<div id="eee" class="opop">
+    <p>1</p>
+    <p>
+        3
+    </p>
+</div>
+<div class=".sss">
+
+    <p class="kkkk">dddd</p>
+</div>
+<div></div>
+<div class="sseeww">
+    <p>hanlei</p>
+    <p></p>
+    <p class="ssddssaa" style="display: none"></p>
+</div>
+<div></div>
+<h1>111</h1>
+<span>ddd</span>
+<ul>
+    <li>1
+    </li>
+    <li>2</li>
+    <li class="opopopd">3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8
+    </li>
+
+    <li>9<li>
+    <li>10</li>
+</ul>
+<input type="text" autofocus>
+<input type="text">
+<input type="text">
+<input type="button">
+<input type="password">
+<input type="checkbox" checked="checked"/>
+<input type="radio" />
+<input type="image" />
+<input type="file" />
+<input type="submit" />
+<input type="reset" />
+<input type="password" />
+<input type="button" disabled="disabled"/>
+<select><option/></select>
+<textarea></textarea>
+<button></button>
+<ul>
+    <li class="aaa">
+        <ul>1</ul></li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<ul class="ssssss">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<p class="uiu"></p>
+<ul>
+    <li class="hhh">1</li>
+    <li id="eee">2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<p>Hello</p>
+<ul>
+    <li>list item 1</li>
+    <li class="qaq">list item 2</li>
+    <li >list item 3</li>
+    <li>list item 4</li>
+    <li>list item 5</li>
+</ul>
+<script src="../../jquery-3.3.1.min.js"></script>
+</body>
+<script>
+    console.log($("#eee"));//获取ID对象
+    console.log($("p"));//获取元素对象
+    console.log($(".sss"));//获取类名对象
+    console.log($("*"));//获取每一个元素
+    console.log($("p,div,span,h1"))//群组选择器对象
+    console.log($("#eee p"));//获取id对象的子元素P
+    console.log($("#eee>p"))//获取父元素的第一个子元素P
+    console.log($("div+h1"))//获取div对象的下一个H1标签对象
+    console.log($("div~span"))//获取与div同级的span对象
+    console.log($("div:first"))//div标签的第一个子元素
+    console.log($("p:last"))//p标签下的最后一个子元素
+    console.log($("div:not(.sss)"))//除了sss类名的div的标签 对象
+    $("li:even").css("background" ,"yellow")//li索引值为偶数的对象设置CSS样式
+    $("li:odd").css("background" ,"red")//li索引值为奇数的对象设置CSS样式
+    $("li:eq(4)").css("background" ,"pink")//li索引值为4的对象设置CSS
+    $("li:gt(5)").css("background" ,"blue")//li索引值大于5的对象设置CSS
+    $("li:lt(8)").css("background" ,"#ff6700")//li索引值小于8的对象设置CSS
+    $(":header").css("background" ,"yellow")//文档下的所有标题元素设置CSS
+    $(":focus").css("background" ,"pink")//给获得焦点的对象设置css
+    console.log($("p:contains(hanlei)"))//获取内容为hanlei的P标签元素
+    console.log($(":empty"))//获取所有html为空或者是空元素的标签元素
+    console.log($("div:has(p)"))//判断div标签是否含有p标签元素
+    console.log($("p:parent"))//获取P标签的所有父元素
+    console.log($("p:hidden"))//获取P标签中有隐藏属性的那个元素
+    console.log($("div:visible"))//获取div标签中显示的元素
+    console.log($("div[id]"))//获取div中设置有ID属性的元素
+    console.log($("div[class='sss']"))//获取div中class名为sss的div标签元素
+    console.log($("div[class!='sss']"))//获取所有div元素中class名不是sss的标签元素
+    console.log($("div[class^='ss']"))//获取所有div元素中class名为SS开头的div标签
+    console.log($("div[class$='w']"))//获取所有div元素中class名为w结尾的div标签
+    console.log($("div[class*='s']"))//获取所有div元素中class名中含有s的div标签
+    console.log($("div[id][class^='o']"))//获取所有div元素中有ID属性并且class名是o开头的div标签
+    console.log($("ul li:first-child"))//获取每个UL中li子元素的第一个
+    console.log($("p:first-of-type"))//获取P作为子元素时的父元素中的第一个子元素
+    console.log($("p:last-of-type"))//获取P作为子元素时的父元素中的倒数第一个子元素
+    console.log($("ul li:last-child"))//获取每个UL中li子元素的最后一个
+    console.log($("ul li:nth-child(3)"))//获取ul中第三个li元素
+    console.log($("ul li:nth-last-child(9)"))//获取ul中倒数第9个li元素
+    console.log($("p:nth-last-of-type(2)"))//获取P作为子元素时的父元素中的倒数第2个子元素
+    console.log($("p:nth-of-type(1)"))//获取P作为子元素时的父元素中的第一个子元素
+    console.log($("div p:only-child"))//获取只有一个P标签子元素的div元素  只有一个子元素P
+    console.log($("div p:only-of-type"))//获取只有一个P标签子元素的div元素  可以有多个子元素
+    console.log($(":input"))//获取所有input标签元素
+    console.log($(":text"))//获取所有类型为text的input
+    console.log($(":password"))//获取所有类型为password的input
+    console.log($(":radio"))//获取所有类型为radio的input
+    console.log($(":checkbox"))//获取所有类型为checkbox的input
+    console.log($(":submit"))//获取所有类型为submit的input
+    console.log($(":image"))//获取所有类型为image的input
+    console.log($(":reset"))//获取所有类型为reset的input
+    console.log($(":button"))//获取所有类型为button的input
+    console.log($(":file"))//获取所有类型为file的input
+    console.log($("input:enabled"))//获取所有可用元素
+    console.log($("input:disabled"))//获取所有不可用元素
+    console.log($("input:checked"))//获取所有选中的被选中元素
+    console.log($("select option:selected"))//获取所有的选中的选项元素
+    console.log($("div").find("."+$.escapeSelector(".sss")))
+
+
+
+    $("ul li").css("border" ,"1px  solid red");
+    $("ul li").eq(3).css("background","blue");//设置li索引值为3的那个CSS样式
+    console.log($("li").hasClass("aaa"));//判断li元素是否有类名为AAA的
+    console.log($("li").is("li"));//判断li元素是否为一个li元素
+    console.log($("ul>li").map(function (index,ele) {
+        return this.innerHTML;
+    }))//将li中的文本就是html转化成一个集合  所有的
+    $("li").has("ul").css("background","pink")//给含有ul子元素的li上色
+    console.log($("ul").has(".aaa"))//获取ul中有类名为AAA的子元素
+    console.log($("ul>li").not(".aaa"))//获取ul的li子元素中类名不是AAA的元素
+    console.log($("ul li").slice(2,5))//获取ul的li子元素  从第二到第五个
+
+    console.log( $("ul").children(".aaa"))//查找ul中类名为aaa的子元素
+    console.log($("li:first").closest("ul"))//寻找第一个li元素的元素  只找一个
+    console.log($("ul").find("li"))//从所有的ul开始，进一步搜索下面的li元素
+    console.log($("ul").next())//找到每个ul后面紧邻的同辈元素
+    console.log($("ul").nextAll().addClass("pp"))//给第一个ul之后的所有同级元素加个类
+    console.log($("ul").nextUntil("p").addClass("pp"))//给第一个UL之后  P之前的同级元素加类名PP
+    console.log($("p").offsetParent())//获取P标签元素的最近的定位元素ul
+    console.log($("p").parent())//查找每个P的父元素
+    console.log($("p").parent('ul'))//查找每个P的父元素是ul的父元素
+    console.log($("p").parentsUntil('body'))//查找每个P的父元素  除了body
+    console.log($("li").prev(".aaa"))//查找每个li紧邻的前一个类名为aaa的同辈元素
+    console.log($("li:last").prevAll())//获取最后一个li之前的所有li，同一父元素下
+    console.log($("#eee").prevUntil(".aaa"))
+    $('.ssssss li').prevUntil('.aaa').css('background-color', 'red');//给同父元素下给li前到类名为aaa的li元素前的li加红背景
+   console.log( $("ul").siblings())//获取当前ul所有同辈元素
+    $('p').add("span")
+    $('li.qaq').nextAll().addBack()
+        .css('background-color', 'red');//为类名为qaq后的li元素添加红背景 包括qaq元素
+    console.log( $("li").contents())//获取当前li内所有的字节 包括inner和子元素
+    console.log( $("li").end())//回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态。
+
+
+    //innerHTML=======>html()
+    //console.log($(".demo").html());
+    //$(".demo").html("111")
+    $(".demo").html(function (index,oldVal) {
+        return oldVal+(index+1);
+    });
+    //style getComputedStyle=======>css()
+    console.log($(".demo").css("width"));//获取的是第一个的属性
+    $(".demo").css("background","red");
+    $(".demo").css("width",300);
+    $(".demo").css("width",function (index,oldVal) {
+        return (index+1)*100;
+    });
+    $(".demo").css({
+        color:"#fff",
+        fontSize:"16px",
+        textAlign:"center",
+        lineHeight:"100px"
+    });
+    //classList  className  ========>addClass()  removeClass()    toggleClass()
+    $(".demo").addClass(function (index,oldVal) {
+        // console.log(oldVal)
+        return "test"+(index+1);
+    });
+    $(".demo").removeClass(function (index,oldVal) {
+        // console.log(oldVal)
+        return "test"+(index+1);
+    })
+</script>
+</html>
