@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 50px;
+			background: #f33;
+		}
+		table{
+			border: 1px solid red;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="aa">
+		<div></div>
+		<div></div>
+	</div>
+	<div><span>111</span></div>
+	<div><p>this is jQuery</p> <p>this is a jQuery</p></div>
+	<div class="bb"></div>
+	<div>jQuery</div>
+	<h1>header</h1>
+	<table>
+		<tr><td>1</td></tr>
+		<tr><td>2</td></tr>
+		<tr><td>3</td></tr>
+		<tr><td>4</td></tr>
+		<tr><td>5</td></tr>
+	</table>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li class="one">3</li>
+		<li>4</li>
+		<li>5</li>
+		<li class="two">6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>0</li>
+	</ul>
+	<div class="demo active"></div>
+	<div class="demo">
+		<div class="item"></div>
+		<div></div>
+		<div></div>
+	</div>
+</body>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+	//选择器
+	console.log($("#aa"));  //查找id为aa的元素
+	console.log($("div"));	//查找div元素
+	console.log($(".bb"));	//查找类为bb的元素
+	console.log($("*"));	//查找所有元素
+	console.log($("div,span"));  //群组选择器对象
+	console.log($("#aa div"));	//祖先元素下匹配所有的后代元素
+	console.log($("#aa>div"));	//匹配子集div元素
+	console.log($("div+span"));  //匹配所有跟在div后面的span元素
+	console.log($("div~span"));	 //找到所有与表单同辈的span元素
+	console.log($("div:first"));  //获取匹配的第一个元素
+	console.log($("div:not(.one)"));//查找所有未选中的one元素
+	
+	console.log($("li:even"));	//匹配所有索引值为偶数的元素，从 0 开始计数
+    console.log($("li:odd"));	//匹配所有索引值为奇数的元素，从 0 开始计数
+    console.log($("li:eq(1)"));	//匹配一个给定索引值的元素
+    $("ul>li:gt(5)").css("background","pink");
+    $("ul>li:lt(5)").css("background","blue");
+    console.log($("li:gt(4)"));	//匹配所有大于给定索引值的元素
+    console.log($("li:lt(4)"));	//匹配所有小于给定索引值的元素
+    console.log($("li:last"));	//获取最后一个元素
+    console.log($(":header").css("background","yellow"));//给页面内所有标题加上背景色
+    $(":root").css("background-color","#ccc");  //设置<html>背景颜色为灰色
+    $(":focus").css("background" ,"pink")//给获得焦点的对象设置css
+    console.log($("div:contains('jQuery')"));   //查找所有包含"jQuery"的div元素
+    console.log($("td:empty"));		//匹配所有不包含子元素或者文本的空元素
+    console.log($("div:hidden"));  //匹配div中所有不可见元素
+    console.log($("div:visible"));  //匹配div中所有可见元素
+    console.log($("ul>li:first-child"));//在每个 ul 中查找第一个 li
+    console.log($("span:first-of-type"));//查找父元素的第一个标签是span标签
+    console.log($("ul>li:last-child"));//在每个 ul 中查找最后一个 li
+    console.log($("span:last-of-type"));//查找父元素的最后一个标签是span标签
+    console.log($("ul>li:nth-child(2)"));//在每个 ul 中查找第二个 li
+    console.log($("ul>li:nth-last-child(2)"));//在每个 ul 中查找倒数第二个 li
+    console.log($("ul>li:nth-last-of-type(2)"));//在在每个匹配的ul中查找倒数第二个li
+    console.log($("span:nth-of-type(2)"));//选择同属于一个父元素之下，标签名相同的第2个
+    console.log($("ul>li:only-child"));//在 ul 中查找是唯一子元素的 li
+    console.log($("div:has(p)").addClass("test"));//给所有包含p元素的 div 元素添加一个 text 类
+    console.log($("td:parent"));//查找所有含有子元素或者文本的 td 元素
+
+	//过滤
+	console.log($("li").first());  //获取匹配的第一个元素
+	console.log($("li").last());   //获取匹配的最后一个元素
+	let div=document.querySelector(".demo");
+	console.log($(".demo").hasClass("active"));  
+	console.log($(".demo").is("active"));  //接受 选择器
+	console.log($(".demo").is(($)("div")));  //接受jquery对象
+	console.log($(".demo").is(div));	//接受原生对象
+	console.log($(".demo").is(function(index,ele){  //根据选择器、DOM元素或 jQuery 对象来检测匹配元素集合，如果其中至少有一个元素符合这个给定的表达式就返回true
+			if(ele.innerHTML==="123"){
+				return true;
+			}
+		}));
+	console.log($("ul>li").map(function(index,ele){//将一组元素转换成其他数组（不论是否是元素数组）
+       return ele.innerHTML;
+    }))
+    console.log($('ul').has('.one'));   //输出含有one类名的ul
+    console.log($('ul>li').not('.one')); //输出不含有one类名的ul
+    console.log($('ul>li').slice(5,8));   //截取第5-8个li
+    console.log($('li').has('ul').css("background","pink"));//给含有ul的li加上背景色
+    console.log($("ul>li").slice(-1));//选取一个匹配的子集 与原来的slice方法类似
+    console.log($("p").eq(1));  //获取匹配的第二个元素
+	//查找
+	console.log($("ul").children(".one"));  //查找div中每个含有one类名的子元素
+    console.log($(".item").closest(".box"));  //查找离item最近的box
+    console.log($(".box").find(".item"));       //查找离box最近的item
+    console.log($(".one").next());//每一个元素的下一个元素
+    $(".one").css("background","red").next().css("background","yellow") //one类名的下一个的背景色变为黄色
+    $(".one").css("background","red").nextAll("").css("background","yellow")//之后所有的背景色变为黄色
+    $(".one").css("background","red").nextUntil(".two").css("background","yellow")//one后边，two之前的元素的背景色变为黄色
+    console.log($(".item").offsetParent());  //查找item的具有定位属性的父元素
+    console.log($(".one").parent());//查找item的父元素
+    console.log($(".one").parents());//查找item的所有前辈元素的集合
+    console.log($(".one").parentsUntil("body"));//查找父元素找到body就停止
+    console.log($(".one").siblings());//  查找每个有one类名的同辈元素
+    
+	//串联
+	console.log($(".one").add(".two"));//对one和two两个选择器选择的结果进行合并的操作
+    console.log($(".one").next().addBack());//one添加完下一个后之前的全部显示
+    console.log($(".one").contents());  //查找one的所有节点
+    console.log($("ul>li")
+    .eq(2).css("background","red")
+    .end()
+    .eq(4).css("background","red"));
+    //第三个li背景变成红色  用end恢复后  再给第5个li变成背景色红色
+
+    // innerHTML    []表示可以写可以不写   不写表示获取功能  
+	 console.log($(".demo").html())
+	 $(".demo").html("1111");    //覆盖
+	 $(".demo").html(function(index,oldval){  //集合中索引值  旧值
+	 	return oldval+(index+1);   //输出
+	 })
+	// style   
+	//getComputedStyle=====>css()
+	console.log($(".demo").css("width"))   //输出宽
+	$(".demo").css("background","red")   //添加样式背景
+	$(".demo").css("width",300)   //宽设置为300
+	$(".demo").css("width",function(index,oldval){
+		return(index+1)*100         //回调函数
+	});
+	$(".demo").css({
+	color:"#fff",
+	fontSize:"10px",
+	textAlign:"center",
+	lineHeight:"100px"
+})
+	// classList  className     =====>   addClass()   removeClass()   toggleClass()
+	$(".demo").addClass(function(index,oldval){
+	//利用回调函数给三个demo分添加类名test1、test2、test3
+	return "test"+(index+1);
+})
+	 $(".demo").removeClass(function (index,oldVal) {  //利用回调函数给三个demo分移除类名test1、test2、test3
+    return "test"+(index+1);
+    })
+</script>
+</html>
