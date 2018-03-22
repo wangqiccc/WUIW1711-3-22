@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.demo{
+		width: 100px;
+		height: 100px;
+		background-color: red;
+	}
+	</style>
+</head>
+<body>
+	<div id="id"></div>
+	<h1>head</h1>
+	<p lang="en"></p>
+	<p>
+		<span></span>
+		<a href="">
+			<div>
+				<a href=""></a>
+			</div>
+		</a>
+	</p>
+	<h2>HEAD</h2>
+	<p lang="enen"></p>
+	<div class="class">
+		<div class="class1"></div>
+	</div>
+	<ul>
+		<li>1</li>
+		<li class="one">2</li>
+		<li>3</li>
+		<li class="one">4</li>
+		<li>5</li>
+		<li class="two">6</li>
+		<li>7</li>
+		<li class="two">8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li class="three">3</li>
+		<li>4</li>
+		<li class="three">5</li>
+		<li>6</li>
+		<li class="four">7</li>
+		<li>8</li>
+		<li class="four">9</li>
+		<li>10</li>
+	</ul>
+	<div class="demo active">123</div>
+	<div class="a box">
+		<div>
+			<div style="position: relative;">
+				<div class="item box"></div>
+			</div>
+		</div>
+	</div>
+	<button id="run">Run</button><div></div>
+	<div class="demon">div</div>
+	<div class="demon">div</div>
+	<div class="demon">div</div>
+	<script src="jquery.min.js"></script>
+</body>
+<script>
+//选择器
+	console.log($("#id"))//根据给定的ID匹配一个元素
+	console.log($("p"))//根据给定的元素标签名匹配所有元素
+	console.log($(".class"))//根据给定的类名匹配元素
+	console.log($("*"))//匹配所有元素
+	console.log($("div,p,span"))//将每一个选择器匹配到的元素合并后一起返回
+	console.log($("p span"))//在给定的祖先元素下匹配所有的后代元素
+	console.log($("p>span"))//在给定的父元素下匹配所有的子元素
+	console.log($("span+a"))//匹配所有跟在span后面的a元素
+	console.log($("p~div"))//找到所有与p同辈的div元素
+	console.log($("li:first"))//获取第一个元素
+	console.log($("li:not(.one)"))//查找所有未选中的li元素
+	console.log($("li:even"))//匹配所有索引值为偶数的元素，从 0 开始计数
+	console.log($("li:odd"))//匹配所有索引值为奇数的元素，从 0 开始计数
+	console.log($("li:eq(2)"))//匹配一个给定索引值的元素
+	console.log($("li:gt(2)"))//匹配所有大于给定索引值的元素
+	console.log($("li:last"))//获取最后个元素
+	console.log($("li:lt(2)"))//匹配所有小于给定索引值的元素
+	console.log($("p:lang(en)"))// 获取语言值为en的所有p元素
+	$(":header").css("background", "#EEE");//给页面内所有标题加上背景色
+	console.log($(":not(:animated)"));// 获取所有当前不执行动画效果的元素
+	console.log($(":not(:focus)"))// 获取当前没有获得焦点的元素
+	console.log($("root"))// 选择该文档的根元素
+	console.log($("li:contains(5)"))// 获取当前内容为5的元素
+	console.log($("li:empty"))// 匹配所有不含子元素或者文本的空元素
+	console.log($(":has(.one)"))// 获取所有包含one类名的元素的元素
+	console.log($(":parent"))// 匹配所有含有子元素或者文本的元素
+	console.log($(":hidden"))// 获取所有不可见的元素，包括hidden的
+	console.log($(":visible"))// 获取所有可见的元素
+	console.log($("li:first-child"))// 获取第一个li元素
+	console.log($("li:last-child"))// 获取最后一个li元素
+	console.log($("li:first-of-type"))// 获取第一个li元素
+	console.log($("li:last-of-type"))// 获取最后一个li元素
+	console.log($("li:nth-child(2)"))// 获取第二个li元素
+	console.log($("li:nth-last-child(2)"))// 获取倒数第二个li元素
+	console.log($("li:nth-of-type(2)"))// 获取第二个li元素
+	console.log($("li:nth-last-of-type(2)"))// 获取倒数第二个li元素
+	console.log($(":only-child"))// 如果某个元素是父元素里的唯一子元素，就匹配
+	console.log($(":only-of-type"))// 匹配属于其父元素的特定类型的唯一子元素的每个元素
+//过滤
+	$("ul>li")
+	.eq(2)//获取匹配的第三个元素设置背景色为红色
+	.css("background","red")
+	$("li")
+	.first()//获取匹配的第一个元素设置背景色为红色
+	.css("background","yellow")
+	$("li")
+	.last()//获取匹配的最后一个元素设置背景色为红色
+	.css("background","#ccc")
+	console.log($(".demo").hasClass("active"))//检查当前的元素是否含有某个特定的类，如果有，则返回true
+	$("ul>li")
+	.filter(".one")//保留带有one类的元素
+	.css("background","#f99")
+	console.log($(".demo").is(".active"))//根据选择器、DOM元素或 jQuery 对象来检测匹配元素集合，如果其中至少有一个元素符合这个给定的表达式就返回true
+	console.log($("ul>li").map(function(index,ele){//将一组元素转换成其他数组
+		return ele.innerHTML;
+	}))
+	console.log($("ul").has(".one"))//保留包含特定后代的元素，去掉那些不含有指定后代的元素
+	console.log($("ul>li").not(".one"))//从匹配元素的集合中删除与指定表达式匹配的元素
+	console.log($("ul>li").slice(2,6))//选取一个匹配的子集
+//查找删选
+	console.log($("ul").children(".one"))//查找ul中的one元素
+	console.log($(".item").closest(".box"))//检查当前元素是否匹配，如果匹配则直接返回元素本身。如果不匹配则向上查找父元素，一层一层往上，直到找到匹配选择器的元素
+	console.log($(".box").find(".item"))//搜索所有与指定表达式匹配的元素
+	$(".two").css("background","blue").next().css("background","bisque")//找到每个two元素的后面紧邻的同辈元素
+	$(".three").css("background","orange").nextAll().css("background","pink")//查找当前元素之后所有的同辈元素
+	$(".four").css("background","red").nextUntil().css("background","yellow")//查找当前元素之后所有的同辈元素，直到遇到匹配的那个元素为止
+	console.log($("li").prev()) //  如果li前面紧挨着的同辈元素匹配xx就输出匹配的那个
+	console.log($("li").prevAll("li"))//查找li之前所有的同辈元素
+	console.log($("li").prevUntil("li"))//获取li之前的所有同辈元素，直到找到匹配的元素才停止，输出中间不匹配的所有同辈元素
+	console.log($(".item").offsetParent())//最近的祖先定位元素
+	console.log($(".one").parent())//取得一个包含着所有匹配元素的唯一父元素的元素集合
+	console.log($(".one").parents())//取得一个包含着所有匹配元素的祖先元素的元素集合
+	console.log($(".one").parentsUntil("body"))//查找当前元素的所有的父辈元素，直到遇到匹配的那个元素为止
+	console.log($(".one").siblings())//找到one的所有同辈元素
+//串联
+	console.log($(".one").add(".two"))//添加一个新元素到一组匹配的元素中，并且这个新元素能匹配给定的表达式
+	console.log($(".one").next().addBack())//添加堆栈中元素集合到当前集合
+	console.log($(".one").contents())//查找匹配元素内部所有的子节点
+	console.log($("ul>li").find(".one").end())//选取所有的li元素，查找并选取one子元素，然后再回过来选取li元素
+//innerHTML
+	console.log($(".demon").html())
+	// console.log($(".demon").html("123"))
+	$(".demon").html(function(index,oldVal){
+		return oldVal+(index+1);
+	})
+//style getComputedStyle  =>   css
+	console.log($(".demon").css("width"))
+	$(".demon").css("background","bisque");
+	// $(".demon").css("width",300);
+	$(".demon").css("width",function(index,oldVal){
+		return (index+1)*100;
+	})
+	$(".demon").css({
+		color:"#fff",
+		fontSize:"16px",
+		textAlign:"center",
+		lineHeight:"100px"
+	})
+//classList className  =>addClass  removeClass  toggleClass
+	$(".demon").addClass(function(index,oldVal){
+		return "test"+(index+1)
+	})
+	$(".demon").removeClass(function(index,oldVal){
+		return "test"+(index+1)
+	})
+</script>
+</html>
