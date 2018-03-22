@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            list-style: none;
+        }
+        li{
+            width: 100px;
+            height: 50px;
+            background: pink;
+            color:#fff;
+        }
+        span{
+            width: 50px;
+            height: 50px;
+            background: red;
+            transition: all 1s;
+        }
+        .c{
+            display: none;
+        }
+        #a{
+            position: relative;
+        }
+        .active{
+            font-size: 30px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="aa">
+        <div class="bb">
+            <div class="cc"></div>
+        </div>
+    </div>
+    <div id="a">
+        <div class="b">1</div>
+        <span>aaa</span>
+        <input type="text" value="11122">
+        <input type="text" value="3111225">
+    </div>
+    <input type="text" disabled="disabled">
+    <input type="checkbox">
+    <input type="radio" checked="checked"/>
+    <input type="image" />
+    <input type="file" />
+    <input type="submit" />
+    <input type="reset" />
+    <input type="password" />
+    <input type="button" />
+    <select>
+        <option value="1">1</option>
+        <option value="2" selected="selected">2</option>
+    </select>
+    <textarea></textarea>
+    <button></button>
+
+    <ul>
+        <li class="b">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <h1>Header 1</h1>
+    <p>Header 3</p>
+    <h2>Header 2</h2>
+    <p>Contents 2</p>
+    <span>点击</span>
+    <div class="c"></div>
+    <ul>
+        <li class="f">5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+    <p></p>
+    <p></p>
+    <p></p>
+    <span class="zz xx">自己</span>
+</body>
+<script src="jQuery3.3.1.js"></script>
+<script>
+    console.log($("#a"));  //通过id名获取
+    console.log($("div"));  //通过标签名获取
+    console.log($(".b"));   //通过类名获取
+    console.log($("*"));    //获取所有的标签名
+    console.log($("div.b,input,div#a"));    //获取符合群组选择器的元素
+    console.log($("div input"));//在给定的祖先元素下匹配所有的后代元素
+    console.log($("div+input"));    //获取紧跟在后面的元素
+    console.log($("div~input"));    //获取紧跟在后面的所有的元素
+    console.log($("li:first"));     //获取第一个元素
+    console.log($("input:not(:text)"));//去除所有与给定选择器匹配的元素
+    console.log($("li:even"));//获取所有索引值为偶数的元素，从 0 开始计数
+    console.log($("li:odd"));//获取所有索引值为奇数的元素，从 0 开始计数
+    console.log($("li:eq(1)"))//获取一个给定索引值的元素
+    console.log($("li:gt(1)"))//获取所有大于给定索引值的元素
+    console.log($("li:last"));     //获取最后一个元素
+    console.log($("li:lt(1)"))//获取所有小于给定索引值的元素
+    $(":header").css("background", "red");//获取如 h1, h2, h3之类的标题元素
+    $( "#a" ).delegate( "*", "focus blur", function( event ) {
+        var elem = $( this );
+        setTimeout(function() {
+            elem.toggleClass( "focused", elem.is( ":focus" ) );
+        }, 0);
+    });//匹配当前获取焦点的元素 对于有焦点的元素添加一个类名
+    $(":root").css("background","yellow");//选择该文档的根元素。  将其背景设置为yellow
+    $(":target");   //选择由文档URI的格式化识别码表示的目标元素。
+    console.log($("div:contains('1')"))//获取包含给的文本的元素
+    console.log($("div:empty"))//匹配所有不包含子元素或者文本的空元素
+    console.log($("div:has(input)"))//获取含有选择器所匹配的元素的元素
+    console.log($("div:parent"))//获取含有子元素或者文本的元素
+    console.log($("div:hidden"))//获取所有不可见元素，或者type为hidden的元素
+    console.log($("div:visible"))//获取所有的可见元素
+    console.log($("div[id]"));//获取包含给定属性的元素
+    console.log($("div[class='c']"));//获取给定的属性是某个特定值的元素
+    console.log($("div[class!='c']"))//获取所有不含有指定的属性，或者属性不等于特定值的元素
+    console.log($("input[value^='1']"))//获取给定的属性是以某些值开始的元素
+    console.log($("input[value$='2']"))//获取给定的属性是以某些值结尾的元素
+    console.log($("input[value*='2']"))//获取给定的属性是以包含某些值的元素
+    console.log($("input[value^='1'][value*='2']"))   //复合属性选择器，需要同时满足多个条件时使用
+    console.log($("ul li:first-child"))//获取所给选择器( :之前的选择器)的第一个子元素
+    console.log($("li:first-of-type"))//结构化伪类，获取E的父元素的第一个E类型的孩子。等价于:nth-of-type(1) 选择器
+    console.log($("ul li:last-child"))//获取最后一个子元素
+    console.log($("li:last-of-type"))//结构化伪类，获取E的父元素的最后一个E类型的孩子
+    console.log($("ul li:nth-child(2)"))//获取其父元素下的第N个子或奇偶元素
+    console.log($("ul li:nth-last-child(2)"))//获取所有他们父元素的第n个子元素。计数从最后一个元素开始到第一个
+    // :nth-last-child(n|even|odd|formula)
+    console.log($("ul li:nth-last-child(2)"))
+    console.log($("ul li:nth-last-of-type(2)"))//选择的所有他们的父级元素的第n个子元素，计数从最后一个元素到第一个
+    console.log($("ul li:nth-of-type(2)"))//选择同属于一个父元素之下，并且标签名相同的子元素中的第n个:nth-of-type(n|even|odd|formula)
+    console.log($("ul li:only-child"))//如果某个元素是父元素中唯一的子元素，那将会被匹配
+    console.log($("ul li:only-of-type"))//选择所有没有兄弟元素，且具有相同的元素名称的元素
+    console.log($(":input"))//获取所有 input, textarea, select 和 button 元素
+    console.log($(":text"))//获取所有的单行文本框
+    console.log($(":password"))//获取所有密码框
+    console.log($(":radio"))//获取所有单选按钮
+    console.log($(":checkbox"))//获取所有复选框
+    console.log($(":submit"))//获取所有提交按钮
+    console.log($(":image"))//获取所有图像域
+    console.log($(":reset"))//获取所有重置按钮
+    console.log($(":button"))//获取所有按钮
+    console.log($(":file"))//获取所有文件域
+    console.log($("input:enabled"));//获取所有可见元素
+    console.log($("input:disabled"))//获取所有不可用元素
+    console.log($("input:checked"))//获取所有选中的被选中元素(复选框、单选框等，select中的option)
+    console.log($("select option:selected"))//获取所有选中的option元素
+    //$.escapeSelector(selector)  "\#target"//这个方法通常被用在类选择器或者ID选择器中包含一些CSS特殊字符的时候
+    console.log($.escapeSelector( "#a" ) ); //\#a
+    //过滤
+   // eq(index|-index)//获取当前链式操作中第N个jQuery对象，返回jQuery对象，当参数大于等于0时为正向选取，比如0代表第一个，1代表第二个。
+    // 当参数为负数时为反向选取，比如-1为倒数第一个
+    console.log($("div").eq(1));
+    console.log($("li").last);//获取最后一个元素
+    console.log($("li").first);//获取第一个元素
+    //hasClass(class)   检查当前的元素是否含有某个特定的类，如果有，则返回true。这其实就是 is("." + class)
+    console.log($("li").hasClass("f"));
+    //filter(expr|obj|ele|fn) 筛选出与指定表达式匹配的元素集合。这个方法用于缩小匹配的范围。用逗号分隔多个表达式
+    console.log($("div").filter(".b"));
+    $("div").filter(function(index) {
+        return $("input", this).css("background","red");
+    });
+    //is(expr|obj|ele|fn)   根据选择器、DOM元素或 jQuery 对象来检测匹配元素集合，
+    // 如果其中至少有一个元素符合这个给定的表达式就返回true
+    console.log($("li").parent().is("ul")); //true
+    //map(callback)将一组元素转换成其他数组（不论是否是元素数组）
+    //has(expr|ele) 保留包含特定后代的元素，去掉那些不含有指定后代的元素。
+    $("li").has("ul").css("background", "red");
+   //not(expr|ele|fn) 从匹配元素的集合中删除与指定表达式匹配的元素
+    console.log($("li").not( $(".b") ));
+    //slice(start, [end])选取一个匹配的子集
+    console.log($("p").slice(0, 1))
+    //筛选
+   // children([expr])  取得一个包含匹配的元素集合中每一个元素的所有子元素的元素集合
+    console.log($("div").children());
+    //closest(expr|object|element) 从元素本身开始，逐级向上级元素匹配，并返回最先匹配的元素
+    console.log($("li:first").closest([]));
+    //find(expr|obj|ele) 搜索所有与指定表达式匹配的元素
+    $("p").find("span");
+    //next([expr])取得一个包含匹配的元素集合中每一个元素紧邻的后面同辈元素的元素集合
+    $("p").next();
+    //nextAll([expr]) 查找当前元素之后所有的同辈元素
+    $("div:first").nextAll().addClass("after");
+    //nextUntil([exp|ele][,fil]) 查找当前元素之后所有的同辈元素，直到遇到匹配的那个元素为止
+    $("div").nextUntil("input").css("background","blue");
+    //offsetParent()  返回第一个匹配元素用于定位的父节点
+    $("button").click(function(){
+        $("input").offsetParent().css("background","pink");
+    });
+    //parent([expr]) 取得一个包含着所有匹配元素的唯一父元素的元素集合
+    $("li").parent();
+    //parents([expr]) 取得一个包含着所有匹配元素的祖先元素的元素集合（不包含根元素）
+    $("span").parents();
+    //parentsUntil([expr|element][,filter])  查找当前元素的所有的父辈元素，直到遇到匹配的那个元素为止
+    $("div.cc").parentsUntil("div.bb")
+        .css("background","yellow");
+    //prev([expr])取得一个包含匹配的元素集合中每一个元素紧邻的前一个同辈元素的元素集合
+    $("p").prev().css("backround","#ccc");
+    //prevAll([expr]) 查找当前元素之前所有的同辈元素
+    $("div:last").prevAll().addClass("before");
+    //prevUntil([exp|ele][,fil]) 查找当前元素之前所有的同辈元素，直到遇到匹配的那个元素为止
+    $("bb").prevUntil("aa").css("backround","#000");
+    //siblings([expr]) 取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合
+    $("div").siblings().css("backround","#eee");
+    //串联
+    //add(expr|ele|html|obj[,con])添加一个新元素到一组匹配的元素
+    $("div").add("span");
+    //addBack() 添加堆栈中元素集合到当前集合，一个选择性的过滤选择器。
+    $("li.third-item").nextAll().addBack().css("background","red");
+    //contents()获取元素内部所有的子节点（包括文本节点）。如果元素是一个iframe，则查找文档内容
+
+    // html innerHTML  addClass  removeClass
+    //html 取得第一个匹配元素的html内容
+    $("span").html("完成");
+    $(".zz").addClass("active");//通过类名获取到元素，添加一个active的类名
+    $(".zz").removeClass("xx");//通过类名获取到元素，移除类名
+</script>
+</html>
+
