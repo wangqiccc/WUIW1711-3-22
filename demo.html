@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作业</title>
+	<style>
+		.animate{
+			width: 100px;
+			height: 100px;
+			background: #faf0e6;
+		}
+		.demo{
+			display: none;
+		}
+		li{
+			position: relative;
+		}
+		.active{
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="demo"></div>
+	<div id="demo">
+		<p></p>
+		<span></span>
+		<div>
+			<p></p>
+			<span></span>
+		</div>
+	</div>
+	<span></span>
+	<div class="animate"></div>
+	<input type="text">
+
+	<h3>jQuery练习</h3>
+	<ul>
+		<li class="one">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li class="one">8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4 <span class="two"></span></li>
+		<li>5</li>
+		<li class="one">6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+	<script src="jQuery.js"></script>
+	<script>
+		//基本
+		console.log($("#demo"));//id名获取元素
+		console.log($(".demo"));//类名获取元素
+		console.log($("span"));//标签名获取元素
+		console.log($("*"));//所有元素
+		console.log($(".demo,span"));//群组选择
+		//层级
+		console.log($("div span"));//找到div中的所有span
+		console.log($("#demo>span"));//找到id为demo中的所有span子元素
+		console.log($("p+span"));//匹配所有跟在p后面的span元素
+		console.log($("#demo~span"));//找到所有与#demo同辈的span元素
+		//基本筛选器
+		console.log($('li:first'));//获取匹配的第一个元素
+		console.log($('li:last'));//获取匹配的最后一个元素
+		console.log($("li:not(.one)"));//查找所有未选中的li元素
+		$("li:even").css("background","plum");//奇数行颜色改变
+		$("li:odd").css("background","pink");//偶数行颜色改变
+		$("li:eq(1)").css("background","red");//查找第二行,括号内为下标值
+		$("li:gt(15)").css("background","purple");//下标值大于15
+		$("li:lt(5)").css("background","#ffb3b3");//下标值小于5
+		console.log($("p:lang(en)"));//选择所有<P> 的语言属性
+		$(":header").css("background","#87cefa");//给页面内所有标题加上背景色
+		$(".animate").click(function(){
+			$(".animate").animate({width:"200"});
+		});//单击时添加动画效果
+		$("input").focus(function(){
+			$("input").css("background","#87cefa");
+		});//input获得焦点
+		$(":root").css("background-color","#eee");//：root获取html
+		//内容
+		$("li:contains('1')").css("background-color","#faf0e6");//查找所有包含"1"的li元素
+		console.log($("div:empty"));//查找所有不包含子元素或者文本的空元素
+		console.log($("div:parent"));//查找所有包含子元素或者文本的div元素
+		console.log($("div:has(p)"));//查找所有包含 p 元素的 div 元素
+		//可见性
+		console.log($("div:hidden"));//查找隐藏的div
+		console.log($("div:visible"));//查找可见的div
+		//过滤
+		$("li").eq(6).css("background","red");//获取匹配的第7个元素
+		$("li").eq(-2).css("background","red");//获取匹配的倒数第2个元素
+		$('li').first().css("background","green");//获取匹配的第一个元素
+		$('li').last().css("background","green");//获取匹配的最后一个元素
+		console.log($("li").hasClass("one"));//检查当前的元素是否含有one类
+		$("li").filter(".one").css("background","cyan");//筛选出li中含有one的元素集合。
+		console.log($("li:first").is(".one"));//判断是否符合
+		console.log($("li").map(function(index,ele){
+			return ele.innerHTML;
+		}));//映射
+		$("li").has("span").css("background","#fff");//给含有span的li加上背景色
+		console.log($("li").not(".one"));//不含one的li
+		$("li").slice(0, 3).css("background","#333");//前三个li
+		//查找
+		console.log($("ul").children());//ul中所有子元素
+		console.log($("li:first").closest("ul"));//离第一个li最近的ul
+		console.log($("ul").find(".one"));//查找ul中的one
+		$("li:first").next().css("background","green");//紧邻的同辈元素
+		$("li:first").nextAll().css("background","#fff");//当前元素之后所有的同辈元素
+		//查找当前元素之后所有的同辈元素，直到遇到匹配的那个元素为止
+		$("li:first").nextUntil(".one").css("background","#333");
+		$(".two").offsetParent().css("background-color","red");//设置最近的祖先定位元素的背景颜色
+		console.log($("li:first").parent());//父元素
+		console.log($("span").parents());//所有span的父元素集合
+		console.log($(".one").parentsUntil("ul"));//查找当前元素的所有的父辈元素，直到遇到匹配的那个元素为止
+		console.log($("li:last").prev());//紧邻的前一个同辈元素
+		console.log($("li:last").prevAll());//当前元素之前所有的同辈元素
+		//查找当前元素之前所有的同辈元素，直到遇到匹配的那个元素为止
+		console.log($("li:last").prevUntil(".one"));
+		console.log($("ul").siblings());//用于筛选同辈元素
+		//串联
+		console.log($("li:last").add("<span>aa</span>"));//添加一个新元素到一组匹配的元素中
+		$("li:first").nextAll().addBack().css('background-color', 'red');
+		console.log($("li").contents());//查找所有文本节点
+		console.log($("ul").find(".one").end());//回到最近的一个"破坏性"操作之前
+		$("li:first").addClass("active");//为每个匹配的元素添加指定的类名
+		$("li:first").removeClass("one");//为每个匹配的元素删除指定的类名
+		$("li:first").toggleClass("active");//如果存在（不存在）就删除（添加）一个类
+	</script>
+</body>
+
+</html>
