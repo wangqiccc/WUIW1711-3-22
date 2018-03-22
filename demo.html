@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery</title>
+</head>
+<body>
+<!--//选择器html布局-->
+<section>
+    <div id="aa">
+        <div></div>
+    </div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <p></p>
+    <p></p>
+    <span class="s">hello
+        <p class="p"></p>
+    </span>
+    <span></span>
+    <div style="display:none"></div>
+    <ul>
+        <li class="one">1</li>
+        <li class="2">2</li>
+        <li >3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li class="-2">9</li>
+        <li class="last">10s</li>
+    </ul>
+    <ul>
+        <li class="l"></li>
+    </ul>
+    <h1></h1>
+    <h2 class="h"></h2>
+    <input type="text" name="text" class="a">
+    <input type="text" name="text1" class="b">
+    <input type="text" name="newtext" class="c" id="t">
+    <input type="text" name="newtext1" class="d">
+    <form>
+        <input type="text" class="t"/>
+        <input type="checkbox" class="ck"/>
+        <input type="radio" class="r"/>
+        <input type="image" class="i"/>
+        <input type="file" class="f"/>
+        <input type="submit" class="sb"/>
+        <input type="reset" class="rs"/>
+        <input type="password" class="pwd"/>
+        <input type="button" class="btn"/>
+        <select><option/></select>
+        <textarea></textarea>
+        <button></button>
+    </form>
+    <select>
+        <option value="1"></option>
+        <option value="2" selected="selected"></option>
+        <option value="3"></option>
+    </select>
+    <form>
+        <input type="checkbox" name="newsletter" checked="checked" value="Daily" />
+        <input type="checkbox" name="newsletter" value="Weekly" />
+        <input type="checkbox" disabled="disabled" />
+    </form>
+</section>
+
+<!--筛选布局-->
+<section>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li class="one">3</li>
+        <li>4</li>
+        <li>5</li>
+        <li class="two">6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li class="one">3</li>
+        <li>4</li>
+        <li class="two">5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <div class="demo active">123</div>
+    <div class="abox box">
+        <div>
+            <div class="bbox" style="position: relative">
+                <div class="item"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!--//选择器-->
+<script>
+	//根据给定的ID匹配一个元素 得到id名为aa的元素
+	console.log($("#aa"));
+	//根据给定的元素标签名匹配所有元素 得到标签名为div的元素
+	console.log($("div"));
+	//根据给定的css类名匹配元素 得到类名为item的元素
+	console.log($(".item"));
+	//匹配所有元素 得到页面所有元素
+	console.log($("*"));
+	// 群组选择器  得到页面表签名为div,p元素
+	console.log($("div,p"));
+	// 在给定的祖先元素下匹配所有的后代元素 在id名为aa的元素中得到所有标签名为div的元素
+	console.log($("#aa  div"));
+	// > 在给定的父元素下匹配所有的子元素 在id名为aa的元素中得到所有标签名为div的元素
+	console.log($("#aa>div"));
+	// 匹配所有紧接在 prev 元素后的 next 元素  得到所有紧接着div元素的p元素
+	console.log($("div+p"));
+	// 匹配 prev 元素之后的所有 siblings 元素  得到与div同一级的兄弟元素p
+	console.log($("div~p"));
+	// 获取第一个元素  获取div内的第一个元素
+	console.log($("div:first"));
+	// 去除所有与给定选择器匹配的元素 查找所有没有item类名的div元素
+	console.log($("div:not(.item)"));
+	// 匹配所有索引值为偶数的元素，从 0 开始计数  查找li中索引值为偶数的元素加背景色为红色
+	console.log($("ul>li:even").css("backgroundColor","red"));
+	// 匹配所有索引值为寄数的元素，从 0 开始计数  查找li中索引值为偶数的元素加背景色为蓝色
+	console.log($("ul>li:odd").css("backgroundColor","blue"));
+	// 匹配一个给定索引值的元素 查找li标签中索引值为2的元素加背景色为青色
+	console.log($("ul>li:eq(2)").css("backgroundColor","plum"));
+	// 匹配所有大于给定索引值的元素 从 0 开始计数
+	console.log($("ul>li:gt(5)").css("backgroundColor","yellow"));
+	// 匹配所有小于给定索引值的元素 从 0 开始计数
+	console.log($("ul>li:lt(5)").css("backgroundColor","red"));
+
+	console.log($('li:first'));
+	//匹配如 h1, h2, h3之类的标题元素 获得标签元素
+	console.log($(":header"));
+	//快速选择文档的根部  获得html 元素，给整体加背景色黄色
+	console.log($(":root").css("background-color","yellow"));
+	//选中有hello内容的元素  查找包含hello的span元素
+	console.log($("span:contains(hello)"));
+	//匹配所有不包含子元素或者文本的空元素  查找所有不包含子元素或者文本的空元素
+	console.log($(":empty"));
+	//找符合条件的父元素  查找有demo类名的div元素
+	console.log($("div:has(.demo)"));
+	//匹配含有子元素或者文本的元素 查找所有父元素
+	console.log($("div:parent"));
+	//匹配所有不可见元素，或者type为hidden的元素
+	console.log($("div:hidden"));
+	//匹配所有可见元素
+	console.log($("div:visible"));
+	// 查找所有含有 id 属性的 div 元素
+	console.log($("div[id]"));
+    //匹配给定的属性是某个特定值的元素  查找input元素name属性为text的元素
+    console.log($("input[name='text']"));
+	//匹配所有不含有指定的属性，或者属性不等于特定值的元素。 查找input元素name属性不为text的元素
+	console.log($("input[name!='text']"));
+	//匹配给定的属性是以某些值开始的元素 查找input元素name属性以text开头的的元素
+	console.log($("input[name^='text']"));
+	// 匹配给定的属性是以某些值结尾的元素 查找input元素name属性以text结尾的的元素
+	console.log($("input[name$='text']"));
+	// 匹配给定的属性是以包含某些值的元素   查找input元素name属性包含text结尾的的元素
+	console.log($("input[name*='text']"));
+	// 复合属性选择器，需要同时满足多个条件时使用。 找到所有含有属性，并且它的name属性是以text结尾的
+	console.log($("input[id][name$='text']"));
+
+	// 匹配所给选择器( :之前的选择器)的第一个子元素 查找ul 中的第一个子元素li
+	console.log($("ul li:first-child"));
+	//匹配最后一个子元素  查找ul 中的最后一个子元素li
+	console.log($("ul li:last-child"));
+	// 查找作为父元素的span类型子元素中的"长子"的span标签 查找span元素中第一个span
+	console.log($("span:first-of-type"));
+	// 匹配其父元素下的第N个子或奇偶元素
+    console.log($("ul li:nth-child(2)"));
+	// 选择所有他们父元素的第n个子元素。计数从最后一个元素开始到第一个。
+	console.log($("ul li:nth-last-child(2)"));
+	// 选择所有没有兄弟元素，且具有相同的元素名称的元素 ul 中li
+    console.log($("ul li:only-of-type"));
+	// 如果某个元素是父元素中唯一的子元素，那将会被匹配
+    console.log($("ul li:only-child"));
+	// 选择的所有他们的父级元素的第n个子元素，计数从最后一个元素到第一个。ul下li中倒数第二个
+	console.log($("ul li:nth-last-of-type(2)"));
+	// 选择同属于一个父元素之下，并且标签名相同的子元素中的第n个。ul下li中第二个
+	console.log($("ul li:nth-of-type(2)"));
+	// 匹配所有 input, textarea, select 和 button 元素
+    console.log($(":input"));
+	// 匹配所有的单行文本框
+	console.log($(":text"));
+	// 匹配所有密码框
+	console.log($(":password"));
+	// 匹配所有单选按钮
+	console.log($(":radio"));
+	// 匹配所有复选框
+	console.log($(":checkbox"));
+	// 匹配所有提交按钮
+	console.log($(":submit"));
+	// 匹配所有图像域
+	console.log($(":image"));
+	// 匹配所有重置按钮
+	console.log($(":reset"));
+	// 匹配所有按钮
+	console.log($(":button"));
+	// 匹配所有文件域
+	console.log($(":file"));
+	// 匹配所有可用元素
+	console.log($("input:enabled"));
+	// 匹配所有不可用元素
+	console.log($("input:disabled"));
+	// 匹配所有选中的被选中元素
+	console.log($("input:checked"));
+	// 匹配所有选中的option元素
+	console.log($("select option:selected"));
+</script>
+<!--筛选-->
+<script>
+	let obj=$(".one");//Jquery对象
+	$("ul>li")
+		.css("border","1px solid red")
+		.filter(".one")
+		.filter(obj)
+		// .filter(ele)
+		.filter(function (index,ele) {
+			if(index%3===2){
+				return true;
+			}
+		})
+	// .eq(-1)
+	// .css("background","blue");
+
+
+	let div=document.querySelector(".demo");
+	//hasClass(class)检查当前的元素是否含有某个特定的类，如果有，则返回true
+	console.log($(".demo").hasClass("active"));
+	// 根据选择器、DOM元素或 jQuery 对象来检测匹配元素集合，
+    // 如果其中至少有一个元素符合这个给定的表达式就返回true。
+	console.log($(".demo").is(".active"));
+	console.log($(".demo").is($("div")));
+	console.log($(".demo").is(div));
+	console.log($(".demo").is(function(index,ele){
+		if(ele.innerHTML==="123"){
+			return true;
+		}
+	}));
+	// 将一组元素转换成其他数组（不论是否是元素数组）
+	console.log($("ul>li").map(function(index,ele){
+		return  ele.innerHtml;
+	}))
+	// 保留包含特定后代的元素，去掉那些不含有指定后代的元素
+	console.log($("ul").has(".one").css("background","blue"));
+	// $("p").slice(0, 2).wrapInner("<b></b>");选取一个匹配的子集
+	console.log($("ul").slice(0, 2));
+	// $("p").not( $("#selected")[0] ) 从匹配元素的集合中删除与指定表达式匹配的元素
+	console.log($("li").not( $(".one") ));
+	// console.clear();
+	// 取得一个包含匹配的元素集合中每一个元素的所有子元素的元素集合 查找ul中类名为one的元素
+	console.log($("ul").children( $(".one") ));
+	//离类名box最近的类名为item的元素
+	console.log($("item").closest( $(".box") ));
+	//查找类名为box的元素中所有item的元素
+	console.log($(".box").find( $(".item") ));
+	// 取得一个包含匹配的元素集合中每一个元素紧邻的后面同辈元素的元素集合。
+	console.log($(".one").css("background","red").next(".two")
+        .css("background","blue"));
+	// 查找当前元素之后所有的同辈元素，直到遇到匹配的那个元素为止。
+	console.log($(".one").css("background","red")
+        .nextUntil(".two").css("background","plum"));
+	// 返回第一个匹配元素用于定位的父节点
+	console.log($(".item").offsetParent().css("background","green"));
+	// 取得一个包含着所有匹配元素的唯一父元素的元素集合
+	console.log($(".one").parent());
+	// 取得一个包含着所有匹配元素的祖先元素的元素集合（不包含根元素）。
+	console.log($(".one").parents());
+	console.log($(".one").parentsUntil("body"));
+	//查找所有和类名为one的兄弟元素
+	console.log($(".one").siblings());
+	//在类名为one后面加类名为two的元素
+	console.log($(".one").add(".two"));
+	console.log($(".one").next().addBack().css("background","skyblue"));
+	console.log($("ul>li").eq(2).css("background","black").end().eq(2));
+</script>
+</body>
+</html>
