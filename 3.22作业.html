@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>work</title>
+	<style>
+		.box{
+			width: 900px;
+			height: 400px;
+			border:1px solid red;
+
+		}
+		.top{
+			width: 900px;
+			height:100px;
+			border-bottom: 1px solid red;
+		}
+		.bottom{
+			width: 900px;
+			height: 300px;
+			position: relative;
+			overflow: hidden;
+		}
+		.content{
+			width: 900px;
+			height: 300px;
+			position: absolute;
+			display: none;
+		}
+		.btn{
+			width: 300px;
+			height: 100px;
+			float: left;
+			font-size: 20px;
+			line-height: 100px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.active .content{
+			/*width: 300px;
+			height: 100px;*/
+			background: #ff6700;
+			display: block;
+
+	</style>
+</head>
+<body>
+	<div id="demo1"><p>历历万乡</p></div>
+	<div class="demo2">走马</div>
+	<h1>买辣椒也用券<span>222</span></h1>
+	<!-- <span>起风了</span> -->
+	<ul>
+		<li class="one">1</li>
+		<li class="two">2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li></li>
+		<li style="display: none">7</li>
+	</ul>
+	<form>
+	  <label>Name:</label>
+	  <input name="name" />
+	</form>
+	<input name="none" />
+
+	<input name="apple" />
+	<input name="flower" checked="checked" />
+
+	<input type="checkbox" name="newsletter" value="xixi" />
+	<input type="checkbox" name="newsletter" value="haha" />
+	<input type="checkbox" name="accept" value="xixihaha" />
+
+	<p><b>Values: </b></p>
+	<form>
+	  <input type="text" name="name" value="John"/>
+	  <input type="text" name="password" value="password"/>
+	  <input type="text" name="url" value="http://ejohn.org/"/>
+	</form>
+
+	<ul>
+	  <li>list item 1</li>
+	  <li>list item 2
+	    <ul>
+	      <li>list item 2-a</li>
+	      <li>list item 2-b</li>
+	    </ul>
+	  </li>
+	  <li>list item 3</li>
+	  <li>list item 4</li>
+	</ul>
+
+	<p>Hello</p><p id="selected">Hello Again</p>
+	<span>Hello</span><span>cruel</span><span>World</span>
+
+	<div class="box">
+		<div class="top">
+			<div class="btn active">1</div>
+			<div class="btn">2</div>
+			<div class="btn">3</div>
+		</div>
+		<div class="bottom">
+			<div class="content">1</div>
+			<div class="content">2</div>
+			<div class="content">3</div>
+		</div>
+	</div>
+	
+	<script src="jquery-3.3.1.js"></script>
+	<script>
+		console.log($("#id"));//id获取元素
+		console.log($(".demo2"));//类名获取元素
+		console.log($("div"));//标签名获取元素
+		console.log($("*"));//匹配所有元素
+		console.log($("div,span"));//将每一个选择器匹配到的元素合并后一起返回。
+		console.log($("ul li"));//找到ul中所有的li
+		console.log($("demo1+demo2"));//匹配紧接在demo1后的demo2
+		console.log($("form~input"));//匹配与form同辈的input
+		console.log($('li:first'));//获取ul中的第一个元素
+		console.log($("input:not(checked)"));//获取没有被选中的input标签
+		console.log($("li:even"));//查找列表里索引值为偶数的li
+		console.log($("li:odd"));//查找列表里索引值为奇数的li
+		console.log($("li:eq(5)"));//匹配索引值为5的li
+		console.log($("li:gt(2)"));//匹配所有大于索引值为2的li
+		console.log($("li:last"));//获取最后一个li
+		console.log($("li:lt(3)"));//匹配所有索引值小于3的li
+		console.log($(":header").css("background", "#EEE"));//匹配到h1并给其加背景色
+		console.log($(":root").css("background", "#ccc"));//匹配到html并给其加背景色
+		console.log($("div:contains('历历万乡')"));//匹配包含历历万象的div
+		console.log($("li:empty"));//匹配不包含文本的li
+		console.log($("div:has(p)").addClass("test"));//匹配到含有p标签的div并给其加一个test类
+		console.log($("li:parent"));//匹配所有不含文本的li
+		console.log($("li:hidden"));//匹配li中的不可见元素
+		console.log($("li:visible"));//匹配li中的所有可见元素
+		console.log($("div[id]"));//匹配含有id的div
+		console.log($("input[name='newsletter']").attr("checked", true));//查找所有 name属性是newsletter的input元素
+		console.log($("li").filter(".one"));//筛选出含有.one的元素
+		console.log($("input[type='checkbox']").parent().is("form"));//根据选择器、DOM元素或 jQuery 对象来检测匹配元素集合，如果其中至少有一个元素符合这个给定的表达式就返回true。
+		console.log($("p").append( $("input").map(function(){//
+  					return $(this).val();
+			}).get().join(", ") ));//将一组元素转换成其他数组（不论是否是元素数组）
+		$('li').has('ul').css('background-color', 'red');//给有ul的li加红色背景
+		$("p").not( $("#selected")[0] )//删除带有selected属性的p标签
+		$("span").slice(0, 1).wrapInner("<b></b>");//匹配到span标签的第一个元素并加上b标签
+		console.log($("ul").children());//查找ul中所有的子元素
+		console.log($("li:first").closest(["ul", "body"]));//匹配据li最近的父元素
+		console.log($("h1").find("span"));//从所有段落开始找出h1下的span标签
+		console.log($("span").next());//找出span标签后的同辈元素
+		console.log($("span").nextAll());//找出span标签后的所有同辈元素
+		console.log($('ul').nextUntil('li'));//查找当前元素之后所有的同辈元素，直到遇到匹配的那个元素为止。
+
+		$(".btn").click(function(){
+			// $(".btn").removeClass("active");
+		// $(this).add.Class("active");
+		// $(".btn").removeClass("active").filter(this).addClass("active");
+		$(this).addClass("active").siblings(".active").removeClass("active");
+		let index=$(this).index();
+		$(".content").removeClass("active").eq(index).addClass("active");
+		})
+		
+		//innerHTML
+		//style getComputedStyle======>css()
+		$(".demo").css("background","red");
+		$(".demo").css("width",function(index,oldVal){
+			return(index+1)*100;
+		})
+		//给demo设置相应的属性
+		$(".demo").css({
+			color:"#fff";
+			lineHeight:"100px";
+		})
+		//给demo添加相应的类名
+		$(".demo").addClass(function(index,oldVal){
+			return "test"+(index+1);
+
+		$(".demo").removeClass(function(index,oldVal){
+			return "test"+(index+1);
+		})
+	</script>
+</body>
+</html>
