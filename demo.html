@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery-例一</title>
+    <style>
+        div{
+            width: 150px;
+            height: 150px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="aa"></div>
+    <div class="bb"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <span>SPAN</span>
+    <form action="">
+        <lable>name:</lable>
+        <input name="name" />
+        <fieldset>
+            <lable>Newsleter:</lable>
+            <input name="Newsleter" />
+        </fieldset>
+    </form>
+    <input name="none" />
+    <ul class="zero">
+        <li>1</li>
+        <li>2</li>
+        <li class="one">3</li>
+        <li>4</li>
+        <li>5</li>
+        <li class="two">6</li>
+        <li>7</li>
+        <li class="one">8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li class="one">3</li>
+        <li>4</li>
+        <li>5</li>
+        <li class="three">6</li>
+        <li>
+            <ul>
+                <li class="four">7</li>
+            </ul>
+        </li>
+        <li class="one three">8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <p>hello</p><p class="selected" checked="checked"><span class="span1">我</span></p><p>hello Wwww</p><p class="selected">hello Wwww</p><p><span>我们</span></p>
+    <div>
+        <div>
+            <div class="item"></div>
+        </div>
+    </div>
+    <div>
+        <p>嘻嘻哈哈</p>
+    </div>
+    <div style="width: 300px;height:300px;position: absolute;left: 0;bottom: 50px;" class="anniu">
+        <div style="margin:50px;background: yellow;">
+            <p class="anniu2">点击下面的按钮可以设置本段落的最近的父（祖先）元素的背景色。</p>
+        </div>
+    </div>
+    <button>点击这里</button>
+    <div></div>
+    <dl>
+        <dt>term 1</dt>
+        <dd>definition 1-a</dd>
+        <dd>definition 1-b</dd>
+        <dd>definition 1-c</dd>
+        <dd>definition 1-d</dd>
+
+        <dt id="term-2">term 2</dt>
+        <dd>definition 2-a</dd>
+        <dd>definition 2-b</dd>
+        <dd>definition 2-c</dd>
+
+        <dt>term 3</dt>
+        <dd>definition 3-a</dd>
+        <dd>definition 3-b</dd>
+    </dl>
+    <form>
+        <input type="button" value="Input Button"/>
+        <input type="checkbox" />
+
+        <input type="file" />
+        <input type="hidden" />
+        <input type="image" />
+
+        <input type="password" />
+        <input type="radio" />
+        <input type="reset" />
+
+        <input type="submit" />
+        <input type="text" />
+        <select><option>Option</option></select>
+
+        <textarea></textarea>
+        <button>Button</button>
+    </form>
+
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        //选择器
+            console.log($("#aa"));                                   //id
+            console.log($("div"));
+            console.log($(".bb"));                                  //类名
+            console.log($("*"));                                    //匹配所有元素
+            console.log($("form input"));                          //form  中的input
+            console.log($("form>input"));                           //form中的子级input
+            console.log($("lable+input"));                          //匹配跟在lable后面的input
+            console.log($("form~input"));
+            console.clear();
+        //基本筛选器
+            console.log($("ul li:first"));                          //获取匹配的第一个元素
+            console.log($("p:not(:checked)"));                      //查找所有未选中的 input 元素，去除所有与给定选择器匹配的元素
+            $("ul>li:even").css("background","red");                //匹配所有索引值为偶数的元素，从 0 开始计数，将其背景色变为red
+            $("ul>li:odd").css("background","yellow");              //匹配所有索引值为奇数的元素，从 0 开始计数，将其背景色变为yellow
+            $("ul li:eq(8)").css("background","blue");               //查找li中第九行，给他一个背景色
+            $("ul li:gt(3)").css("background","pink");               //匹配所有大于给定索引值的元素
+            $("ul li:lt(3)").css("background","plum");               //匹配所有小于给定索引值的元素
+            $("ul li:last").css("background","green");                //获取匹配的最后个元素
+            $(":header").css("background","#f39");                        //给页面内所有标题加上背景色
+            $(":root").css("background","#aa5");                        //选择该文档的根元素,设置<html>背景颜色为黄色
+        //子元素
+            console.log($("ul li:first-child"));                         //在每个 ul 中查找第一个 li
+            //first-of-type
+            $("ul li:last-child").css("background","#ff9");            //匹配最后一个子元素,在每个 ul 中查找最后一个 li
+            //last-of-type
+            $("ul li:nth-child(3)").css("background","#bf9");               //在每个 ul 查找第 3个li
+            $("ul li:nth-last-child(2)").css("background","#bd9");         //在每个匹配的ul中查找倒数第二个li
+            $("ul li:nth-last-of-type(2)").css("background","#adb");       //在每个匹配的ul中查找倒数第二个li
+            console.log($("span:nth-of-type(2)"));                               //查找每个span，这个 span 是 其所有兄弟span元素中的第二个元素。
+            $("ul li:only-child").css("background","#adb");                  //如果某个元素是父元素中唯一的子元素，那将会被匹配,否则不会，在 ul 中查找是唯一子元素的 li
+            //only-of-type
+            $("ul>li").css("background","red");
+            .css("border","1px solid red")
+                .eq(0)
+                .css("background","blue");
+        //表单
+            console.log($(":input"));                                            //查找所有的input元素, input, textarea, select 和 button 元素
+            console.log($(":text"));                                             //匹配所有的单行文本框
+            console.log($(":password"));                                         //匹配所有密码框
+            console.log($(":radio"));                                            //匹配所有单选按钮
+            console.log($(":checkbox"));                                         //匹配所有复选框
+            console.log($(":submit"));                                           //匹配所有提交按钮
+            console.log($(":image"));                                           //匹配所有图像域
+            console.log($(":reset"));                                           //匹配所有重置按钮
+            console.log($(":button"));                                           //匹配所有按钮
+            console.log($(":file"));                                           //匹配所有文件域
+        //筛选--过滤
+            $("ul>li").eq(5).css("background","yellow");    //eq（），获取第几个元素
+            $("ul>li").first().css("background","green");    //first（），获取第一个元素
+            $("ul>li").last().css("background","red");       //last（），获取最后一个元素
+            //hasClass
+                console.log($(".one").hasClass(".two"));
+                let div=document.querySelector(".two");
+                console.log($(".one").hasClass($("div")));
+                console.log($(".one")).click(function (index,ele) {
+                    if($(this).hasClass(".two")){
+                        return true;
+                    }
+                });
+                console.log($("p").filter(".selected"));        //filter筛选出p中的selected
+            //is
+            //     $("ul>li").is((".one"));
+            //map 将元素转换为数组
+                console.log($("li").map(function (index,val) {
+                    return $(this).val;
+                }))
+            //has 保留包含特定后代的元素，去掉那些不含有指定后代的元素
+                $("li").has("ul").css("background","green");
+            //not 从匹配元素的集合中删除与指定表达式匹配的元素
+                console.log($("p").not( $(".selected")[0] ));            //删除selected，留下剩下的p
+            //slice  选取一个匹配的子集，与原来的slice方法类似
+                console.log($("p").slice(0,1));                           //选取第一个p
+            //children  取得一个包含匹配的元素集合中每一个元素的所有子元素的元素集合。
+                console.log($("div").children("p"));                     //查找DIV中的每个p子元素。
+                console.clear();
+        //查找
+            //children  取得一个包含匹配的元素集合中每一个元素的所有子元素的元素集合。
+                // console.log($("div").children("p"));                     //查找DIV中的每个p子元素。
+                // console.log($("ul").children(".one"));
+            //closest
+                // console.log($("li:first").closest("ul"));
+            //find   搜索所有与指定表达式匹配的元素
+                //$("ul").find(".two").css("background","yellow");    //在ul中找到所有的two，并改变其背景色，与$("ul li two")同
+            //next 取得一个包含匹配的元素集合中每一个元素紧邻的后面同辈元素的元素集合。
+            // 这个函数只返回后面那个紧邻的同辈元素，而不是后面所有的同辈元素（可以使用nextAll）。
+                console.log($("p").next());                     //找到每个p的后面紧邻的同辈元素
+                console.log($("p").next(".selected"));         //找到每个p的后面紧邻的同辈元素中类名为selected的元素
+            //nextAll   查找当前元素之后所有的同辈元素
+                console.log($("p").nextAll());                  //p后面所有的同辈元素
+                $("p:first").nextAll().addClass("after");       //给第一个p之后的所有同辈元素加类名after
+            //nextUntil 查找当前元素之后所有的同辈元素，直到遇到匹配的那个元素为止
+                $(".one").nextUntil(".two").css("background","pink");
+            //offsetParent()   返回第一个匹配元素用于定位的父节点
+            //返回父元素中第一个其position设为relative或者absolute的元素。此方法仅对可见元素有效
+                 $("button").click(function () {
+                     $(".anniu2").offsetParent().css("background","plum");
+                 })                         //设置最近的祖先定位元素的背景颜色
+            //parent   取得一个包含着所有匹配元素的唯一父元素的元素集合
+                console.log($("span").parent(".selected"));           //查找span的父元素中每个类名为selected的父元素
+            //parents  取得一个包含着所有匹配元素的祖先元素的元素集合（不包含根元素）。
+                console.log($("span").parents());           //找到每个span元素的所有祖先元素
+                console.log($("span").parents("p"));        //找到每个span的所有是p元素的祖先元素
+            //parentsUntil    查找当前元素的所有的父辈元素，直到遇到匹配的那个元素为止
+                console.log($("li.four").parentsUntil(".zero"));        //查找four的祖先，但不包括zero
+            //prev  取得一个包含匹配的元素集合中每一个元素紧邻的前一个同辈元素的元素集合
+                console.log($("p").prev());           //找到每个p紧邻的前一个同辈元素
+                console.log($("p").prev(".selected"));           //找到每个p紧邻的前一个为selected的同辈元素
+            //prevAll     查找当前元素之前所有的同辈元素
+                $("div:last").prevAll().addClass("before");           //给最后一个div之前的所有div加上一个类
+            //prevUntil  查找当前元素之前所有的同辈元素，直到遇到匹配的那个元素为止。
+                $("#term-2").prevUntil("dt").css("background-color", "red");            //给#term-2前面直到dt前的元素加上红色背景
+            //siblings   取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。
+                console.log($("p").siblings());                           //找到每个p的所有同辈元素。
+                console.log($("p").siblings(".selected"));                 //找到每个p的所有类名为selected的同辈元素
+        //串联
+            //add  把与表达式匹配的元素添加到jQuery对象中
+                console.log($("p").add("span"));                    //添加一个新元素到一组匹配的元素中，并且这个新元素能匹配给定的表达式。
+            //addSelf
+                $("p").find("span").addSelf().addClass("border");    //选取所有p以及内部的span，并加上border类
+            //contents   查找匹配元素内部所有的子节点（包括文本节点）。如果元素是一个iframe，则查找文档内容
+                $("p").contents().wrap("</b>");               //查找所有文本节点并加粗
+            //end  回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态。
+                $("ul li").css("background","plum").end().css("background","pink");   //背景色pink
+        //innerHTML===html
+            console.log( $(".content").html());   //获取
+            $(".content").html();
+            $(".demo").html(function (index,oldval) {
+                return oldval+(index+1);
+            })
+        // style、getComputedStyle===css
+            $(".demo").css("width");    //获取
+            $(".demo").css("background","red");
+            $(".demo").css("width",300);      //设置
+            $(".demo").css("width",function (index,oldval) {
+                return (index+1)*100;
+            });
+            $(".demo").css({
+                color:"blue",
+                fontSize:"16px",
+                textAlign:"center",
+                lineHeight:"100px"
+            });
+        // classList、className====addClass、removeClass、toggleCliss（切换）
+            $(".demo").addClass(function (index,oldval) {
+                return "test"+(index+1);
+            })
+            $(".demo").removeClass(function (index,oldval) {
+                return "test"+(index+1);
+            })
+    </script>
+</body>
+</html>
