@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .content
+    {
+        width: 800px;
+        height: 500px;
+        position: relative;
+    }
+    .demo
+    {
+        width: 100%;
+        height: 99px;
+        border:1px solid red;
+    }
+</style>
+<body>
+<div class="content" id="myid">
+    <span>123</span>
+    <div class="demo">1</div>
+    <div class="demo">2</div>
+    <div class="demo">3</div>
+    <div class="demo">4</div>
+    <div class="demo">5</div>
+</div>
+<div></div>
+<div class="name">
+    <p class="name2">haha</p>
+</div>
+<p class="nam3">nima</p>
+<div class="name5">
+    <div id="name1" style="position: relative">
+        <p>xuexi</p>
+        <i></i>
+    </div>
+</div>
+<p class="nam4">wocao</p>
+<ul>
+    <li class="item">1</li>
+    <li class="item1">2</li>
+    <li class="item">3</li>
+    <li class="item">4</li>
+    <li class="item">5</li>
+    <h1>想睡觉</h1>
+    <h2>想睡觉</h2>
+    <li>want to sleep</li>
+    <li>to sleep</li>
+    <li>
+        <p>想睡觉</p>
+    </li>
+    <li></li>
+    <li style="display: none">6</li>
+    <li class="item2">
+        <ul class="item4">
+            <li>10</li>
+            <li>9</li>
+            <li>8</li>
+        </ul>
+    </li>
+</ul>
+<!--focus-->
+<div class="focus">
+    <input type="text">
+</div>
+<script src="jquery-3.3.1.js"></script>
+
+<script>
+    //选择器
+    console.log($("div"));//标签
+    console.log($("#name1"));  //id名
+    console.log($(".name"));  //类名
+    console.log($("*body"));  //所有元素
+    console.log($("div,div.name,p"));// 标签多个选择
+    console.log($("div.name p"));   //父元素下所有的p元素
+    console.log($("div>p"));   //div下的p标签
+    console.log($("div+p"));   //与div元素紧挨着的p标签
+    console.log($("div.name5~p"));   //name5元素之后的p元素
+    console.log($("li:first"));   //li第一个子元素
+    console.log($("li:not(.item1)"));//   过滤掉类名不是item1的元素的集合
+    console.log($("li:even"));//索引值为偶数的li  实际值为1 3 5，索引值为0 2 4
+    console.log($("li:odd"));//索引值为奇数的li   实际值为2 4   索引值为1 3
+    console.log($("li:eq(2)"));  //索引值为2的的li元素  实际上为第三个
+    console.log($("li:gt(2)"));  //所有大于给定索引值的元素
+    console.log($("li:last"));//li 的最后一个元素
+    console.log($("li:lt(2)"));//所有小于给定索引值的元素
+    $(":header").css("background","red");//选中所有h标签并加上背景色
+    $("input").focus(function () {
+        $("input").css("background","red");
+    });//   当前获取焦点的元素
+    //$(":root").css("background","red");  根元素   html设置背景色
+    console.log($("li:contains(sleep)"));  //查找   查找内容有sleep的元素
+    console.log($("li:empty"));   //查找li中 没有子元素或者文本为空的元素
+    console.log($("div:has(p)"));  //查找含有子元素p的所有div
+    console.log($(":parent"))  //查找含有子元素或者文本的元素
+    console.log($("li:hidden")); //查找隐藏的元素
+    console.log($("li:visible")); //查找所有可见元素
+    //筛选
+    console.log($("li").eq(2)); // 从前往后索引值为2的元素li  如果为负数  则从后往前找
+    console.log($("li").first());//查找li的第一个元素
+    console.log($("li").last());//查找li的最后一个元素
+    console.log($("li").hasClass("item1"));  //判断li是否有类名为itsm1  有则输出true  没有为false
+    console.log($("li").filter(".item1"));  //查找li中类名为item1的元素
+    console.log($("li").filter(".item1,:first"));  //保留第一个和类名为item1的元素
+    console.log($("input").parent().is("div"));  //判断input的父元素是否为div元素   是则输出true
+    $("li").map(function () {
+        console.log($(this));  //一组元素转换为其他数组   map();  括号内为给每个元素执行的函数
+    });
+    $("li").has("ul").css("background","red");  //给含有ul的li添加背景色  判断后代是否含有ul
+    console.log($("li").not(".item1"));   //保留 从li中除了类名为item1的所有的元素
+    console.log($("li").slice(5,7));   //截取从第5个开始 截止到第七个位置的元素  从0开始算起 5，6
+    console.log($("div").children()); //div的所有子元素
+    console.log($("li").find("p")); //查找所有li中的p
+    console.log($("li").next());    //查找与li相邻的后面的所有同辈元素
+    console.log($("li").nextAll());  //查找当前元素之后的所有同级元素
+    console.log($("li").nextUntil(".item2"));//查找当前元素之后，直到item2之前的所有同级元素
+    console.log($("p").offsetParent());  //返回第一个匹配元素用于定位的父节点
+    console.log($("p").parent());//所有p元素的唯一父元素的元素集合
+    console.log($("p").parents());//所有p元素的父元素的元素集合
+    console.log($("i").parentsUntil(".name5"));//查找当前元素的所有的父辈元素，直到遇到匹配的那个元素为止。
+    console.log($(".item1").prev());//查找类名为item1的元素的前一个同级元素
+    console.log($(".item2").prevAll());//查找类名为item2元素之前所有同级元素
+    console.log($(".item2").prevUntil(".item1"));//查找所有类名为item2的元素之前，知道item1之后的所有的元素集合
+    console.log($("div").siblings()); //所有div的唯一同级元素的集合
+    console.log($("li").add("span"));//添加一个新元素到一组匹配的元素中，并且这个新元素能匹配给定的表达式
+    console.log($(".item4").addBack());//添加堆栈中元素集合到当前集合，一个选择性的过滤选择器
+    console.log($(".name5").contents());//查找匹配元素内部所有的子节点（包括文本节点）。
+    console.log($("ul").find(".item1").end());//回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态。
+
+    $(".demo").html();//获取内容
+    $(".demo").html("1212");//设置内容
+    $(".demo").html(function(index,oldVal){
+        return oldVal+(index+1);
+    })//遍历每一个demo
+    $(".demo").css("width",function(index,oldVal){
+        return (index+1)*100;
+    })//给每一个demo设置相应的宽度
+    //css设置的简便方法
+    $(".demo").css({
+        color:"#fff",
+        fontSize:"20px",
+        textAlign:"center",
+        lineHeight:"100px"
+    })
+    $(".demo").addClass(function(index,oldVal){
+        return "test"+(index+1);
+    })//给每一个demo添加相应的类名
+    $(".demo").removeClass(function(index,oldVal){
+        return "test"+(index+1);
+    })//给每一个demo移除类名
+</script>
+</body>
+</html>
