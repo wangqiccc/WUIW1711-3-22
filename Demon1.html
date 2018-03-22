@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <div class="demo"></div>
+</div>
+
+<p class="one"></p>
+<p class="two"></p>
+<h1>TOp</h1>
+<p>middle</p>
+<h2>Bottom</h2>
+
+<div class="con1">content</div>
+<div class="con2">content items is</div>
+<div class="con3">itme is a cat</div>
+
+<input type="text">
+
+<table>
+    <tr>
+        <td class="l2" style="display: none">123</td>
+        <td class="13"></td>
+    </tr>
+    <tr>
+        <td class="l1">123</td>
+        <td class="l4"></td>
+    </tr>
+</table>
+<div class="big" style="position: relative">
+    <div class="have" >
+        <ul>
+            <li class="item1">1</li>
+            <li class="item2">2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+</div>
+<ul>
+    <li class="one1">1</li>
+    <li class="one2">2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li class="one3">7</li>
+    <li class="one2">8</li>
+    <li class="one4">9</li>
+</ul>
+<p class="test">text</p>
+
+
+<script src="index.js"></script>
+<script>
+    {
+        //基本选择器
+        console.log($("#box"));  //通过id匹配一个元素
+        console.log($(".demo"));  //匹配带demo类的div
+        console.log($("div"));    //获取div
+        console.log($("*"));      //匹配所有元素
+        console.log($("div,div")); //将每一个选择器匹配到的元素合并后一起返回
+    }
+
+    {
+        //层级选择器
+        console.log($("#box .demo")); //给定的父元素匹配所有的子元素
+        console.log($("ul>li"));   //在给定的父元素下匹配所有的子元素
+        console.log($("ul+p"));   //匹配ul之后紧挨着的p元素
+        console.log($("ul~p"));   //匹配ul之后所有的p元素
+    }
+
+    {
+        //基本筛选器
+        $("li:first").css("background", "red");  //获取第一个元素
+        console.log($("li:not(.item1)"));  //去除所有与给定选择器匹配的元素
+        $("li:even").css("background", "blue");  //所有偶数索引值
+        $("li:odd").css("background", "red");  //所有奇数索引值
+        $("li").eq(2).css("background", "black");  //索引值为2的li元素
+        $("li:gt(2)").css("background", "yellow");  //大于索引值2的li元素
+        $("li:lt(2)").css("background", "grey");  //大于索引值2的li元素
+        $("li:last").css("background", "red");  //获取最后一个元素
+        $(":header").css("background", "blue");  //给h1,h2,h3添加背景色
+        $("input").focus(function () {
+            $("input:focus").css("background", "red");  //匹配获取焦点元素
+        })
+        // $(":root").css("background", "#2df");   //选择该文档的根元素
+    }
+
+    {
+        //内容
+        console.log($("div:contains(con)"));  //匹配包含con字符串的元素
+        console.log($("td:empty"));  //匹配文本或者子元素为空的元素
+        console.log($("tr:has(td)").addClass("text")); //给包含td的tr添加一个类text
+        console.log($("td:parent"));  //匹配有子元素或文本的元素
+    }
+
+    {
+        //可见性
+        console.log($("td:hidden"));  //匹配所有不可见元素，或者type为hidden的元素
+        console.log($("td:visible"));  //匹配所有可见元素
+    }
+
+    {
+        //过滤
+        $("ul>li").eq(0).css("background", "#2df");  //获取索引值是0的元素
+        $("ul>li").eq(-1).css("background", "#9df");   //获取最后一个元素
+        $("ul>li").first().css("background", "#ff3");   //获取第一个元素
+        $("ul>li").last().css("background", "#f3f");   //获取第一个元素
+        console.log($("ul>li").hasClass("one1"));  //检查当前元素是否含有特定的类，真返回true
+        console.log($("ul>li").filter(".one2"));  //分离出含有one2类的li
+        console.log($("ul>li").parent().is("ul"));  //li的父元素是ul,返回true
+        $("li").map(function () {
+            console.log($(this));  //map就是把所有的li输出来
+        })
+
+        console.log($("div").has("li"));  //获取含有li的div
+        console.log($("ul>li").not(".one1"));  //删除带有类名one1的元素
+        console.log($("ul>li").slice(0, 3));  //选区匹配的子集
+        console.log($("ul").children());  //获取ul的所有子元素
+        console.log($("ul").find("li"));  //搜索所有ul下的li
+        console.log($("ul>li").next()); //找到每个段落的后面紧邻的同辈元素
+        console.log($("ul>li").next(".one2")); //找到每个段落的后面紧邻的同辈元素中类名为selected的元素
+        console.log($("ul>li").nextAll()); //找到第一个li之后的所有元素
+        $(".one1").nextUntil(".one3").css("background", "#aa1b77");  //从类one1开始直到类one3结束添加背景色
+        console.log($(".have").offsetParent());  //返回第一个匹配元素用于定位的父节点
+        console.log($("li").parent()); //返回li的父节点
+        console.log($("li").parents()); //返回li的所有父节点
+        console.log($("li").parentsUntil("body")); //返回li的所有父节点，到body停止
+        console.log($("li").prev()); //找到前一个同辈元素
+        console.log($("li").prev(".one1")); //找到类名为one1的元素的前一个同辈元素
+        console.log($("li").prevAll(".one2")); //找到类名为one2的元素的所有前面的同辈元素
+        $(".one4").prevUntil(".one1").css("background","#0cc7ff"); //类名为one4直到找到类名为one1的元素，都添加背景色
+        console.log($("li").siblings()); //找到li的所有同辈元素
+        console.log($(".test").add("<span>sh1</span>"));  //p后添加一个span
+        $(".item2").nextAll().addBack().css("background","#d5f"); //写完还向再操作需要写addBack()
+        $("ul>li").find().end().css("background","red"); //不想要之前的操作，写end()
+    }
+</script>
+</body>
+</html>
