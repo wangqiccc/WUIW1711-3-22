@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        input{
+            display: block;
+        }
+        .demoparent{
+            position: relative;
+        }
+        .box{
+            width: 600px;
+            margin: 0 auto;
+
+        }
+        .top{
+            width: 600px;
+            height: 50px;
+            background-color: #d3b8ff;
+
+        }
+        .content{
+            width: 600px;
+            height: 300px;
+            background: #bb7fff;
+            position: relative;
+        }
+        .title{
+            width: 200px;
+            float: left;
+            line-height: 50px;
+            text-align: center;
+        }
+        .top .active{
+            background:ghostwhite;
+        }
+        .ka{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: indianred;
+            display: none;
+        }
+        .content .active{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="top">
+            <div class="title active">1</div>
+            <div class="title">2</div>
+            <div class="title">3</div>
+        </div>
+        <div class="content">
+            <div class="ka active">1</div>
+            <div class="ka">2</div>
+            <div class="ka">3</div>
+        </div>
+    </div>
+    <div class="bigbox">
+        <div class="aa" id="b1">1</div>
+        <div id="a2">2</div>
+        <div class="a3" id="b3">3</div>
+        <div>
+            4
+            <span class="a3child"></span>
+        </div>
+        <div class="a5">5
+            <p class="child4"></p>
+            <p class="child1">
+                <span class="a5child">erw</span>
+            </p>
+            <p class="child2"></p>
+            <p class="child3"></p>
+        </div>
+        <input class="ip1" type="text"/>
+        <input class="ip2" type="text" checked="checked"/>
+        <input class="ip3" type="text" checked="checked"/>
+        <input type="text" style="display: none"/>
+        <div style="display: none" class="b1">7</div>
+        <div class="filter">8
+
+        </div>
+        <p class="parent">
+            <span>p有子元素</span>
+        </p>
+        <div class="filter">8
+            <p>查找字符串contains</p>
+            <p class="empty"></p>
+        </div>
+        <div lang="en-us" class="filter">9</div>
+        <div lang="en">10</div>
+        <h1>一级标题</h1>
+        <h2>二级标题</h2>
+        <h3>三级标题</h3>
+        <input type="button" id="btn" value="动画按钮"/>
+
+        <ul>
+            <li class="aaa">John</li>
+            <li>Karl</li>
+            <li>Brandon</li>
+        </ul>
+        <ul>
+            <li class="aaa">Glen</li>
+            <li>Tane</li>
+            <li>Ralph</li>
+        </ul>
+        <ul>
+            <li>Glen</li>
+        </ul>
+
+        <div>
+            <button>Sibling!</button>
+            <button>Sibling!</button>
+        </div>
+
+        <div>
+            <button>Sibling!</button>
+        </div>
+
+        <div>
+        </div>
+
+        <div>
+            <button>Sibling!</button>
+            <span>Sibling!</span>
+            <span>Sibling!</span>
+
+        </div>
+        <div class="aaaaa">
+            <button>Sibling!</button>
+        </div>
+
+        <input type="text" />
+        <input type="checkbox" checked="checked"/>
+        <input type="checkbox" checked="checked"/>
+        <input type="checkbox" />
+        <input type="radio" />
+        <input type="image" />
+        <input type="file" />
+        <input type="submit" />
+        <input type="reset" />
+        <input type="password" disabled="disabled" />
+        <input type="button" disabled="disabled"/>
+        <textarea></textarea>
+        <button></button>
+        <select>
+            <option value="1">a</option>
+            <option value="2" selected="selected">b</option>
+            <option value="3">下拉框</option>
+        </select>
+        <div class="demoparent">
+            <p class="demo">第一个</p>
+
+            <p class="demo">第二个
+                <span>
+                    我是后代元素
+                </span>
+            </p>
+
+            <p class="demo">第三个
+            <p class="demo3">第3个</p>
+            <p class="demo4">第4个</p>
+            <p class="demo5">第5个</p>
+            <p class="demo6">第6个</p>
+
+            <p class="demo7"><span>第7个,查找内容</span></p>
+
+        </div>
+        <div id="last"></div>
+
+    </div>
+    <!--<div class="content2">-->
+        <!--<div class="addSelf">-->
+            <!--<p>First Paragraph</p>-->
+            <!--<p>Second Paragraph</p>-->
+        <!--</div>-->
+    <!--</div>-->
+
+<script src="jquery-3.3.1.js"></script>
+</body>
+<script>
+    {
+        //基本
+        console.log($("#a2"));
+        console.log($("*"));
+        console.log($(".aa"));
+        console.log($("div"));
+
+        //层级关系
+        console.log("层级关系");
+        console.log($("div > .a3child"));//父子
+        console.log($(".child1 + p"));//同级，匹配紧跟在child1后的第一个p元素
+        console.log($(".child1 ~ p"));//同级，匹配所有跟在child1后边的p元素
+        console.log($("div span"));//不同级，但是同一个祖先
+
+        //基本
+        console.log("基本");
+        console.log($('input:first'));//同级第一个
+        console.log($("input:last"));//同级最后一个
+        console.log($("input:even"));//索引为偶数
+        console.log($("input:odd"));//索引为奇数
+        console.log($("input:eq(2)"));//指定索引
+        //查找未选中的input
+        console.log($("input:not(:selected)"));
+        console.log($("div:gt(7)"));//匹配所有大于给定的索引值的元素
+        console.log($("div:lt(7)"));//匹配所有大于给定的索引值的元素
+
+        //lang选择器,
+        //选择指定语言的所有元素
+        // 匹配有一个语言值等于所提供的语言代码，
+        // 或以提供的语言代码开始，后面马上跟一个“ - ”的元素
+        console.log($("div:lang(en)").html("lang选择器"));
+
+        //匹配如 h1, h2, h3之类的标题元素
+        $(":header").css("background", "red");
+        //对不在执行动画的元素执行
+        $("#btn").click(function () {
+            $("div:not(:animated)").animate({width: "+=200px"}, 1000);
+        });
+        //    $(".ip1").focus(alert(789));
+        //选择该文档的根元素
+        $(":root").css("background", "yellow");
+
+
+        //内容
+        console.log("内容");
+
+        //匹配包含指定文本的元素，可以用来查找字符串
+        $("div:contains('contains')").css("background", "green");
+        //匹配所有不包含指定文本的元素
+        console.log($("p:empty"));
+        //筛选出含有指定元素的元素
+        $("div:has(p)").css("width", "200px");
+        //筛选出有子元素的p
+        console.log($(".parent:parent").css("color", "red"));
+
+        //可见性
+        console.log("可见性");
+        //查找隐藏的div
+        console.log($("div:hidden"));
+        //查找所有可见的input
+        console.log($("input:visible"));
+
+        //属性
+        console.log("属性");
+        //匹配包含给定属性的元素
+        console.log($("div[id]"));//匹配有定义了、id的div
+        console.log($("div[class]"));//匹配有定义了class的div
+        //匹配元素某个属性是某个特定值得元素，id=a2
+        console.log($("div[id='a2']"));
+        //匹配元素某个属性是不某个特定值得元素，id!=a2
+        console.log($("div[class!='a3']"));
+        //匹配元素的某个属性是某个特定值开始/结尾、包含的元素，
+        console.log($("div[class^='a']"));//以a开始
+        console.log($("div[class$='3']"));//3结尾
+        console.log($("div[class*='a']"));//包含a
+        //同时满足,复合属性选择器
+        console.log($("div[id][class*='a']"));
+
+        //子元素
+        console.log("子元素");
+        console.log($("ul li:first-child"));//第一个子元素
+        console.log($("ul li:last-child"));//最后一个子元素
+        //选择器第一个子元素的
+        console.log($("ul:first-of-type"));
+        console.log($("ul:last-of-type"));
+        //匹配父元素下的第奇/偶/n个子元素
+        $("ul li:nth-child(3)").css("background", "red");//从1开始计数
+        $("ul li:nth-last-child(3)").css("background", "green");
+        //选择同属于一个父元素之下，并且标签名相同的子元素中的第n个
+        $("ul li:nth-of-type(2)").css("background", "pink");
+        //父元素只有一个子元素
+        $("ul li:only-child").css("background", "black");
+
+        $("button:only-of-type").text("Alone").css("background", "blue");
+
+        //表单
+        console.log("表单");
+        $(":input").css("border", "2px solid green");//所有input
+        $(":text").css("border", "2px solid red");//单行文本
+        $(":password").css("border", "2px solid black");//密码框
+        console.log($(":radio").css("width", "30px"));//单选按钮
+        console.log($(":checkbox"));//多选框
+        console.log($(":submit"));//提交按钮
+        console.log($(":image"));//图像域
+        console.log($(":reset"));//重置按钮
+        console.log($(":button"));//按钮
+        console.log($(":file"));//文件域
+        console.log($(":input"));//全部input
+        console.log($("input:enabled"));//可用input可输入
+        console.log($("input:disabled"));//不可用input可输入
+        console.log($("input:checked"));//已选框
+        $("select option:selected");//下拉框中的选中元素
+    }
+    {   
+
+        //筛选部分
+        console.log("筛选部分开始")
+        //过滤
+        console.log($("div").first().css("width","500px"));//第一个
+        console.log($("div").last().css("width","500px"));
+        console.log($("ul").eq(1));//指定获取第2个
+        console.log($("ul").has("li"));//包含后代元素li 的ul
+        //检测集合中的是否至少有一个元素符合表达式
+        console.log($("li").is(".bbb"));
+        console.log($("li").is(".aaa"));
+        console.log($("ul").eq(1).is("ul"));
+        //用于匹配指定的类名,返回值为布尔值
+        console.log($("div").is("aaaaa"));/////////////////////////
+
+        //缩小匹配范围，筛选出来的是集合，集合内部用逗号隔开
+        console.log($("div").filter(".filter"));
+        //删除与指定表达式匹配的元素,返回值是剩余元素的集合，中间用逗号分隔
+        console.log($("div").not(".aaaaa"));
+        console.log($("div"));
+        //分割，选取子集,选取了第一个
+        console.log($(".demo").slice(0,1).css("background","blue"));
+
+        //查找
+        console.log("查找开始");
+        //获取一个匹配元素集合中所有元素集合即所有孩子
+        console.log($(".demoparent").children().css("border","2px solid red"));
+
+        console.log($(".demoparent").closest());////////////////////////
+        //找出与指定元素匹配的后代元素
+        console.log($(".demo").find("span").css("background","yellow"));
+        //找出匹配的集合中一个元素紧邻的下一个元素集合
+        console.log($(".demo4").next(".demo5"))
+        console.log($(".demo4").prev(".demo5"))
+
+
+        //紧邻全部元素，集合
+        console.log($(".demo4").nextAll())
+        console.log($(".demo4").prevAll())
+
+        //查找当前元素之后的所有同辈元素，直到见到某个特定的元素停止
+        //返回值是中间元素，不包括最后特定值
+        console.log($(".demo4").nextUntil(".demo7").css("background","pink"))
+        console.log($(".demo4").prevUntil(".demo").css("background","pink"))
+
+        //针对有定位属性的父元素
+        console.log($(".demo4").offsetParent());
+
+        //获取一个包含着所有匹配元素的唯一父元素的元素集合,爸爸
+        console.log($(".demo").parent());
+        //取得一个包含着所有匹配元素的祖先元素的元素集合（不包含根元素）。
+        // 可以通过一个可选的表达式进行筛选。所有祖先
+        console.log($(".demo").parents());
+        //查找所有祖先，知道某个祖先为止，不包括限定的那个
+        console.log($(".demo").parentsUntil("html"));
+        //同辈兄弟姐妹集合
+        console.log($(".demo4").siblings());
+        //添加，返回是添加和被添加组成的集合
+        console.log($(".demo7")
+                .add("<div class='demo8'><p>集合</p></div>")
+                .css("width","300px","height","200px"));
+        //查找指定元素内部所有的子节点,包括文本节点
+        console.log($(".demoparent").contents())
+        console.log($(".demo7").contents())//此处获取的是文本节点
+
+        //回到最近的一个"破坏性"操作之前。
+        //注意此处的操作类型，不包括样式的改变
+        // 即，将匹配的元素列表变为前一次的状态
+        console.log($("#last").add("span"));
+        console.log($("#last").add("span").end());
+
+//
+    }
+    {
+        $(".title").click(function(){
+//            alert(34)
+//            1
+        $(".title").removeClass("active");
+        console.log(this);
+        $(this).addClass("active");
+
+            //2
+//        $(".title").removeClass("active").filter(this)
+//                .addClass("active");
+
+            //3
+//            $(this).addClass("active").siblings(".active")
+//                    .removeClass("active");
+
+
+            //4
+//        $(".title.active").removeClass("active")
+//               .parent().find(this).addClass("active");
+
+
+
+
+        })
+    }
+
+
+
+
+
+
+
+
+
+
+
+    //filter（选择器、回调函数、jquery对象、原生对象）
+
+
+
+</script>
+</html>
