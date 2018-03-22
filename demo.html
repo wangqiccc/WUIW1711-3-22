@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+        .demo{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<script src="jquery.js"></script>
+<div class="demo"></div>
+<div class="demo"></div>
+<div class="demo"></div>
+<div id="aa" style="position: relative">
+    <div class="cc">123</div>
+    <div class="ff"><p>123</p></div>
+</div>
+<div class="bb">555</div>
+<div class="gg"><p class="word">456</p></div>
+<div></div>
+<div class="ee">25</div>
+<p class="p1">36</p>
+<p class="p2">3634</p>
+<span></span>
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<p>Hello</p><span>Hello Again</span>
+<ul>
+    <li class="one active">1234</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<ul>
+    <li class="two">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li class="two">6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<form action="">
+    <input type="text" value="姓名" autofocus class="dd">
+    <input type="text" class="text">
+    <input type="password" class="psd">
+    <input type="button" value="提交" class="btn">
+</form>
+<input type="checkbox" class="checkbox">
+<script>
+    //#id 获取id名
+    console.log($("#aa"));
+    //element 获取标签名
+    console.log($("div"));
+    //* 获取所有元素
+    console.log($("*"));
+    //.class 获取类名
+    console.log($(".bb"));
+    //parent>child 获取父元素中的子元素
+    console.log($("#aa>div"));
+    //获取每一个选择器匹配到的元素
+    console.log($("div,p,span"));
+    //prev+next  匹配所有紧接在 prev 元素后的 next 元素
+    console.log($("div+p"));
+    //prev~siblings 匹配 prev 元素之后的所有 siblings 元素
+    console.log($("div~p"));
+    //:first 获取第一个子元素
+    $("ul>li:first").css("color","green");
+    //not 获取不包括有one类名的子元素
+    console.log($("ul>li").not(".one"));
+    //even 匹配所有索引值为偶数的元素，从 0 开始计数
+    $("ul>li:even").css("background","blue");
+    //odd 匹配所有索引值为奇数的元素，从 0 开始计数
+    $("ul>li:odd").css("background","red");
+    //eq  匹配一个给定索引值的元素
+    $("ul>li").eq(-2).css("background","skyblue");
+    //gt 获取所有大于给定索引值的元素
+    $("ul>li:gt(8)").css("background","orange");
+    //lt 获取所有小于给定索引值的元素
+    $("ul>li:lt(4)").css("background","pink");
+    //last 获取最后一个元素
+    $("ul>li:last").css("font-size","20px");
+    //header 匹配如 h1, h2, h3之类的标题元素
+    console.log($(":header"));
+    //focus 匹配当前获取焦点的元素
+    console.log($(":focus"));
+    //root  获取文档的根元素
+    console.log($(":root"));
+    //contains(text)匹配包含给定文本的元素
+    console.log($("div:contains('123')"));
+    //empty 匹配所有不包含子元素或者文本的空元素
+    console.log($(":empty"));
+    //has() 匹配含有选择器所匹配的元素的元素
+    console.log($("div:has(p)"));
+    //parent 匹配含有子元素或者文本的元素
+    console.log($("li:parent"));
+    //:first-child 获取第一个子元素
+    console.log($("ul li:first-child"));
+    //:first-of-type 获取指定类型元素的第一个子元素
+    console.log($("div:first-of-type"));
+    //:last-child 获取最后一个子元素
+    console.log($("ul li:last-child"));
+    //:last-of-type 获取指定类型元素的最后一个元素
+    console.log($("div:last-of-type"));
+    //:nth-child 获取父元素下的第n个子元素
+    console.log($("div:nth-child(2)"));
+    //:nth-last-child 获取父元素的倒数第n个子元素
+    console.log($("ul li:nth-last-child(3)").css("text-align","center"));
+    //:nth-last-of-type 获取指定类型元素的倒数第n个子元素
+    console.log($("div:nth-last-of-type(3)"));
+    //:nth-of-type 选择同属于一个父元素之下，并且标签名相同的子元素中的第n个。
+    console.log($("div:nth-of-type(5)"));
+    //:only-child 获取父元素中唯一的子元素
+    console.log($(":only-child"));
+    //:only-of-type 选择所有没有兄弟元素，且具有相同的元素名称的元素。
+    console.log($(":only-of-type"));
+    //:input 获取所有的input, textarea, select 和 button 元素
+    console.log($(":input"));
+    //:text 获取所有的单行文本框
+    console.log($(":text"));
+    //:password 获取所有的密码框
+    console.log($(":password"));
+    //:radio 获取所有单选按钮
+    console.log($(":radio"));
+    //:checkbox 获取所有复选框
+    console.log($(":checkbox"));
+    //:submit 获取所有提交按钮
+    console.log($(":submit"));
+    //:image 获取所有图片
+    $(":image");
+    //:reset 获取所有重置按钮
+    $(":reset");
+    //:button 获取所有按钮
+    $(":button");
+    //:file 获取所有文件
+    $(":file");
+
+    //eq() 获取指定索引值下的元素，索引值可以是负数
+    $("ul li").eq(2).css("background","plum");
+    //first() 获取第一个子元素
+    $("div").first().css("color","red");
+    //last() 获取最后一个子元素
+    $("ul li").last().css("width","200px");
+    //hasClass 判断当前的元素是否含有某个特定的类
+    console.log($("ul>li").hasClass("one"));
+    //filter 筛选出当前元素中指定类名的元素
+    console.log($("ul>li").filter(".two"));
+    //is(选择器/原生对象/jQuery对象/回调函数) 判断当前的元素是否含有某个特定的元素
+    console.log($(".one").is("li"));
+    console.log($(".one").is(".active"));
+    console.log($(".one").is($("li")));
+    console.log($(".one").is(function(ele,index){
+        if(index.innerHTML==="1234"){
+            return true;
+        }
+     }));
+    //map(callback) 将一组元素转换成其他数组（不论是否是元素数组）
+    console.log($("p").append( $("input").map(function(){
+        return $(this).val();
+    }).get().join(", ")));
+    //has() 保留包含特定后代的元素，去掉那些不含有指定后代的元素。
+    $("div").has("p").css("background","red");
+    //not() 从匹配元素的集合中删除与指定表达式匹配的元素
+    console.log($("p").not(".p1"));
+    //slice(start, [end]) 选取一个匹配的子集
+    console.log($("p").slice(1,3));
+    //children() 取得元素所有子元素的元素集合
+    console.log($("div").children());
+    //closest(选择器|jQuery对象|原生对象) 获取最靠近指定元素的元素
+    console.log($("p").closest("div"));
+    //find 搜索所有与指定表达式匹配的元素
+    console.log($("body").find("p"));
+    //next 获取指定元素后面的一个元素
+    console.log($("h1").next());
+    //nextAll 获取指定元素后面的所有元素
+    console.log($("h1").nextAll());
+    //nextUntil()查找当前元素之后所有的同辈元素，直到遇到匹配的那个元素为止
+    console.log($("h1").nextUntil($("ul")));
+    //offsetParent() 返回第一个匹配元素用于定位的父节点
+    console.log($("div").offsetParent());
+    //parent() 取得一个包含着所有指定元素的唯一父元素的元素集合
+    console.log($(".ff").parent());
+    //parents() 取得一个包含着所有匹配元素的祖先元素的元素集合
+    console.log($(".ff").parents());
+    //parentUntil()查找当前元素的所有的父辈元素，直到遇到匹配的那个元素为止。
+    console.log($(".ff").parentsUntil($("html")));
+    //prev() 获取指定元素前面的一个元素
+    console.log($("h1").prev());
+    //prevAll() 获取指定元素前面的所有元素
+    console.log($("h1").prevAll());
+    //prevUntil() 获取指定元素前面的所有元素,直到遇到匹配的那个元素为止。
+    console.log($("h1").prevUntil($("p")));
+    //siblings() 获取指定元素的所有兄弟元素
+    console.log($(".cc").siblings());
+    //add() 把与表达式匹配的元素添加到jQuery对象中,可以用于连接分别与两个表达式匹配的元素结果集。
+    console.log($("p").add($("span")));
+    //addBack() 添加堆栈中元素集合到当前集合，一个选择性的过滤选择器
+    console.log($("p").addBack());
+    //contents() 查找指定元素内部所有的子节点（包括文本节点）
+    console.log($("div").contents());
+    //end() 将匹配的元素列表变为前一次的状态
+    console.log($("p").end());
+
+
+    //innerHTML====>html()
+    //html 获取  设置  传回调函数
+    console.log($(".demo").html());
+    console.log($(".demo").html("100"));
+    console.log($(".demo").html(function(index,oldVal){
+        return "div"+(index+1);
+    }));
+    //添加样式
+    console.log($(".demo").css("width"));
+    $(".demo").css("background","blue");
+    $(".demo").css("width",300);
+    $(".demo").css("width",function(index,oldVal){
+        return (index+1)*100;
+    });
+    //一次性设置多个属性
+    $(".demo").css({
+        color:"#fff",
+        fontSize:"26px",
+        textAlign:"center",
+        lineHeight:"100px"
+    })
+    //classList  className ===>addClass()  removeClass()  toggleClass()
+    //添加类名
+    $(".demo").addClass(function(index,oldVal){
+        return "test"+(index+1);
+    });
+    console.log($(".demo"));  //div.demo.test1, div.demo.test2, div.demo.test3
+    //删除类名
+    $(".demo").removeClass(function(index,oldVal){
+        return "test"+(index+1);
+    });
+    console.log($(".demo")); //div.demo, div.demo, div.demo
+</script>
+</body>
+</html>
