@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+        }
+        .p1{
+            line-height: 30px;
+        }
+        #aaa{
+            background: red;
+        }
+        ul li{
+            width: 30px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="aaa">
+    <p class="p1">222</p>
+    <div></div>
+    <p class="p2"></p>
+</div>
+<div class="two"></div>
+<div class="three"></div>
+<div class="four"></div>
+<div class="last"></div>
+<ul>
+    <li class="shou">
+        123
+        <span></span>
+        <div></div>
+    </li>
+    <li class="hang" style="display: none">
+        <div></div>
+    </li>
+    <li class="lie active"></li>
+    <li></li>
+    <li class="di"></li>
+    <li class="more"></li>
+</ul>
+<ul>
+    <li class="first"></li>
+    <li></li>
+    <li class="di"></li>
+</ul>
+<ul>
+    <li class="dan"></li>
+</ul>
+<p><b>values:</b></p>
+<form action="">
+    <h1>Hellow world</h1>
+    <input type="text" name="提交" class="submit">
+    <input type="submit" name="提交" class="submit2">
+    <input type="password" class="submit3">
+    <input type="radio" class="anniu">
+    <input type="checkbox" class="fuxuan">
+    <input type="image" class="pic">
+    <input type="reset" class="chongzhi">
+    <input type="file" class="wejian">
+    <input name="email" disabled="disabled">
+    <button></button>
+    <button></button>
+    <button></button>
+    <button></button>
+</form>
+<select name="" id="">
+    <option value="1"></option>
+</select>
+<div class="demo">div</div>
+<div class="demo">div</div>
+<div class="demo">div</div>
+<script src="jquery.3.3.1.js"></script>
+<script>
+//选择器
+console.log($("div"));      //element匹配所有div元素
+console.log($("#aaa"));     //#获取id名
+console.log($("*"));         //*获取所有元素
+console.log($(".last"));     //.class  获取类名
+console.log($("div,ul"));    //selector1,selector2,selectorN
+console.log($("ul li"));     //ancestor descendant找到ul中的所有li
+console.log($("#aaa>p"));     //parent>child匹配#aaa中所有的子级p元素
+console.log($("#aaa+p"));      //匹配所有跟在#aaa后面的p元素
+console.log($("ul~input"));      //找到ul之后的所有div元素
+console.log($("div:first"));    //获取div第一个元素
+console.log($("form:not(input)"));      //去除form中的input
+console.log($("div:even"));     //匹配div中所有索引值为偶数的元素，从0开始计数
+console.log($("div:odd"));     //匹配div中所有索引值为奇数的元素，从0开始计数
+console.log($("li:eq(1)")); //匹配一个给定索引值的元素,查找li的第二行
+console.log($("li:gt(1)"));    //匹配所有大于给定索引值的元素，即索引值是1，查找大于索引值1的元素
+console.log($("li:last"));      //获取li最后一个元素
+console.log($("li:lt(1)"));     //匹配所有小于给定索引值的元素,查找小于索引值1的元素
+console.log($(":header").css("color","red"));   //匹配如 h1, h2, h3之类的标题元素,給标题添上红色
+$(":root").css("background-color","yellow");        //选择该文档的根元素。设置<html>背景颜色为黄色
+console.log($("h1:contains('Hellow world')"));      //匹配包含给定文本的元素,查找所有包含"Hellow world"的h1元素
+console.log($("div:empty"));        //匹配所有不包含子元素或者文本的空元素,查找所有不包含子元素的空div元素
+console.log($("div:has(p)").css("background","blue"));      //匹配含有选择器所匹配的元素的元素,给所有包含p元素的div元素添加背景颜色
+console.log($("li:parent"));        //匹配含有子元素或者文本的元素,查找所有含有子元素或者文本的li元素
+console.log($("li:hidden"));        //匹配所有不可见元素，或者type为hidden的元素,查找隐藏的li
+console.log($("li:visible"));       //匹配所有可见元素,查找可见的li
+console.log($("div[id]"));      //匹配包含给定属性的元素。查找所有含有id属性的div元素
+console.log($("input[name='提交']"));     //匹配给定的属性是某个特定值的元素,查找所有name属性是提交的input元素
+console.log($("input[name!='提交']"));    //匹配所有不含有指定的属性，或者属性不等于特定值的元素。查找所有name属性不是提交的input元素
+console.log($("div[class^='t']"));      //匹配给定的属性是以某些值开始的元素,查找所有class属性以"t"开始的div
+console.log($("li[class$='e']"));       //匹配给定的属性是以某些值结尾的元素,查找所有class属性以"e"结束的li
+console.log($("li[class*='o']"));       //匹配给定的属性是以包含某些值的元素，查找所有class属性包含"o"的li
+console.log($("div[class*='o'][class$='o']"));      //复合属性选择器，需要同时满足多个条件时使用,找到所有包含"o"且以"o"结束的div
+console.log($("ul li:first-child"));    //匹配所给选择器( :之前的选择器)的第一个子元素,在每个 ul 中查找第一个 li
+console.log($("ul li:last-child"));     //匹配最后一个子元素,在每个 ul 中查找最后一个 li
+//结构化伪类，匹配E的父元素的第一个E类型的孩子。等价于:nth-of-type(1) 选择器。
+console.log($("p:first-of-type"));      //查找作为父元素的p类型子元素中的"长子"的p标签
+console.log($("p:last-of-type"));       //查找作为父元素的p类型子元素中的最后一个p标签
+console.log($("ul li:nth-child(1)"));   //匹配其父元素下的第N个子或奇偶元素,下标从1开始在每个ul查找第1个li
+//:nth-last-child(n|even|odd|formula)选择所有他们父元素的第n个子元素。计数从最后一个元素开始到第一个。在每个匹配的ul中
+console.log($("ul li:nth-last-child(2)"));      //查找倒数第二个li
+console.log($("ul li:nth-last-child(even)"));       //查找倒数的偶数行
+console.log($("ul li:nth-last-child(4n+2)"));        ////从倒数第二个子元素开始，匹配每个3的倍数的元素
+//:nth-last-of-type(n|even|odd|formula)选择所有他们的父级元素的第n个子元素，计数从最后一个元素到第一个。
+console.log($("ul li:nth-last-of-type(2)"));      //查找倒数第二个li
+console.log($("ul li:nth-last-of-type(even)"));       //查找倒数的偶数行
+console.log($("ul li:nth-last-of-type(4n+2)"));        //从倒数第二个子元素开始，匹配每个4的倍数的元素
+//:nth-of-type(n|even|odd|formula)选择同属于一个父元素之下，并且标签名相同的子元素中的第n个。
+console.log($("ul li:nth-of-type(2)"));      //查找同属于一个父元素的第二个li
+console.log($("ul li:nth-of-type(even)"));       //查找同属于一个父元素的偶数行
+console.log($("ul li:nth-of-type(4n+2)"));      //查找同属于一个父元素的从第二个子元素开始，匹配每个4的倍数的元素
+console.log($("ul li:only-child"));     //如果某个元素是父元素中唯一的子元素，那将会被匹配,在 ul 中查找是唯一子元素的 li
+//input
+console.log($(":input"));       //匹配所有input,textarea,select和button元素,查找所有的input元素
+console.log($(":text"));        //匹配所有的单行文本框
+console.log($(":password"));    //查找所有密码框
+console.log($(":radio"));       //匹配所有单选按钮
+console.log($(":checkbox"));       //匹配所有复选框
+console.log($(":submit"));       //匹配所有提交按钮
+console.log($(":image"));       //匹配所有提交按钮
+console.log($(":reset"));       //匹配所有查找重置按钮
+console.log($(":button"));       //匹配所有按钮
+console.log($(":file"));      //匹配所有文件域
+console.log($("input:enabled"));      //匹配所有可用元素,查找所有可用的input元素
+console.log($("input:disabled"));      //匹配所有不可用元素,查找所有不可用的input元素
+console.log($("input:checkbox"));       //匹配所有选中的被选中元素(复选框、单选框等，select中的option)
+console.log($("select option:selected"));       //匹配所有选中的option元素
+//筛选
+// eq(index|-index)获取当前链式操作中第N个jQuery对象,这个元素的位置是从0算起
+console.log($("div").eq(0));        //获取匹配的第1个元素
+console.log($("div").eq(-2));       //获取匹配的倒数第2个元素
+$("li").first().css("background","green");      //获取第1个元素
+$("li").last().css("background","#eee");      //获取最后1个元素
+console.log($("input").hasClass("button"));     //检查当前的元素是否含有某个特定的类，如果有，则返回true。检查input中是否有一个button
+console.log($("input").filter(".fuxuan"));      ////filter(expr|obj|ele|fn)筛选出与指定表达式匹配的元素集合。
+console.log($("li").is(".active"));     //li里是否有active，有返回true
+console.log($("li").is($("div")));      //li里是否有div，有返回true
+console.log($(".shou").is(function(index,ele){
+    if(ele.innerHTML==="123"){
+        return true;
+    }
+}))
+//把form中的每个input元素的值建立一个列表。
+$("p").append( $("input").map(function(){
+    return $(this).val();
+}).get().join(", ") );
+$("li").has("div").css("background","pink");    //给含有div的li加上背景色
+$("li").filter(".di").eq(0).css("background","black");     //筛选li匹配的类名为di第1个元素，设置背景色
+console.log($("li").filter(".di"));     //筛选li匹配的类名为di的元素，设置背景色
+$("div").not($("span"));        //从div中删除带有span标签的元素
+console.log($("form").children("h1"));      //在每个form中查找h1
+console.log($("form").find("h1"));      ////在form中查找h1
+console.log($("h1").next());        //找到h1的后面紧邻的同辈元素。
+console.log($("button:first").nextAll().addClass("after"));     //查找当前元素之后所有的同辈元素。给第一个button之后的所有元素加个类名
+$('li').nextUntil('.di').css("background", "skyblue");    //查找当前元素之后所有的同辈元素
+$("div").click(function(){
+    $("p").offsetParent().css("color","yellow");        //设置最近的祖先定位元素的背景颜色
+});
+//prev  取得一个包含匹配的元素集合中每一个元素紧邻的前一个同辈元素的元素集合
+console.log($("p").prev());           //找到每个p紧邻的前一个同辈元素
+console.log($("p").prev(".selected"));           //找到每个p紧邻的前一个为selected的同辈元素
+//prevAll     查找当前元素之前所有的同辈元素
+$("div:last").prevAll().addClass("before");           //给最后一个div之前的所有div加上一个类
+//prevUntil  查找当前元素之前所有的同辈元素，直到遇到匹配的那个元素为止。
+$(".four").prevUntil("#aaa").css("background", "skyblue");            //给.four前面直到#aaa前的元素加上背景
+//siblings   取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。
+console.log($("p").siblings());                           //找到每个p的所有同辈元素。
+console.log($("div").siblings(".di"));                 //找到每个div中所有类名为.di的同辈元素
+//add  把与表达式匹配的元素添加到jQuery对象中
+console.log($("li").add("p"));                    //添加一个新元素到一组匹配的元素中，并且这个新元素能匹配给定的表达式。
+//addSelf
+$("li").find("div").add("").addClass("border","1px soild #000");    //选取所有li以及内部的div，并加上border类
+//contents   查找匹配元素内部所有的子节点（包括文本节点）。如果元素是一个iframe，则查找文档内容
+$("p").contents().wrap("</b>");               //查找所有文本节点并加粗
+//end  回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态。
+$("ul li").css("background","plum").end().css("background","pink");   //背景色pink
+//innerHTML      ===>html   获取，设置，传回调函数
+$(".demo").html("111");     //设置demo里的值为111
+console.log($(".demo").html());     //获取demo里的值为111
+$(".demo").html();      //获取demo里的值为111
+$(".demo").html(function (index,oldval) {
+    return oldval+(index+1);
+});
+//style   getComputedStyle
+console.log($(".demo").css("width"));       //获取demo里的值为111
+$(".demo").css("background","red");         //设置demo里的背景色
+$(".demo").css("width",function (index,oldval) {
+    return (index+1)*100;           //设置demo里的宽，分别为100,200,300
+});
+//一次性设置多个属性
+$(".demo").css({
+    color:"#fff",
+    fontSize:"16px",
+    textAlign:"center",
+    lineHeight:"100px"
+})
+//classList     className  ===> addClass()      removeClass()   toggleClass()
+$(".demo").addClass(function (index,oldval) {
+    return "test"+(index+1);            //给demo增加一个类名"test"
+})
+$(".demo").removeClass(function (index,oldval) {
+    return "test"+(index+1);         //给demo移除一个类名"test"
+})
+</script>
+</body>
+</html>
