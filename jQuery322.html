@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 30px;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+<div id="aa">
+    <div>
+        <div class="demo">123</div>
+    </div>
+</div>
+<div class="wowo"></div>
+<div class="one">hello</div>
+<div class="one"></div>
+<div>123</div>
+<div></div>
+<p class="p1"></p>
+<p class="p2"></p>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+<ul>
+	<li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<ul><li>11</li></ul>
+<ul>
+	<li class="item">12345</li>
+	<li>54321</li>
+	<li class="one">12345</li>
+	<li>54321</li>
+	<li class="two">12345</li>
+	<li>6666</li>
+	<li class="item">23333</li>
+</ul>
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<p>lalalalalal</p> 
+<p>hahahahahah</p>
+<p>wawwwawaaw</p>
+<p id="selected">Hello</p>
+<table>
+	<tr><td>Header 1</td></tr>
+	<tr><td>Value 1</td></tr>
+	<tr><td>Value 2</td></tr>
+	<tr><td></td><td></td></tr>
+ 	<tr><td></td></tr>
+	<tr style="display:none"><td>Value 1</td></tr>
+	<input type="checkbox" name="newsletter" value="Hot Fuzz" />
+	<input type="checkbox" name="newsletter" value="Cold Fusion" />
+	<input type="checkbox" name="accslept" value="Evil Plans" />
+	<input type="checkbox" name="accepter" value="Evil Plans" />
+	<input type="text" />
+	<input type="checkbox" />
+	<input type="radio" />
+	<input type="image" />
+	<input type="file" />
+	<input type="submit" />
+	<input type="reset" />
+	<input type="password" />
+	<input type="button" />
+	<select><option/></select>
+	<textarea></textarea>
+	<button></button>
+</table>
+<form action="">
+	<input type="checkbox">
+</form>
+<select>
+  <option value="1">Flowers</option>
+  <option value="2" selected="selected">Gardens</option>
+  <option value="3">Trees</option>
+</select>
+
+</body>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+	//基本
+	console.log($("#aa"));//匹配当前id的元素
+    console.log($("div"));//匹配当前标签名的元素
+    console.log($(".one"));//匹配当前类名的元素
+    console.log($("*"));//匹配所有元素
+    console.log($("div,p"));//将每一个匹配到的元素合并后一起返回
+
+    //层级
+    console.log($("#aa div"));//在给定的祖先元素下匹配所有的后代元素
+    console.log($("#aa>div"));//在给定的父元素下匹配所有的子元素
+    console.log($("div+p"));//匹配所有跟在div后面的p元素
+    console.log($("div~p"));//一个选择器，并且它作为第一个选择器的同辈
+
+    //基本筛选器
+    console.log($("div:first"));//匹配到的元素的第一个
+    console.log($("div:last"));//获取最后一个元素
+    console.log($("div:not(.one)"));//去除所有与给定选择器匹配的元素
+    console.log($("li:even"));//匹配所有索引值为偶数的元素，从 0 开始计数
+    console.log($("li:odd"));//匹配所有索引值为奇数的元素，从 0 开始计数
+    console.log($(":header"));//匹配如 h1, h2, h3之类的标题元素
+    console.log($("tr:eq(1)"));//匹配一个给定索引值的元素
+    console.log($("tr:gt(0)"));//匹配所有大于给定索引值的元素
+    console.log($("tr:lt(2)"));//匹配所有小于给定索引值的元素
+    console.log($(":root"));//选择该文档的根元素
+    console.log($(":target"));//选择由文档URI的格式化识别码表示的目标元素。
+
+    //内容
+    console.log($("div:contains(123)"))//匹配包含123的div
+    console.log($("td:empty"))//匹配所有不包含子元素或者文本的空元素
+    console.log($(":has(demo)"));//匹配含有选择器所匹配的元素的元素
+    console.log($("td:parent"));//匹配含有子元素td的元素
+
+    //可见性
+    console.log($("tr:hidden"));//匹配所有不可见元素，或者type为hidden的元素
+    console.log($("tr:visible"));//匹配所有的可见元素
+
+    //属性
+    console.log($("div[id]"));//匹配包含id的元素
+    console.log($("input[name='newsletter']"));//匹配给定的属性是某个特定值的元素
+    console.log($("input[name!='newsletter']"));//匹配所有不含有指定的属性，或者属性不等于特定值的元素。
+    console.log($("input[name^='news']"));//匹配给定的属性是以某些值开始的元素
+    console.log($("input[name$='ter']"));//匹配给定的属性是以某些值结尾的元素
+    console.log($("input[name*='sle']"));//匹配给定的属性是以包含某些值的元素
+    console.log($("input[id][name$='ter']"));//同时满足多多个条件
+
+    //子元素
+    console.log($("ul li:first-child"));//匹配所给选择器的第一个子元素
+    console.log($("ul li:last-child"));//在每个ul中查找最后一个li
+    console.log($("ul li:nth-child(2)"));//在每个 ul 查找第 2 个li
+    console.log($("ul li:nth-last-child(2)"));//在每个匹配的ul中查找倒数第二个li
+    console.log($("ul li:nth-last-of-type(2)"));//在每个匹配的ul中查找倒数第二个li
+    console.log($("ul li:only-child"));//在 ul 中查找是唯一子元素的 li
+    console.log($(":only-of-type"));//选择所有没有兄弟元素，且具有相同的元素名称的元素
+
+    //表单
+    console.log($(":input"));//匹配所有 input, textarea, select 和 button 元素
+    console.log($(":text"));//查找所有文本框
+    console.log($(":password"));//匹配所有的密码框
+    console.log($(":radio"));//匹配所有的单选按钮
+    console.log($(":checkbox"));//查找所有复选框
+    console.log($(":submit"));//查找所有提交按钮
+    console.log($(":image"));//匹配所有图像域
+    console.log($(":reset"));//查找所有重置按钮
+    console.log($(":button"));//查找所有按钮.
+    console.log($(":file"));//查找所有文件域
+
+    //表单对象属性
+    console.log($("input:enabled"));//匹配所有可用input元素
+    console.log($("input:disabled"));//查找所有不可用的input元素
+    console.log($("input:checked"));//查找所有选中的复选框元素
+    console.log($("select option:selected"));//匹配所有选中的option元素
+   
+
+    //过滤
+    console.log($("p").eq(1));//获取匹配的第二个元素
+    $("ul>li").eq(1).css("border","1px solid red")//给第2个li元素添加边框
+    console.log($('li').first());//获取匹配的第一个元素
+    console.log($('li').last());//获取最后个元素
+    $("ul>li").last().css("border","1px solid blue")//给最后一个li元素添加边框
+    console.log($("div").hasClass("wowo"));//检查当前的元素是否含有某个特定的类，如果有，则返回true。
+    console.log($("div").filter(".one"));//保留带有one类的div
+    console.log($("input[type='checkbox']").parent().is("form"));//如果其中至少有一个input checkbox父元素是 form ，就返回true。
+    console.log($('li').has('ul'));//含有li的ul
+    console.log($("p").not( $("#selected")[0] ));//从p元素中删除带有 select 的ID的元素
+    console.log($("p").slice(0, 1));//选择第一个p元素
+
+	//查找
+	console.log( $("div").children())//获取div的左右子元素
+	console.log($("li").closest("ul"))//获取li的父元素
+	console.log($("div").find("p"))//获取div中的所有p元素
+	console.log($("ul>li").next(".one"))//获取li元素中紧邻的类名为one的元素
+	console.log($("ul>li").nextAll())//获取li元素中的左右同辈元素
+	console.log($(".item").nextUntil(".one"))//从类名为item开始的li中找同辈元素，直至找到类名为one停止
+	$("span").offsetParent().css("background","#ff9000")//给span元素的父元素设置样式
+	$("p").parent().css("border","2px solid blue")//给P元素的唯一的父元素设置边框
+	console.log($("p").parents())//获取p元素的所有祖先元素
+	console.log($(".item").parentsUntil("html"))//获取item的祖先元素直至html为止
+	$(".item").prev().css("border","2px solid #b0b0b0")//给item的相邻的前一个元素设置边框
+	$(".item").prevAll().css("background","pink")//给item之前的左右同辈元素设置背景
+	$(".two").prevUntil(".item").css("background","red")//给two之前直至item元素的所有同辈元素设置背景
+	console.log($("p").siblings())//获取p元素的所有同辈元素
+	
+	//串联
+	console.log($(".one").add(".two"))//将one元素和two元素连接起来
+	console.log($(".one").next().addBack())//添加堆栈中元素集合到当前集合
+	console.log($(".one").contents())//查找匹配元素内部所有的子节点
+	console.log($("ul>li").find(".one").end())//选取所有的li元素，查找并选取one子元素，然后再回过来选取li元素
+</script>
+</html>
