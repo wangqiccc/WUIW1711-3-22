@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .run{
+            width: 100px;
+            height: 100px;
+            background-color: plum;
+            line-height: 100px;
+            color: #000;
+            text-align: center;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+        .two{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="demo">div</div>
+<div class="demo">div</div>
+<div class="demo">div</div>
+<div id="id"></div>
+<div class="demo"></div>
+<div>
+    <span></span>
+    <p></p>
+    <p></p>
+    <p class="p"></p>
+</div>
+<ul>
+    <li></li>
+</ul>
+<div>
+    <div id="var"></div>
+    <div></div>
+</div>
+<input type="text" class="input">
+<h1>hello</h1>
+<ul>
+    <li class="item">1aaa</li>
+    <li>2</li>
+    <li class="one">3</li>
+    <li>4</li>
+    <li class="two">5</li>
+    <li>6</li>
+    <li class="item">7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<button id="run">Run</button>
+<div class="run">run</div>
+</body>
+<script src="../jquery-3.3.1.min.js"></script>
+<script>
+    console.log($("#id")) //通过id获得
+    console.log($(".demo")) //通过类名获得
+    console.log($("div")) //通过标签获得
+    console.log($("*")) //匹配所有元素
+    console.log($("div,span,p")) //群组选择器
+    console.log($("ul li")) //后代选择器
+    console.log($("ul>li")) //子选择器
+    console.log($("#id + .demo")) //获取紧跟在#id后面的类名为demo的元素
+    console.log($("li ~ li"))  //获取第一个li的所有同辈元素
+    console.log($("li:first")) //获取li的第一个子元素
+    console.log($("li:last"))//获取li的最后一个元素
+    console.log($("li:not(.item)"))//去除li中类名为item的li
+    console.log($("ul>li:even"))//获取ul中1、3、5...的li
+    console.log($("ul>li:odd"))//获取ul中2、4、6...的li
+    console.log($("ul>li:eq(0)"))//获取第一个li
+    console.log($("ul>li:gt(4)"))//获取索引值为4之后的li
+    console.log($("ul>li:lt(5)"))//获取前5个li
+    console.log($("p:lang(en)"))// 获取语言值为en的所有p元素
+    console.log($(":header").css("color","red"))//给标题的字体设为红色
+    $("#run").click(function(){
+        $(".run:not(:animated)").animate({ height: "0" }, 1000);
+    });//点击run，给div一个动画效果
+    console.log($(":not(:focus)"))// 获取当前没有获得焦点的元素
+    console.log($(":root"))//获取根元素
+    console.log($("ul>li:contains('aaa')"))//获取内容含有aaa的li
+    console.log($("div:empty"))//获取不包含子元素或者文本的空元素
+    console.log($("div:has(p)")) //获取含有p标签的div
+    console.log($("div:parent"))//获取div的父元素
+    console.log($("div:hidden"))//获取隐藏的div
+    console.log($("span:visible"))//获取可见的span标签
+    console.log($("ul>li:first-child"))//获取ul的第一个子元素
+    console.log($("ul>li:last-child"))//获取ul的最后一个子元素
+    console.log($("p:first-of-type"))//获取p类型中的第一个p元素
+    console.log($("p:last-of-type"))//获取p类型中的最后一个p元素
+    console.log($("ul>li:nth-child(3)"))//获取ul 查找第3个li元素
+    console.log($("ul>li:nth-last-child(4)"))//获取ul 查找倒数第4个li元素
+    console.log($("p:nth-last-of-type(1)"))//获取所有p标签中的倒数第1个元素
+    console.log($("p:nth-of-type(3)"))//获取所有p标签中的第3个元素
+    console.log($("button:only-of-type"))//获取唯一的一个button元素
+    console.log($("ul>li:only-child"))//在ul中查找唯一一个的li元素
+
+    //过滤
+    $("ul>li").eq(1).css("border","1px solid red")//给第2个li元素添加边框
+    $("ul>li").first().css("background","blue")//给第一个li元素添加背景
+    $("ul>li").last().css("border","1px solid red")//给最后一个li元素添加边框
+    console.log($("ul>li").hasClass("item"))//所有li元素中是否含有类名item
+    $("ul>li").filter(".one").css("background","pink")// true 给类名为one的li元素添加背景
+    console.log($("ul>li").is(".two"))//true
+    console.log($("ul>li").map(function (index,ele) {
+        return ele.innerHTML
+    }))//将所有li的元素都映射为该元素的内容
+    $("div").has("p").css("background","yellow")//给含有P标签的div加上背景黄色
+    console.log($("ul>li").not(".item"))//获取不包括item的li
+    console.log($("ul>li").slice(5,8))//截取下标为5-8的li元素
+
+    //查找
+    console.log( $("div").children())//获取div的左右子元素
+    console.log($("li").closest("ul"))//获取li的父元素
+    console.log($("div").find("p"))//获取div中的所有p元素
+    console.log($("ul>li").next(".one"))//获取li元素中紧邻的类名为one的元素
+    console.log($("ul>li").nextAll())//获取li元素中的左右同辈元素
+    console.log($(".item").nextUntil(".one"))//从类名为item开始的li中找同辈元素，直至找到类名为one停止
+    $("span").offsetParent().css("background","red")//给span元素的父元素设置样式
+    $("p").parent().css("border","5px solid blue")//给P元素的唯一的父元素设置边框
+    console.log($("p").parents())//获取p元素的所有祖先元素
+    console.log($(".item").parentsUntil("html"))//获取item的祖先元素直至html为止
+    $(".item").prev().css("border","2px solid red")//给item的相邻的前一个元素设置边框
+    $(".item").prevAll().css("background","plum")//给item之前的左右同辈元素设置背景
+    $(".two").prevUntil(".item").css("background","red")//给two之前直至item元素的所有同辈元素设置背景
+    console.log($("p").siblings())//获取p元素的所有同辈元素
+
+    //串联
+    console.log($(".one").add(".two"))//将one元素和two元素连接起来
+    console.log($(".one").next().addBack())//添加堆栈中元素集合到当前集合
+    console.log($(".one").contents())//查找匹配元素内部所有的子节点
+    console.log($("ul>li").find(".one").end())//选取所有的li元素，查找并选取one子元素，然后再回过来选取li元素
+
+    //设置内容
+    // innerHTML===html
+    $(".demo").html("div");
+    $(".demo").html(function (index,oldval) {
+        return oldval+(index+1);
+    })
+
+    // //获取某个元素
+    // getComputedStyle()===css()
+    $(".demo").css("width")
+    $(".demo").css("background","red")
+    $(".demo").css("width",300)
+    $(".demo").css("width",function (index,oldval) {
+        return (index+1)*100
+    })
+
+    $(".demo").css({
+        color:"#fff",
+        fontSize:"20px",
+        lineHeight:"100px",
+        textAlign:"center"
+    })
+
+    // className   classList===addClass   removeClass
+    $(".demo").addClass(function (index,oldval) {
+        return "test"+(index+1);
+    })
+</script>
+</html>
