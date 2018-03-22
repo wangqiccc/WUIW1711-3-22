@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="">
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	li{
+		width: 60px;
+		height: 20px;
+		text-align: center;
+		border: 1px solid red;
+	}
+	ul{
+		position: relative;
+	}
+	</style>
+</head>
+<body>
+<ul class="pp">
+	<li class="one">1</li>
+	<li id="a"></li>
+	<li class="one">
+		<h1>3</h1>
+	</li>
+	<li><h1>4</h1></li>
+	<li class="two">5</li>
+	<li>6</li>
+	<p lang="en"></p>
+	<li>
+		<span>
+			<i>7</i>
+		</span>
+		<span>7</span>
+	</li>
+	<li>8</li>
+	<p lang="enen"></p>
+	<li class="two">9</li>
+	<li>10</li>
+</ul>
+<div class="demo">1</div>
+<div class="demo">2</div>
+<div class="demo">3</div>
+<input type="hidden">
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+// 根据给定的ID匹配一个元素
+console.log($("#a"))
+// 根据给定的标签名匹配一个元素
+console.log($("li"))
+// 根据给定的类名匹配一个元素
+console.log($(".a"))
+// 获取所有元素
+console.log($("*"))
+// 群组选择器
+console.log($("li,span"))
+// 后代选择器
+console.log($("li span"))
+// 子选择器
+console.log($("li>span"))
+// 获取紧挨着li的p元素
+console.log($("li+p"))
+// 获得和li同辈的p元素
+console.log($("li~p"))
+// 获取第一个li元素
+console.log($("li:first"))
+// 获取最后一个li元素
+console.log($("li:last"))
+// 获取没有two选择器的li元素
+console.log($("li:not(.two)"))
+// 获取索引值为偶数的li元素，从0开始
+console.log($("li:even"))
+// 获取索引值为奇数的li元素，从0开始
+console.log($("li:odd"))
+// 获取索引值为5的li元素，从0开始
+console.log($("li:eq(5)"))
+// 获取所有索引值大于5的li元素
+console.log($("li:gt(5)"))
+// 获取所有索引值小于5的li元素
+console.log($("li:lt(5)"))
+// 获取语言值为en的所有p元素
+console.log($("p:lang(en)"))
+// 获取标题元素
+console.log($(":header"))
+// 获取所有当前不执行动画效果的元素
+console.log($(":not(:animated)"));
+// 获取当前没有获得焦点的元素
+console.log($(":not(:focus)"))
+// 选择该文档的根元素
+console.log($("root"))
+// 获取当前内容为5的元素
+console.log($("li:contains(5)"))
+// 获取所有不含子元素或者文本的空元素
+console.log($("li:empty"))
+// 获取所有包含one类名的元素的元素
+console.log($(":has(.one)"))
+// 获取所有含有子元素或者文本的元素
+console.log($(":parent"))
+// 获取所有不可见的元素，包括hidden的
+console.log($(":hidden"))
+// 获取所有可见的元素
+console.log($(":visible"))
+// 获取第一个li元素
+console.log($("li:first-child"))
+// 获取最后一个li元素
+console.log($("li:last-child"))
+// 获取第一个li元素
+console.log($("li:first-of-type"))
+// 获取最后一个li元素
+console.log($("li:last-of-type"))
+// 获取第二个li元素
+console.log($("li:nth-child(2)"))
+// 获取倒数第二个li元素
+console.log($("li:nth-last-child(2)"))
+// 获取第二个li元素
+console.log($("li:nth-of-type(2)"))
+// 获取倒数第二个li元素
+console.log($("li:nth-last-of-type(2)"))
+// 如果某个元素是父元素里的唯一子元素，就匹配
+console.log($(":only-child"))
+// 获取属于其父元素的特定类型的唯一子元素的每个元素
+console.log($(":only-of-type"))
+// 获取最后一个li
+console.log($("li").eq(-1))
+// 获取第一个li元素
+console.log($("li").first())
+// 获取最后一个li
+console.log($("li").last())
+// 检查li是否有a类名的li，如果有就true
+console.log($("li").hasClass("a"))
+// 筛选出含有one类名的li
+console.log($("li").filter(".one"))
+// 检查当前元素是否包含这样的选择器，true
+console.log($("li").is(".one"))
+// 将li里面的内容转换为数组
+console.log($("li").map(function(val){
+	return $(this).html();
+}))
+// 获取子元素中有span的li
+console.log($("li").has("span"))
+// 获取不包含b类名的li
+console.log($("li").not(".b"))
+// 截取0，1位置的li
+console.log($("li").slice(0,2))
+// 获取li中的所有子元素
+console.log($("li").children())
+// 从li元素开始，逐级向上匹配，返回最先匹配到的元素
+console.log($("li").closest(".pp"))
+// 从li里面查找满足（）内容的元素并返回
+console.log($("li").find("span"))
+// 如果li后面紧挨着的同辈元素匹配xx就输出匹配的那个
+console.log($("li").next("li"))
+// 如果li前面紧挨着的同辈元素匹配xx就输出匹配的那个
+console.log($("li").prev()) 
+// 获取li之后所有的同辈元素
+console.log($("li").nextAll("li"))
+// 获取li之前所有的同辈元素
+console.log($("li").prevAll("li"))
+// 获取li以后的所有同辈元素，直到找到匹配的元素才停止，输出中间不匹配的所有同辈元素
+console.log($("li").nextUntil("li"))
+// 获取li之前的所有同辈元素，直到找到匹配的元素才停止，输出中间不匹配的所有同辈元素
+console.log($("li").prevUntil("li"))
+// 获取li的最先有定位属性的父节点
+console.log($("li").offsetParent())
+// 获取一个包含着li的匹配的父元素
+console.log($("li").parent(".pp"))
+// 获取li的所有父元素
+console.log($("li").parents())
+// 获取匹配的父元素，知道遇到匹配的父元素为止，输出查找过的
+console.log($("li").parentsUntil(".pp"))
+// 获取li同辈元素中有.one类名的元素
+console.log($("li").siblings(".one"))
+// 在p中添加一个元素，表现为在p后面添加
+console.log($("p").add("<i>aaaaaa</i>"))
+// 对于筛选或查找到的元素加入当前元素中,将span加入到li的集合  
+console.log($("li").find("span").addBack().addClass('class_name'))   
+// 获取li里面的子节点 
+console.log($("li").contents())  
+// 获取的元素列表回到前一次的状态
+console.log($("li").find("span").end()) 
+//      
+//        
+//innerHTML-----html()
+//第一个demo的内容
+console.log($(".demo").html());
+//$(".demo").html("lllll");
+$(".demo").html(function(index,oldval){
+	return oldval+(index+1);
+});
+//style getComputedStyle-----css()
+////第一个demo的//获取
+console.log($(".demo").css("width"))
+$(".demo").css("width",function(index,oldval){
+	return (index+1)*100;
+});
+console.log($(".demo").css("width"))
+$(".demo").css({color:"#000",fontSize:"20px"});
+//classList className-----addClass() removeClass()
+$(".demo").addClass(function(index,oldval){
+	return "test"+index;
+});
+$(".demo").removeClass(function(index,oldval){
+	return "test"+index;
+});
+</script>
+</body>
+</html>
