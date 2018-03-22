@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+
+		}
+		ul{
+			margin: 40px 0;
+		}
+		ul li{
+			width: 500px;
+			height: 60px;
+			/*background-color: pink;*/
+			cursor: pointer;
+		}
+		.map{
+			padding-top: 80px;
+			margin: 40px 0;
+		}
+		.has{
+			margin: 40px 0;
+		}
+	</style>
+</head>
+<body>
+	<p class="selected1">Hello</p><p>Hello Again</p><p class="selected">And Again</p>
+
+	<p class="ol1"><ol><li>Hello</li></ol></p><p class="ol2">How are you?</p>
+
+	<form><input type="checkbox" /></form>
+
+	<ul>
+		<li><strong>list</strong> item 1 - one strong tag</li>
+		<li>
+			<strong>list</strong> item 
+			<strong>2</strong> - two 
+			<span>strong tags</span>
+		</li>
+		<li>list item 3</li>
+		<li>list item 1</li>
+		<li>list item 2
+		    <ul>
+		      <li>list item 2-a</li>
+		      <li>list item 2-b</li>
+		    </ul>
+		</li>
+		
+	</ul>
+
+	<div class="map">
+		<p><b>Values: </b></p>
+		<form>
+		  <input type="text" name="name" value="John"/>
+		  <input type="text" name="password" value="password"/>
+		  <input type="text" name="url" value="http://ejohn.org/"/>
+		</form>
+	</div>
+
+	<p>Hello</p><p>cruel</p><p>World</p>
+
+</body>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+{
+	console.log($("p").filter(".selected"));//保留带有select类的元素
+	console.log($("p").filter(".selected, :first"));//保留第一个以及带有select类的元素
+
+	t=$("p").filter(function(index) {
+  		return $("ol", this).length == 0;
+	});//保留子元素中不含有ol的元素
+	console.log(t);
+
+	console.log($("input[type='checkbox']").parent().is("form"));//获取type为checkbox的父元素，并判断
+}
+
+{
+	//has(expr|ele) 	给含有ul的li加上背景色
+	$("li").has("ul").css("background-color", "pink");
+
+
+	//is(expr|obj|ele|fn) 判断点击li标签增加背景色为红色，如果点击的是第2个strong,当前的li增加背景色为绿色
+	$("li").click(function() {
+	  var $li = $(this),
+	    isWithTwo = $li.is(function() {
+	      return $('strong', this).length === 2;
+	    });
+		if ( isWithTwo ) {
+		    $li.css("background-color", "green");
+		} else {
+		    $li.css("background-color", "red");
+		}
+	});
+}	
+
+{	
+	//map(callback) 	把form中的每个input元素的值建立一个列表。
+	$("p").append( $("input").map(function(){
+  		return $(this).val();
+	}).get().join(", ") );
+}
+
+{	
+	console.log($("p").not( $("#selected")[0] ));//从p元素中删除带有 select 的ID的元素
+
+	console.log($("p").slice(0, 1).wrapInner("<b></b>"));//选择第一个p元素
+	console.log($("p").slice(0, 2).wrapInner("<b></b>"));//选择前两个p元素
+	console.log($("p").slice(1, 2).wrapInner("<b></b>"));//只选取第二个p元素
+	console.log($("p").slice(1).wrapInner("<b></b>"));//只选取第二第三个p元素
+	console.log($("p").slice(-1).wrapInner("<b></b>"));//选取第最后一个p元素
+}
+</script>
+</html>

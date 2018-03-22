@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		li{
+			width: 200px;
+			font-size: 16px;
+			text-align: center;
+		}
+		#content{
+			margin: 40px 0;
+		}
+		.focused {
+   			background: #abcdef;
+		}
+	</style>
+</head>
+<body>
+	<div id="mydiv">
+		<span class="span1"></span>
+		<span class="span2"></span>
+		<span class="span3"></span>
+		<div><span class="span4"></span></div>
+		<div></div>
+		<div></div>
+		<span class="span6"></span>
+		<span class="span7"></span>
+	</div>
+	<div class="mydiv2" checked="checked"></div>
+	<span class="span5"></span>
+
+	<ul>
+		<li class="li1">1</li>
+		<li class="li2">2</li>
+		<li class="li3">3</li>
+		<span class="span1"></span>
+		<span class="span2"></span>
+		<span class="span3"></span>
+		<li class="li4">4</li>
+		<li class="li5">5</li>
+		<li class="li6">6</li>
+		<li class="li7">7</li>
+		<li class="li8">8</li>
+		<li class="li9">9</li>
+		<li class="li10">10</li>
+		<li class="li11">11</li>
+		<li class="li12">12</li>
+		<li class="li13">13</li>
+		<li class="li14">14</li>
+		<li class="li15">15</li>
+	</ul>
+	<ul>
+  		<li class="only">Glen</li>
+	</ul>
+
+	<h1>title</h1>
+	<p>aaaaaa</p>
+	<h2>title2</h2>
+	<p>bbbbbbb</p>
+
+	<!-- <button id="run">run</button> -->
+
+	<div id="content">
+	    <input tabIndex="1">
+	    <input tabIndex="2">
+	    <select tabIndex="3">
+	        <option>select menu</option>
+	    </select>
+	    <div tabIndex="4">
+	        a div
+	    </div>
+	</div>
+
+	<div class="contains1">John Resig</div>
+	<div class="contains2">George Martin</div>
+	<div class="contains3">Malcom John Sinclair</div>
+	<div class="contains4">J. Ohn</div>
+
+	<table>
+	  <tr class="visible1">
+	  	<td class="text1">Value 1</td>
+	  	<td class="text2"></td>
+	  	<td class="text5"><dd></dd></td>
+	  </tr>
+	  <tr class="visible2">
+	  	<td class="text3">Value 2</td>
+	  	<td class="text4"></td>
+	  </tr>
+	  <tr class="hidden1" style="display: none;">
+	  	<td class="text3">Value 2</td>
+	  	<td class="text4"></td>
+	  </tr>
+	  <input class="email" type="text" name="email" />
+	  <input class="id" type="hidden" name="id" />
+
+	</table>
+
+	<div class="test1"><p>Hello</p></div>
+	<div class="test2">Hello again!</div>
+
+	<input class="name1" type="checkbox" name="newsletter" value="Hot Fuzz" />
+	<input class="name2" type="checkbox" name="newsletter" value="Cold Fusion" />
+	<input class="name3" type="checkbox" name="acceptmannew" value="Evil Plans" />
+	<input class="news1" name="newsletter" />
+	<input class="news2" name="newsboyman" />
+	<input id="man-news" name="new-letterman" />
+
+	<form>
+	    <input class="button" type="button" value="Input Button"/>
+	    <input class="checkbox" type="checkbox" />
+
+	    <input class="file" type="file" />
+	    <input class="hidden" type="hidden" />
+	    <input class="image" type="image" />
+
+	    <input class="password" type="password" />
+	    <input class="radio" type="radio" />
+	    <input class="reset" type="reset" />
+
+	    <input class="submit" type="submit" />
+	    <input class="text" type="text" />
+	    <select><option>Option</option></select>
+
+	    <textarea></textarea>
+	    <button>Button</button>
+	</form>
+
+	<form>
+ 		<input class="amail-f" name="email" disabled="disabled" />
+  		<input class="id-f" name="id" />
+  		<input type="checkbox" name="newsletter" checked="checked" value="Daily" />
+  		<input type="checkbox" name="newsletter" value="Weekly" />
+  		<input type="checkbox" name="newsletter" checked="checked" value="Monthly" />
+
+	</form>
+
+	<select>
+	  <option class="select1" value="1">Flowers</option>
+	  <option class="select2" value="2" selected="selected">Gardens</option>
+	  <option class="select3" value="3">Trees</option>
+	</select>
+
+
+	<div class="notMe">div class="notMe"</div>
+	<div class=".box myClass">div class=".box myClass"</div>
+	<div class=".box">span class=".box"</div>
+
+</body>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+{
+	console.log($("div"));//通过标签获取元素
+	console.log($("#mydiv"));//通过id获取元素
+	console.log($(".mydiv2"));//通过类名获取元素
+	console.log($("*"));//获取所有元素
+	console.log($("div,#mydiv,.mydiv2,span"));//将每个选择器匹配到的元素合并后一起返回
+	console.log($("#mydiv span"));//获取id名为mydiv中所有的span子元素
+	console.log($("#mydiv>span"));//获取id名为mydiv中子元素span
+	console.log($("div+span"));//获取紧接着div的span元素
+	console.log($("div~span"));//获取div后的所有span元素
+	console.log($("li:first"));//获取li标签中的第一个元素
+	console.log($("div:not(:checked)"));//获取没有被选中的div元素
+}
+
+{
+	$("li:even").css("background","red");//匹配li标签中下标为偶数的元素，从0开始；并且改变背景颜色
+	$("li:odd").css("background","pink");//匹配li标签中下标为奇数的元素
+	$("li:eq(5)").css("background","blue");//匹配li标签中下标为1的元素
+	$("li:gt(11)").css("background","yellow");//匹配li标签中下标大于5的所有元素
+	// console.log($("span:lang(it)"));//选择所有span标签的语言属性
+	$("li:last").html("最后一个li标签");//匹配li标签的最后一个，并重新赋值
+	$("li:lt(3)").css("width",300);//匹配li标签中下标小于3的所有元素，并改变宽
+
+	$(":header").css("background","#cfcfcf");//给页面内所有标题加上背景色
+}
+
+	// $("#run").click(function(){
+	// 	$("div.not(:animate)").animate({left:"+=20"},1000);
+	// })//没有执行动画效果的元素执行一个动画特效	
+	
+{
+	$( "#content" ).delegate( "*", "focus blur", function( event ) {
+    	var elem = $( this );
+    	setTimeout(function() {
+      		elem.toggleClass( "focused", elem.is( ":focus" ) );
+    	}, 0);
+	});
+//匹配当前获取焦点的元素;添加一个"focused"的类名给那些有focus方法的元素
+}
+
+	$(":root").css("background","#eee");//选择该文档的根元素
+
+	// let url="http//www.abc.com:80/aa/bb/cc/index.html?user=123&pass=123#top";
+	// console.log($("p:target"));
+	
+{
+	console.log($("div:contains('John')"));//匹配包含John文本的元素
+	console.log($("td:empty"));//匹配所有不包含文本的元素
+
+	console.log($("div:has(p)").addClass("test"));//匹配含有选择匹配的元素的元素
+	console.log($("td:parent"));//匹配含有子元素或者文本元素的元素
+	console.log($("tr:hidden"));//匹配所有不可见元素，type/hidden
+	console.log($("input:hidden"));//匹配所有不可见元素，type/hidden
+	console.log($("tr:visible"));//匹配所有的可见元素
+	console.log($("div[id]"));//匹配给定属性的元素
+	console.log($("input[name='newsletter']").attr("checked",true));//匹配给定的属性是某个特定值的元素
+	console.log($("input[name!='newsletter']").attr("checked",true));//匹配给定的属性是不是某个特定值的元素
+	console.log($("input[name^='news']"));//匹配给定的属性是以某些特定值开始的元素
+	console.log($("input[name$='letter']"));//匹配给定的属性是以某些特定值结尾的元素
+	console.log($("input[name*='man']"));//匹配给定的属性是包含某些特定值的元素
+	console.log($("input[id][name$='man']"));//复合属性选择器，需要满足多个条件
+}
+
+{
+	console.log($("ul li:first-child"));//匹配ul中的第一个子元素
+	console.log($("ul span:first-of-type"));//结构化伪类，匹配span的父元素的第一个span类型的子元素
+	console.log($("ul li:last-child"));//匹配ul中的最后一个子元素
+	console.log($("ul span:last-of-type"));//结构化伪类，匹配span的父元素的第一个span类型的子元素
+	console.log($("ul li:nth-child(3)"));//匹配父元素下的第几个元素，从1开始
+	console.log($("ul li:nth-last-child(3)"));//匹配父元素中的倒数第几个
+	console.log($("ul li:nth-last-child(even)"));//匹配父元素中所有的偶数，从最后一个开始到第一个
+	console.log($("ul li:nth-last-child(odd)"));//匹配父元素中的所有的奇数
+	// console.log($("ul li:formula"));
+	console.log($("ul li:nth-last-child(3n+2)"));
+	console.log($("ul li:nth-last-of-type(3)"));//匹配父元素中的倒数第几个
+	console.log($("ul li:nth-last-of-type(even)"));//匹配父元素中所有的偶数，从最后一个开始到第一个
+	console.log($("ul li:nth-last-of-type(odd)"));//匹配父元素中所有的奇数
+	// console.log($("ul li:nth-last-of-type(formula)"));
+	console.log($("ul li:nth-of-type(2)"));
+	console.log($("ul span:nth-of-type(2)"));
+	//选择同属于一个父元素之下，并且标签名相同的子元素中的第几个
+	console.log($("ul li:nth-of-type(even)"));//选择同属于一个父元素之下，并且标签名相同的子元素中的偶数
+	console.log($("ul li:nth-of-type(odd)"));//选择同属于一个父元素之下，并且标签名相同的子元素中的奇数
+	console.log($("ul li:only-child"));//匹配某个元素是父元素中唯一的子元素
+	console.log($("ul li:only-of-type"));//选择所有没有兄弟元素，且具有相同的元素名称的元素
+}
+
+{
+	console.log($(":input"));//获取所有input标签元素
+	console.log($(":text"));//获取所有的单行文本框
+	console.log($(":password"));//获取所有的密码
+	console.log($(":radio"));//获取所有的单选按钮
+	console.log($(":checkbox"));//获取所有的复选框
+	console.log($(":submit"));//获取所有的提交按钮
+	console.log($(":image"));//获取所有的图像域
+	console.log($(":reset"));//获取所有的重置按钮
+	console.log($(":button"));//获取所有的按钮
+	console.log($(":file"));//获取所有的文件域
+}
+
+{
+	console.log($("input:enabled"));//匹配所有可用元素
+	console.log($("input:disabled"));//匹配所有不可用元素
+	console.log($("input:checked"));//匹配所有被选中元素
+
+	console.log($("select option:selected"));//匹配所有选中的option元素
+
+	$.escapeSelector( "#mydiv" ); 
+
+	console.log($( "div" ).find( "." + $.escapeSelector( ".box" ) ));//选择出类中包含.box的div
+}
+</script>
+</html>
