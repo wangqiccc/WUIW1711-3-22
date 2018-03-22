@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background-color: #c7254e;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="demo" id="myid"></div>
+<div class="demo"><p></p></div>
+<div class="demo"></div>
+<div>4</div>
+<div>5hi</div>
+<li></li>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <tr style="display:none"><td>Value 1</td></tr>
+
+</ul>
+<form>
+    <label>NAME</label>
+    <input name="name" />
+    <fieldset>
+        <label>Newsletter:</label>
+        <input name="newsletter" />
+    </fieldset>
+</form>
+<h1>Header 1</h1>
+<p>Contents 1</p>
+<h2>Header 2</h2>
+<p>Contents 2</p>
+<input name="none" />
+<input name="apple" />
+<input name="flower" checked="checked" />
+<h1>HEader........</h1>
+<div>John Resig</div>
+<div>George Martin</div>
+<div>Malcom John Sinclair</div>
+<table>
+    <tr><td>Value 1</td><td></td></tr>
+    <tr><td>Value 2</td><td></td></tr>
+</table>
+<div><p>Hello</p></div>
+<div>Hello again!</div>
+
+
+<dl>
+    <dt>term 1</dt>
+    <dd>definition 1-q</dd>
+    <dd>definition 1-w</dd>
+    <dd>definition 1-e</dd>
+    <dd>definition 1-r</dd>
+
+    <dt id="term-2">term 2</dt>
+    <dd>definition 2-a</dd>
+    <dd>definition 2-b</dd>
+    <dd>definition 2-c</dd>
+
+    <dt>term 3</dt>
+    <dd>definition 3-a</dd>
+    <dd>definition 3-b</dd>
+</dl>
+<ul>
+    <li>list item 1</li>
+    <li>list item 2</li>
+    <li class="third-item">list item 3</li>
+    <li>list item 4</li>
+    <li>list item 5</li>
+</ul>
+<p><span>Hello</span>,how are you?</p>
+
+<script src="ysjquery-3.3.1.min.js"></script>
+<script>
+    //	demo.html
+    //	每一个选择器，每一个过滤  删除  串联的方法
+    //	html  css  addClass removeClass
+    //	小案例+说明
+
+    console.log($(".demo"))//通过类名获取
+    console.log($("#myid"))//通过id获取
+    console.log($("div"))//通过元素标签名获取
+    console.log($("*"))//所有的元素
+    console.log($("div.demo"))//找到匹配div的类名demo
+    console.log($("body div"))//在给定的body元素下匹配所有的div
+    console.log($("body > li"))//在给定的body下匹配所有的子元素li
+    console.log($("div + li"))//匹配所有跟在 div 后面的 li 元素
+    console.log($("form ~ input"))//找到与from同级别的input元素
+    console.log($('li:first'));//获取第一个li元素
+    console.log($("div:not(.demo)"))//查找没有deom类名的div
+    console.log($("div:even"))//匹配所有索引值为偶数的div
+    console.log($("div:odd"))//匹配所有索引值为奇数的div
+    console.log($("li:eq(2)"))//查找第二个li
+    console.log($("li:gt(2)"))//查找li的第二第三行
+    console.log($('li:last'))//获取li的最后个元素
+    console.log($("li:lt(2)"))//查找小于2的li
+    console.log($(":header ").css("background", "#EEE"))//匹配如 h1, h2, h3之类的标题元素加上颜色
+   // console.log($(":root").css("background-color","yellow")) //选择该文档的根元素加上颜色
+    console.log($("div:contains('hi')"))//查找所有包含 "hi" 的 div 元素
+    console.log($("li:empty"))//查找所有没有文本的li
+    console.log($("div:has(p)"))//包含 p 元素的 div 元素
+    console.log($("td:parent"))//查找所有有文本的li
+    console.log($("tr:hidden"))//查找隐藏的 tr
+    console.log($("li:visible"))//查找所有可见的 li 元素
+    $("input").focus(function(){
+        $("input").css("background-color","red");
+    });//当input获得焦点时候 改变背景颜色
+
+
+    console.log($("li").eq(1));//获取匹配的第二个元素
+    console.log($("li").first());//获取匹配的第一个元素
+    console.log($("li").last());//获取匹配的最后个元素
+    console.log($("ul>li").filter(".one").css("background","blue"));//筛选出与指定表达式匹配的元素集合
+    console.log($("li").is(function(index,ele){//根据选择器、DOM元素或 jQuery 对象来检测匹配元素集合，如果其中至少有一个元素符合这个给定的表达式就返回true。
+        if(ele.innerHTML==="3")
+        {
+            return true;
+        }
+    }))
+    console.log($("ul>li").map(function(index,ele){//将一组元素转换成其他数组（不论是否是元素数组）
+        return ele.innerHTML;
+    }))
+    console.log($('li').has('ul').css("background","pink"));//给含有ul的li加上背景色
+    console.log($("ul>li").slice(-1));//选取一个匹配的子集 与原来的slice方法类似
+    console.log($("ul>li").not($(".one")));//从匹配元素的集合中删除与指定表达式匹配的元素
+
+    console.log($("div").children());//取得一个包含匹配的元素集合中每一个元素的所有子元素的元素集合。
+    console.log($("li").first().closest(["ul","body"]));//从元素本身开始，逐级向上级元素匹配，并返回最先匹配的元素
+    console.log($("ul").find("span"));//这个函数是找出正在处理的元素的后代元素的好方法
+    console.log($("ul").next());//找到每个ul的后面紧邻的同辈元素。
+    console.log($("div:first").nextAll().addClass("after"));//查找当前元素之后所有的同辈元素。
+    console.log($('#term-2').nextUntil('dt').css('background-color', 'red'));//查找当前元素之后所有的同辈元素，直到遇到匹配的那个元素为止。
+    console.log($(".demo").offsetParent().css("background","blue"));//返回第一个匹配元素用于定位的父节点。 这返回父元素中第一个其position设为relative或者absolute的元素
+    console.log($("li").parent());//取得一个包含着所有匹配元素的唯一父元素的元素集合
+    console.log($("li").parents());//取得一个包含着所有匹配元素的祖先元素的元素集合（不包含根元素）
+    console.log($('.a6').parentsUntil('a2').css("width","200px"));//查找当前元素的所有的父辈元素，直到遇到匹配的那个元素为止
+    console.log($("ul").prev());//取得一个包含匹配的元素集合中每一个元素紧邻的前一个同辈元素的元素集合
+    console.log($("div:last").prevAll().addClass("before"));//查找当前元素之前所有的同辈元素
+    console.log($('#term-2').prevUntil('dt').css('background-color', 'red'));//查找当前元素之前所有的同辈元素，直到遇到匹配的那个元素为止。
+    console.log($("li").siblings());//取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。
+    console.log($("ul").add("span"));//添加一个新元素到一组匹配的元素中，并且这个新元素能匹配给定的表达式
+    console.log($('li.third-item').nextAll().addBack().css('background-color', 'red'));//添加堆栈中元素集合到当前集合，一个选择性的过滤选择器
+    console.log($("ul").contents());//查找匹配元素内部所有的子节点（包括文本节点）。
+    console.log($("p").find("span").end());//回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态。
+
+
+    //innerHTML
+    console.log($(".demo").html());
+    $(".demo").html("div");//每一个demo块写了内容
+    $(".demo").html(function (index, oldval) {
+        return oldval + (index + 1);
+    })//返回每个demo块的索引值+1
+    //style get ComputedStyle=====>css()
+    console.log($(".demo").css("width"));
+    $(".demo").css("background", "red");//给demo设置了背景颜色red
+    $(".demo").css("width", function (index, oldval) {
+        return (index + 1) * 100
+    })//给每一个demo的宽度随着索引值增大而增大
+    $(".demo").css({
+        color: "#fff",
+        fontSize: "16px",
+        textAlign: "center",
+        lineHeight: "100px"
+    })//给demo设置了属性
+    //classList className ===>addClass() removeClass() toggleClass()
+    $(".demo").addClass(function (index, oldVal) {
+        return "text" + (index + 1);
+    })//给demo设置了一个随着索引值增长的类名
+    $(".demo").removeClass(function (index, oldVal) {
+        return "text" + (index + 1);
+    })//给demo移除了类名
+</script>
+</body>
+</html>
