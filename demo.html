@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    div{
+        width: 100px;
+        height: 100px;
+        background:pink;
+    }
+</style>
+<body>
+<div id="cc"></div>
+<div class="box"></div>
+<div class="aa">
+    <div>
+        <div class="bb"></div>
+        <span></span>
+        <div class="a">asd</div>
+        <div class="b">asdcxcz</div>
+        <div class="c"></div>
+    </div>
+</div>
+<ul>
+    <li>1</li>
+    <li class="one">2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li class="one">8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li class="one"></li>
+    <li></li>
+</ul>
+<h1>2</h1>
+<h2>3</h2>
+<h3>4</h3>
+<input type="text" autofocus>
+<input type="text">
+<input type="text">
+<input type="text">
+<div class="demo active">
+    <div class="box">we</div>
+</div>
+<div class="te">wersd</div>
+<div><p>hello</p></div>
+<div><p>1296</p></div>
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    //选择器
+    //基本
+    console.log($("#cc"))//获取对应元素的id
+    console.log($("div"))//获取所有div的标签名
+    console.log($(".one"))//获取所有one的类名
+    console.log($("*"))//获取所有元素
+    console.log($("div,li.one"))//获取所有的div标签和li标签中的one，匹配到的元素合并到一个结果内
+    //层级
+    console.log($("ul .one"));//在给定的ul元素下匹配所有的one类名的元素
+    console.log($("ul>.one"));//给定的父元素ul下匹配所有的.one类名的子元素
+    console.log($("div .bb+span"));//找到所有跟在div .bb后面的 span 元素
+    console.log($("div .bb~span"));//找到所有与div .bb同辈的 span 元素
+    //基本筛选器
+    console.log($('ul li:first'));//获取ul集合中li的第一个元素
+    console.log($("ul li:not(.one)"));//获取ul集合中li的没有one类名的元素
+    $("ul li:even").css("background","skyblue");//查找列表的偶数行，从0开始
+    $("ul li:odd").css("background","skyblue");//查找列表的奇数行，从0开始
+    $("ul li:eq(3)").css("background","skyblue");//查找列表的第四行，从0开始(eq(0)相当与;first)
+    $("ul li:gt(3)").css("background","skyblue");//查找列表的大于第四行的所有元素，从0开始
+    $('ul li:last').css("background","skyblue");//查找列表的最后一个元素
+    $("ul li:lt(3)").css("background","skyblue");//查找列表的小于第四行的所有元素，从0开始
+    $(":header").css("background", "skyblue");//给页面内所有标题加上背景色
+    $(":focus").css("background","blue");//获取当前有焦点的元素，并添加样式
+    $(":root").css("background","blue");//获取该文档的根元素，永远是<html>元素
+    //内容
+    console.log($("div:contains('we')"));//查找所有包含 "we" 的 div 元素
+    console.log($("li:empty"));//查找所有不包含子元素或者文本的空元素
+    console.log($("div:has(p)").addClass("test"));//给所有包含 p 元素的 div 元素添加一个 text 类
+    console.log($("div:parent"));//查找所有含有子元素或者文本的 div 元素
+    //子元素
+    $("ul li:first-child").css("background","skyblue");//获取每个 ul 中查找第一个 li，添加样式
+    $("ul li:first-of-type").css("background","skyblue");//获取父元素ul的类型子元素中的第一个子元素li的标签，添加样式
+    $("ul li:last-child").css("background","skyblue");//获取每个 ul 中最后一个 li，添加样式
+    $("ul li:last-of-type").css("background","skyblue");//获取父元素ul的类型子元素中的最后一个子元素li的标签，添加样式
+    $("ul li:nth-child(2)").css("background","skyblue");//获取每个 ul 中第二个 li，添加样式
+    $("ul li:nth-last-child(2)").css("background","skyblue");//获取每个 ul 中倒数二个 li，添加样式
+    $("ul li:nth-last-of-type(3)").css("background","skyblue");//获取父元素ul的类型子元素中的倒数第三个子元素li的标签，添加样式
+    $("ul li:nth-of-type(3)").css("background","skyblue");//获取每个li，这个li是 其所有兄弟ul元素中的第三个元素，添加样式，不从0开始
+    $("div p:only-child").css("background","skyblue");//获取在div中查找是唯一子元素的p，添加样式
+    $("div p:only-of-type").css("background","skyblue");//获取所有p标签没有兄弟元素，且具有相同的元素名称的元素。
+    //过滤
+    $("ul>li").css("background","pink").eq(0).css("background","blue")//获取ul集合中li的第一个元素
+    $("ul li:first").css("background","skyblue");//获取ul中li的第一个元素
+    $("ul li:last").css("background","skyblue");//获取ul中li的最后一个元素
+    console.log($("div").hasClass("te"))//判断某个元素是否包含某个类名
+    $("ul>li").css("background","skyblue").filter(".one").css("background","blue")//筛选出li中one元素的集合
+    console.log($(".aa").is($("div")));//至少有一个aa元素是div的子元素
+    console.log($("ul>li").map(function (index,ele) {   //映射返回jQuery对象
+        return ele.innerHTML;
+    }));
+    console.log($('ul').has('.one'));   //输出含有one类名的ul
+    console.log($('ul>li').not('.one')); //删除不含有one类名的ul
+    console.log($('ul>li').slice(5,6));   //截取第5-6个li标签
+    // 查找
+    console.log($("div").children(".aa"));  //查找div中每个含有one类名的子元素
+    console.log($(".item").closest(".box"));  //查找离item最近的box
+    console.log($(".box").find(".item"));       //查找离box最近的item
+    console.log($(".one").next());//每一个元素的下一个元素
+    $(".one").css("background","red").next().css("background","yellow") //one类名的下一个的背景色变为黄色
+    $(".one").css("background","red").nextAll("").css("background","yellow")//之后所有的背景色变为黄色
+    $(".one").css("background","red").nextUntil(".two").css("background","yellow")//one后边，two之前的元素的背景色变为黄色
+    console.log($(".item").offsetParent());  //查找item的具有定位属性的父元素
+    console.log($(".one").parent());//查找item的具父元素
+    console.log($(".one").parents());//查找item的所有前辈元素的集合
+    console.log($(".one").parentsUntil("body"));//查找父元素找到body就停止
+    $(".one").css("background","red").prev().css("background","yellow") //one类名的前一个的背景色变为黄色
+    $(".one").css("background","red").prevAll("").css("background","yellow")//之前所有的背景色变为黄色
+    $(".one").css("background","red").prevUntil(".two").css("background","yellow")//one前边直到找到two的元素的背景色变为黄色
+    console.log($(".one").siblings());//  查找每个有one类名的同辈元素
+    //串联
+    console.log($(".one").add(".two"));//对one和two两个选择器选择的结果进行合并
+    console.log($(".one").next().addBack());//one添加完下一个后之前的全部显示
+    console.log($(".one").contents());  //查找one所有节点
+    console.log($("ul>li").eq(2).css("background","red").end().eq(5).css("background","red"));  //第三个li背景变成红色  用end恢复了，再给第6个li变成背景色红色
+    //html
+    $(".demo").html();//不写，表示获取内容
+    $(".demo").html("111");//设置内容（替换内容）
+    $(".demo").html(function(index,oldVal){
+        return oldVal+(index+1);//输出1，2，3
+    });
+    //css
+    console.log($(".demo").css("width"));//输出宽
+    $(".demo").css("background","blue");//	设置样式
+    $(".demo").css("width",100);//设置宽度为100px
+    $(".demo").css("width",function(index,oldVal){//回调函数，给三个demo的宽分别变为100px 200px 300px
+        return (index+1)*100;
+    });
+    $(".demo").css({   //添加多个属性
+        color:"#fff",
+        fontsize:"16px",
+        textAlign:"center",
+        lineHeight:"100px"
+    })
+    //addClass
+    $(".demo").addClass(function(index,oldVal){
+        return "test"+(index+1);//回调函数，给三个demo分别添加类名test1、test2、test3
+    })
+    //removeClass
+    $(".demo").removeClass(function(index,oldVal){
+        return "test"+(index+1);//回调函数，给三个demo分移除类名test1、test2、test3
+    })
+</script>
+</html>
