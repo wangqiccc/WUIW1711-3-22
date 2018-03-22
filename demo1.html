@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: greenyellow;
+            text-align: center;
+            line-height: 100px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<!--开始-->
+<div id="yi"></div>
+<div id="aa">
+    <div>
+        <div class="demo"></div>
+    </div>
+</div>
+<div class="one">hello</div>
+<div class="one">
+    <span>dhd</span>
+</div>
+<div name="test"></div>
+<div name="testldd"></div>
+<div id="mathtest">
+    <span>ddhjjj</span>
+</div>
+<div name="test-today"></div>
+<p class="p1" style="display: none"></p>
+<p class="p2"></p>
+<!--子元素-->
+<ul>
+    <li>wangyao</li>
+    <li>chenyeni</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li class="one">8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<ul>
+    <li>zhangximei</li>
+    <li>xiaomei</li>
+    <li class="one">3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li class="one">8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<ul>
+    <li>weiyi</li>
+</ul>
+<div id="1">
+    <div id="2" class="abc">
+        <label id="3">手机</label>
+        <span id="4">电脑1</span>
+        <span id="5" class="abc">电脑2</span>
+        <span id="6">电脑3</span>
+    </div>
+    <div id="7">
+        <span id="8" class="abc">电脑1</span>
+        <span id="9">电脑2</span>
+    </div>
+</div>
+<div class="demo active">123</div>
+<div class="a box">
+    <div>
+        <div class="b box">
+            <div class="item"></div>
+        </div>
+    </div>
+</div>
+<!--表单与表单对象属性-->
+<form>
+    <input type="text">
+    <input type="button" value="Button">
+    <input type="checkbox" checked="checked" value="wang">
+    <input type="checkbox" checked="checked" value="zhang">
+    <input type="checkbox" value="zhao">
+    <input type="checkbox" checked="checked" value="chen">
+    <input type="file">
+    <input type="hidden" disabled="disabled">
+    <input type="password">
+    <input type="radio" disabled="disabled">
+    <input type="reset">
+    <input type="submit" disabled="disabled">
+    <input type="image">
+</form>
+<select>
+    <option value="aaa">wang</option>
+    <option value="bbb" selected="selected">chen</option>
+    <option value="ccc">zhao</option>
+    <option value="ddd">zhang</option>
+</select>
+
+<div class="demo">
+    div
+</div>
+<div class="demo">
+    div
+</div>
+<div class="demo">
+    div
+</div>
+</body>
+<script src="jQuery3.3.1.js"></script>
+<script>
+    // 选择器
+    // 基本
+    console.log($("div"));  //element
+    console.log($("#yi"));  //id
+    console.log($("*"));       // 通用
+
+    // 层级
+    console.log($("div>p"));  //parent>child
+    console.log($("#aa div")); //parent>child
+    console.log($("#aa>div"));//parent>child
+    console.log($("div+p"));  //内部同级  div的下一个 p
+    console.log($("div~p"));   //外部同级   div的下一个p
+
+    // 基本筛选器
+    console.log($("div:first"));   //div里的第一个
+    console.log($("div:not(.one)"));  //没有one类名的div
+    $("ul>li:even").css("background","red");//下标为偶数的背景颜色设置为红色
+    $("ul>li:odd").css("background","blue");//下标为奇数的背景颜色设置为蓝色
+    $("ul>li:eq(2)").css("background","red");//下标为2的背景颜色设置为红色
+    $("ul>li:gt(5)").css("background","red");//下标大于5的背景颜色设置为红色
+    $("ul>li:lt(5)").css("background","yellowgreen");//下标小于5的背景颜色设置为蓝色
+    $("ul>li:last").css("background","yellowgreen");//获取最后个li元素
+    console.log($(":header"));  //h1  h2   h3 标题加上背景色
+    $(":focus").css("background","red");  //匹配当前获取焦点的元素。
+    console.log($(":root"));//选择该文档的根元素。
+    // 内容
+    console.log($("div:contains(hello)"));  //输出包含hello的元素
+    console.log($(":empty"));//  不包括子元素的空元素
+    console.log($("div:has(.demo)"));//找寻父元素
+    console.log($("div:parent(.one)")); //匹配含有one的元素
+    // 可见性
+    console.log($("p:hidden"));  //匹配p为hidden的元素
+    console.log($("p:visible"));  //获取可见元素
+
+    // 属性
+    console.log($("div[id]"));//查找所有含有 id 属性的 div 元素
+    console.log($("div[name='test']"));  //查找name 属性的值为test的div
+    console.log($("div[name!='test']"));//查找name 属性的值不是test的div
+    console.log($("div[name^='test']"));//查找name 属性的值是test开头的div
+    console.log($("div[name$='test']"));//查找name 属性的值是test结尾的div
+    console.log($("div[name*='test']"));//查找name 属性的值包含test的div
+    console.log($("div[id][name*='test']"));//查找含有id 属性的值且name属性的值包含test的div
+    // 子元素
+    console.log($("ul li:first-child"));        //在每个 ul 中查找第一个 li
+    console.log($("span:first-of-type"));           //查找作为父元素的span类型子元素中第一个span标签
+    console.log($("ul li:last-child"));         //在每个 ul 中查找最后一个 li
+    console.log($("span:last-of-type"));           //查找作为父元素的span类型子元素中最后一个span标签
+    console.log($("ul li:nth-child(2)"));       //在每个 ul 查找第 2 个li
+    console.log($("ul li:nth-last-child(2)"));  //在每个 ul 查找倒数第 2 个li
+    console.log($("span:nth-of-type(2)"));      //查找每个span，这个span是其所有兄弟span元素中的第二个元素
+    console.log($("ul li:only-child"));         //在 ul 中查找是唯一子元素的 li
+    // 表单
+    console.log($(":input"));       //获取所有input标签
+    console.log($(":text"));        // 查找所有文本框
+    console.log($(":password"));    // 查找所有密码框
+    console.log($(":radio"));        // 查找所有单选按钮
+    console.log($(":checkbox"));        //查找所有复选框
+    console.log($(":submit"));        // 查找所有提交按钮
+    console.log($(":image"));       // 匹配所有图像域
+    console.log($(":reset"));       // 查找所有重置按钮
+    console.log($(":button"));      // 查找所有按钮
+    console.log($(":file"));        // 查找所有文件域
+    //表单对象属性
+    console.log($("input:enabled"));    //查找所有可用的input元素
+    console.log($("input:disabled"));    //查找所有不可用的input元素
+    console.log($("input:checked"));       // 查找所有选中的复选框元素
+    console.log($("select option:selected"));       // 查找所有选中的选项元素
+
+    // 筛选----过滤
+    let obj=$(".one");
+    let ele=document.querySelectorAll(".one");
+    $("ul>li").css("border","1px solid yellow")
+    //四种方法，选择器、jQuery对象、原生对象、回调函数
+    //.filter(".one")
+    //.filter(obj)
+        .filter(ele)
+        /*.filter(function(index,ele){
+            if(index%3===0){
+                return true;
+            }
+        })*/
+        //.eq(4)
+        .css("background","skyblue");
+    console.log($(".demo").hasClass("active"));   // 判断，返回布尔值 判断某个元素是否包含某个类名
+    console.log($("ul>li").map(function(index,ele){
+        return ele.innerHTML;
+    }));                                          //映射  返回值为jQuery对象
+    console.log($('ul').has(".one"));       //排除掉一些元素
+    console.log($(".demo").is(".active"));  //用于判断，可接受的参数：选择器、jQuery对象、原生对象、回调函数
+    console.log($(".demo").is($("div")));
+    console.log($('ul>li').not('.one'));    //排除掉一些有xx类名的元素，
+    console.log($('ul>li').slice(5,8));     //截取5-8个
+    console.clear();
+    // 筛选----查找
+    console.log($("ul").children(".one"));      //查找ul的子元素
+    console.log($(".item").closest(".box"));        //就近原则查找
+    console.log($(".box").find(".item"));       //在box下进一步寻找find
+    console.log($(".one").next());      //每一个元素的下一个元素
+    $(".one").css("background","skyblue").next().css("background","pink");
+    $(".one").css("background","skyblue").nextAll("").css("background","pink");
+    $(".one").css("background","skyblue").nextUntil(".two").css("background","pink");
+    console.log($(".item").offsetParent());     //有定位属性的前辈属性
+    console.log($(".one").parent());        //所有父元素的集合
+    console.log($(".one").parents());       //所有前辈元素的集合
+    console.log($(".one").parentsUntil("body"));    //找到body就停止
+    console.log($(".one").siblings());      //同辈元素
+    // 筛选----串联
+    console.log($(".one").add(".two"));//对两个选择器选择的结果进行合并的操作
+    console.log($(".one").next().addBack());    //  添加之前所有元素
+    console.log($(".one").contents());      //查找匹配元素内部所有的子节点
+    console.log($("ul>li").eq(2).css("background","blue").end().eq(5).css("background","pink"));
+                //end:将匹配的元素列表变为前一次的状态
+
+
+    //innerHTML
+    $(".demo").html();  //没有参数，表示获取
+    //设置
+    $(".demo").html("哈哈哈");     //覆盖div中的内容
+    $(".demo").html(function(index,oldVal){
+        return oldVal+(index+6);        // 下标加6
+    });
+    //style
+    console.log($(".demo").css("width"));   //控制台输出宽
+    $(".demo").css("background","darkred");     //背景颜色变为深红
+    $(".demo").css("width",300);        //可以直接设置宽为300
+    $(".demo").css("width",function(index,oldVal){      //将宽一次增加100
+        return(index+1)*100;
+    });
+    $(".demo").css({
+        color:"#fff",
+        fontSize:"16px",
+        textAlign:"center",
+        lineHeight:"100px"
+    });
+    //classList
+    $(".demo").addClass(function(index,oldVal){     //利用回调函数给三个demo分别添加类名test1、test2、test3
+        return "text"+(index+1);
+    });
+    $(".demo").removeClass(function(index,oldVal){      //利用回调函数给三个demo分别移除类名test1、test2、test3
+        return "text"+(index+1);
+    });
+</script>
+</html>
