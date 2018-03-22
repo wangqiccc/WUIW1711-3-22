@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li class="item1">1</li>
+		<li color="red">2</li>
+		<li>3</li>
+		<li>
+			<ul>
+		      <li>list</li>
+		      <li>list</li>
+   			</ul>
+		</li>
+		<li></li>
+		<li style="display: none">5</li>
+		<li class="six">6</li>
+		<li>a</li>
+		<li><span>8</span></li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+
+	<div>name</div>
+	<span>shanwei</span>
+	
+	<button id="run">Run</button><div></div>
+	<form>
+		<label>Name:</label>
+
+		<input name="name" />
+		<fieldset>
+		    <label>Newsletter:</label>
+		    <input name="newsletter" />
+		</fieldset>
+		<input type="checkbox" />
+	</form>
+	<input name="none" />
+
+	<p><b>Values: </b></p>
+	<form>
+	  	<input type="text" name="name" value="John"/>
+	  	<input type="text" name="password" value="password"/>
+	  	<input type="text" name="url" value="http://ejohn.org/"/>
+	</form>
+	<!-- <ul>
+	    <li>list item 1</li>
+	    <li>list item 2</li>
+	    <li>list item 3</li>
+	    <li>list item 4</li>
+	    <li>list item 5</li>
+	</ul> -->
+
+	<input name="apple" />
+	<input name="flower" checked="checked" />
+
+	<table>
+	  	<tr><td>Header 1</td></tr>
+	  	<tr><td>Value 1</td></tr>
+	  	<tr><td>Value 2</td></tr>
+	</table>
+
+	<h1>Header 1</h1>
+
+	<p>John Resig</p><div><span>Hello Again</span></div><p class="selected">George Martin</p>
+	<p><span>Hello</span>,how are you?</p>
+
+	<div style="width:70%;position:absolute;left:100px;top:100px">
+  		<div style="margin:50px;background-color:yellow">
+     		<p>点击下面的按钮可以设置本段落的最近的父（祖先）元素的背景色。</p>
+   		<div>
+	</div>
+	<button>点击这里</button>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+		//选择器
+		//基本
+		console.log($("#ul1")); //通过id获取
+		console.log($(".item1")); //通过类名获取
+		console.log($("div")); //通过标签名获取
+		console.log($("*")); //通过通用选择符获取
+		console.log($("div,span")); //将每一个选择器匹配到的元素合并后一起返回
+
+		//层级
+		//ancestor descendant
+		console.log($("ul li")); //找到ul中所有的li元素
+		//parent > child
+		console.log($("form > input")); //匹配表单中所有的子级input元素
+		//prev + next
+		console.log($("label + input")); //匹配所有跟在 label 后面的 input 元素
+		//prev ~ siblings
+		console.log($("form ~ input"));  //找到所有与表单同辈的 input 元素
+
+		//基本筛选器
+		console.log($('li:first'));  //获取匹配的第一个元素
+		console.log($("input:not(:checked)"));  //查找所有未选中的 input 元素
+		console.log($("tr:even"));  //查找表格的1、3、5...行（即索引值0、2、4...）
+		console.log($("tr:odd"));  //查找表格的2、4、6行（即索引值1、3、5...）
+		console.log($("tr:eq(1)")); //查找第二行,从0开始计数
+		console.log($("tr:gt(0)")); //查找第二第三行，即索引值是1和2，也就是比0大
+		console.log($("p:lang(it)")); //选择所有<p> 的语言属性:
+		console.log($('li:last')); //获取匹配的最后个元素
+		console.log($("tr:lt(2)")); //查找第一第二行，即索引值是0和1，也就是比2小
+		console.log($(":header").css("background", "#EEE")); //给页面内标题加上背景色
+		console.log($("#run").click(function(){
+  				$("div:not(:animated)").animate({ left: "+=20" }, 1000);
+					}));	
+				//匹配所有正在执行动画效果的元素			
+				//只有对不在执行动画效果的元素执行一个动画特效
+
+		console.log($(":root").css("background-color","yellow")); //设置<html>背景颜色为黄色
+		//内容
+		console.log($("li:contains('a')"));//查找所有包含 "a" 的 li 元素
+		console.log($("td:empty"));//查找所有不包含子元素或者文本的空元素
+		console.log($("ul:has(li)").addClass("test")); //给所有包含li元素的ul元素添加一个text类
+		console.log($("ul:has(li)").removeClass("test")); //给所有包含li元素的ul元素移除text类
+		console.log($("li:parent"));//查找所有含有子元素或者文本的 li 元素
+
+		//可见性
+		console.log($("li:hidden"));//匹配所有不可见元素，或者type为hidden的元素 查找隐藏的li
+		console.log($("li:visible")); //查找所有可见的li元素
+
+		//筛选
+		console.log($("li").eq(1));//获取匹配的第二个元素
+		console.log($('li').first());//获取匹配的第一个元素
+		console.log($('li').last());//获取匹配的最后一个元素
+		console.log($('li').hasClass("six")); //检查li中是否有six类名
+		console.log($("p").filter(".selected")); //保留带有selected类的元素
+		console.log($("p").filter(".selected, :first")); //保留第一个以及带有selected类的元素
+		console.log($("li").filter(function(index) {
+  						return $("span", this).length == 0; //保留子元素中不含有span的元素
+					}));
+		console.log($("input[type='checkbox']").parent().is("form"));//由于input元素的父元素是一个表单元素，所以返回true 至少有一个符合就返回true;
+		console.log($("p").append( $("input").map(function(){
+  						return $(this).val();}).get().join(", ") ));//把form中的每个input元素的值建立一个列表
+		console.log($('li').has('ul').css('background-color', 'red'));//给含有ul的li加上背景色
+		console.log($("li").not( $(".six")[0])); //从li元素中删除带有six的类的元素
+		console.log($("li").slice(0, 1));//选择第一个li元素
+
+		//查找
+		console.log($("div").children()); //查找div中的每个子元素
+		console.log($("li:first").closest(["ul", "body"]));
+		console.log($("p").find("span"));//从所有的段落开始，进一步搜索下面的span元素
+		console.log($("p").next());//找到每个段落的后面紧邻的同辈元素
+		console.log($("li:first").nextAll().addClass("after"));//给第一个li之后的所有元素加个after类
+		console.log($("button").click(function(){
+    				$("p").offsetParent().css("background-color","red");
+				}));  //设置最近的祖先定位元素的背景颜色
+		console.log($("p").parent()); //查找每个段落的父元素
+		console.log($("span").parents()); //找到每个span元素的所有祖先元素
+		console.log($('li').parentsUntil('body').css('background-color', 'red'));  //查找li的祖先，但不包括body
+		console.log($("p").prev()); //找到每个段落紧邻的前一个同辈元素
+		console.log($("li:last").prevAll().addClass("before"));//给最后一个之前的所有div加上一个before类
+		console.log($('li').prevUntil('ul').css('background-color', 'red')); //给li前面直到ul前的元素加上红色背景
+		console.log($("div").siblings());//找到每个div的所有同辈元素
+
+		//串联
+		console.log($("p").add("span"));//添加一个新元素到一组匹配的元素中，并且这个新元素能匹配给定的表达式
+		console.log($("p").contents()); //查找所有文本节点
+		console.log($("p").find("span").end());//选取所有的p元素，查找并选取span子元素，然后再回过来选取p元素
+		//html
+		console.log($('p').html()); //返回p元素的内容
+		console.log($("p").html("Hello world!"));//设置所有p元素的内容
+		console.log($("p").html(function(n){
+    			return "这个 p 元素的 index 是：" + n;
+    			}));//使用函数来设置所有匹配元素的内容
+		//css
+		console.log($("li").css("color")); //取得第一个li的color样式属性的值
+		console.log($("p").css({ "color": "#ff0011", "background": "blue" }));//将所有段落的字体颜色设为红色并且背景为蓝色
+
+
+
+	</script>
+</body>
+</html>
