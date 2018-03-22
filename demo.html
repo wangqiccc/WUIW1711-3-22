@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.demo{
+		width: 100px;
+		height: 100px;
+	}
+</style>
+<body>
+	<!-- #id -->
+	<div id="notMe"><p>id="notMe"</p></div>
+	<div id="myDiv">id="myDiv"</div>
+	<!-- element -->
+	<div>John Resig</div>
+	<div>George Martin</div>
+	<div>Malcom John Sinclair</div>
+	<span>SPAN</span>
+	<!-- class -->
+	<div class="notMe">div class="notMe"</div>
+	<div class="myClass">div class="myClass"</div>
+	<span class="myClass">span class="myClass"</span>
+	<!-- * -->
+	<div>DIV</div>
+	<span>SPAN</span>
+	<p>P</p>
+	<!-- selector1,selector2,selectorN -->
+	<div>div</div>
+	<p class="myClass1">p class="myClass"</p>
+	<span>span</span>
+	<p class="notMyClass"><p class="notMyClass"</p>
+	<!-- 后代选择器 -->
+	<form>
+  		<label>Name:</label>
+  		<input name="name" />
+  		<fieldset>
+      		<label>Newsletter:</label>
+      		<input name="newsletter" />
+ 		</fieldset>
+ 		<input name="apple" />
+		<input name="flower" checked="checked" />
+	</form>
+	<!-- 基本筛选器 -->
+	<ul>
+    	<li>list item 1</li>
+    	<li>list item 2</li>
+    	<li>list item 3</li>
+    	<li>list item 4</li>
+    	<li>list item 5</li>
+	</ul>
+	<ul>
+  		<li>John</li>
+  		<li>Karl</li>
+  		<li>Brandon</li>
+	</ul>
+	<ul>
+  		<li>Glen</li>
+  		<li>Tane</li>
+  		<li>Ralph</li>
+	</ul>
+	<ul class="level-1">
+  		<li class="item-i">I</li>
+  		<li class="item-ii">II
+    	<ul class="level-2">
+      	<li class="item-a">A</li>
+      	<li class="item-b">B</li>
+        <ul class="level-3">
+        <li class="item-1">1</li>
+        <li class="item-2">2</li>
+        <li class="item-3">3</li>
+        </ul>
+     	
+        <li class="item-c">C</li>
+    </ul>
+  </li>
+  <li class="item-iii">III</li>
+</ul>
+	<table>
+  		<tr><td>Header 1</td></tr>
+  		<tr><td>Value 1</td></tr>
+  		<tr><td></td></tr>
+	</table>
+	<input name="none" />
+	<div><p>Hello</p></div>
+	<div id="text2">Hello again!</div>
+		
+	<table>
+  		<tr style="display:none"><td>Value 1</td></tr>
+  		<tr><td>Value 2</td></tr>
+	</table>
+	<input type="checkbox" name="newsletter" value="Hot Fuzz" />
+	<input type="checkbox" name="newsletter" value="Cold Fusion" />
+	<input type="checkbox" name="accept" value="Evil Plans" />
+	<input name="newsletter" />
+	<input name="milkman" />
+	<input name="newsboy" />
+
+	<select>
+  		<option value="1">Flowers</option>
+  		<option value="2" selected="selected">Gardens</option>
+  		<option value="3">Trees</option>
+	</select>
+
+	<p> This is just a test.</p>
+	<p> So is this</p>
+
+
+	<div class="demo"></div>
+	<div class="demo"></div>
+	<div class="demo"></div>
+
+	<script src="jquery.js"></script>
+	<script>
+	//选择器  #id  根据给定的ID匹配一个元素
+	console.log($("#myDiv"));
+	//选择器  element  根据给定的元素标签名匹配所有元素
+	console.log($("div"))
+	//选择器  .class   根据给定的class类名匹配元素。
+	console.log($(".myClass"));
+	//选择器  *  匹配所有元素 多用于结合上下文来搜索。
+	console.log($("*"));
+	//选择器  selector1,selector2,selectorN 将每一个选择器匹配到的元素合并后一起返回。
+	console.log($("div,span,p.myClass"));
+	//选择器 ancestor descendant在给定的祖先元素下匹配所有的后代元素参数
+	console.log($("form input"));
+	//选择器 parent &gt; child在给定的父元素下匹配所有的子元素
+	console.log($("form > input"));
+	//选择器 prev + next 匹配所有紧接在 prev 元素后的 next 元素
+	console.log($("label + input"));
+	//选择器 prev ~ siblings 匹配 prev 元素之后的所有 siblings 元素
+	console.log($("form ~ input"));
+	//选择器 :first 获取第一个元素
+	console.log($('li:first'));
+	//选择器 not(selector) 去除所有与给定选择器匹配的元素
+	console.log($("input:not(:checked)"));
+	//选择器 :even  匹配所有索引值为偶数的元素，从 0 开始计数
+	console.log($("tr:even"));
+	//选择器 :odd 匹配所有索引值为奇数的元素，从 0 开始计数
+	console.log($("tr:odd"));
+	//选择器 :eq(index) 匹配一个给定索引值的元素
+	console.log($("tr:eq(1)"));
+	//选择器  :gt(index) 匹配所有大于给定索引值的元素
+	console.log($("tr:gt(0)"));
+	//选择器 :eq(index) 匹配一个给定索引值的元素
+	console.log($("tr:eq(1)"));
+	//选择器 :last() 获取最后个元素
+	console.log($('li:last'));
+	//选择器 :lt(index) 匹配所有小于给定索引值的元素
+	console.log($("tr:lt(2)"));
+	//选择器 :header 给页面内所有标题加上背景色
+	console.log($(":header").css("background","#EEE"));
+	//选择器 :header 给页面内所有标题加上背景色
+	console.log($(":header").css("background","#EEE"));
+	//选择器  :root 选择该文档的根元素。在HTML中，文档的根元素，和$(":root")选择的元素一样，永远是<html>元素
+	console.log($(":root").css("background-color","yellow"));
+	//选择器 :contains(text) 匹配包含给定文本的元素
+	console.log($("div:contains('John')"));
+	//选择器 :empty 匹配所有不包含子元素或者文本的空元素
+	console.log($("td:empty"));
+	//选择器 :has(selector) 匹配含有选择器所匹配的元素的元素
+	console.log($("div:has(p)").addClass("test"));
+	//选择器  :parent 匹配含有子元素或者文本的元素
+	console.log($("td:parent"));
+	//选择器  :hidden 匹配所有不可见元素，或者type为hidden的元素
+	console.log($("tr:hidden"));
+	//选择器  :visible 匹配所有的可见元素
+	console.log($("tr:visible"));
+	//选择器  :visible 匹配所有的可见元素
+	console.log($("tr:visible"));
+	//选择器  [attribute] 匹配包含给定属性的元素。
+	console.log($("div[id]"));
+	//选择器  [attribute=value] 匹配给定的属性是某个特定值的元素
+	console.log($("input[name='newsletter']").attr("checked", true));
+	//选择器  [attribute!=value]配所有不含有指定的属性，或者属性不等于特定值的元素。
+	console.log($("input[name!='newsletter']").attr("checked", true));
+	//选择器attribute^=value匹配给定的属性是以某些值开始的元素
+	console.log($("input[name^='news']"));
+	//选择器 [attribute$=value]匹配给定的属性是以某些值结尾的元素
+	console.log($("input[name$='letter']"));
+	//选择器  [attribute*=value]匹配给定的属性是以包含某些值的元素
+	console.log($("input[name*='man']"));
+	//选择器  [attribute*=value]匹配给定的属性是以包含某些值的元素
+	console.log($("input[name*='man']"));
+	//选择器  [selector1][selector2][selectorN]
+	// 复合属性选择器，需要同时满足多个条件时使用。
+	console.log($("input[id][name$='man']"));
+	//选择器:first-child  在每个ul中查找第一个li:first匹配第一个元素，但是:first-child选择器可以匹配多个：即为每个父级元素匹配第一个子元素。这相当于:nth-child(1)
+	console.log($("ul li:first-child"));
+	//选择器 :last-child 匹配最后一个子元素
+	console.log($("ul li:last-child"));
+	//选择器 :nth-last-child(n|even|odd|formula) 选择所有他们父元素的第n个子元素。计数从最后一个元素开始到第一个。
+	console.log($("ul li:nth-last-child(2)"));
+	//选择器 :only-child 如果某个元素是父元素中唯一的子元素，那将会被匹配如果父元素中含有其他元素，那将不会被匹配。
+	console.log($("ul li:only-child"));
+	//表单 :input 匹配所有 input, textarea, select 和 button 元素
+	console.log($(":input"));
+	//表单 :text 匹配所有的单行文本框
+	console.log($(":text"));
+	//表单 :password 匹配所有密码框
+	console.log($(":password"));
+	//表单 :radio 匹配所有单选按钮
+	console.log($(":radio"));
+	//表单 :checkbox 匹配所有复选框
+	console.log($(":checkbox"));
+	//表单 :submit 匹配所有提交按钮
+	console.log($(":submit"));
+	//表单 :image 匹配所有图像域
+	console.log($(":image"));
+	//表单  :reset 匹配所有重置域
+	console.log($(" :reset"));
+	//表单  :button 匹配所有按钮
+	console.log($(":button"));
+	//表单  :file 匹配所有文件域
+	console.log($(":file"));
+	//表单对象属性  :enabled 匹配所有文件域
+	console.log($("input:enabled"));
+	//表单对象属性  :disabled 匹配所有不可用元素
+	console.log($("input:disabled"));
+	//表单对象属性  :checked 匹配所有选中的被选中元素(复选框、单选框等，select中的option)
+	console.log($("input:checked"));
+	//表单对象属性  :selected 匹配所有选中的option元素
+	console.log($("select option:selected"));
+	//筛选  eq(index|-index) 获取当前链式操作中第N个jQuery对象，返回jQuery对象，当参数大于等于0时为正向选取，比如0代表第一个，1代表第二个。当参数为负数时为反向选取，比如-1为倒数第一个，具体可以看以下示例。
+	console.log($("p").eq(1));
+	//筛选  first() 获取匹配的第一个元素
+	console.log($('li').first());
+	//筛选  last() 获取匹配的最后一个元素
+	console.log($('li').last());
+	//筛选  hasClass(class) 检查当前的元素是否含有某个特定的类，如果有，则返回true。
+	//筛选  filter(expr|obj|ele|fn) 筛选出与指定表达式匹配的元素集合。
+	console.log($("p").filter(".selected"));
+	//筛选  is(expr|obj|ele|fn) 根据选择器、DOM元素或 jQuery 对象来检测匹配元素集合，如果其中至少有一个元素符合这个给定的表达式就返回true。
+	console.log($("input[type='checkbox']").parent().is("form"));
+	//筛选  map(callback) 将一组元素转换成其他数组（不论是否是元素数组）
+	console.log($("p").append( $("input").map(function(){
+  		return $(this).val();
+	}).get().join(", ") ));
+	//筛选  has(expr|ele) 保留包含特定后代的元素，去掉那些不含有指定后代的元素。
+	console.log($('li').has('ul').css('background-color', 'red'));
+	//筛选  not(expr|ele|fn)从匹配元素的集合中删除与指定表达式匹配的元素
+	console.log($("p").not( $("#selected")[0] ));
+	//查找  children([expr]) 取得一个包含匹配的元素集合中每一个元素的所有子元素的元素集合。可以通过可选的表达式来过滤所匹配的子元素。注意：parents()将查找所有祖辈元素，而children()只考虑子元素而不考虑所有后代元素
+	console.log($("div").children());
+	//查找  closest(expr|object|element) closest会首先检查当前元素是否匹配，如果匹配则直接返回元素本身。如果不匹配则向上查找父元素，一层一层往上，直到找到匹配选择器的元素。如果什么都没找到则返回一个空的jQuery对象。
+	console.log($("li:first").closest(["ul", "body"]));
+	//查找   find(e|o|e) 搜索所有与指定表达式匹配的元素
+	console.log($("p").find("span"));
+	//查找   find(e|o|e) 搜索所有与指定表达式匹配的元素
+	console.log($("p").find("span"));
+	//查找   next([expr]) 取得一个包含匹配的元素集合中每一个元素紧邻的后面同辈元素的元素集合
+	console.log($("p").next());
+	//查找    nextAll([expr]) 查找当前元素之后所有的同辈元素。可以用表达式过滤
+	console.log($("div:first").nextAll().addClass("after"));
+	
+	//查找    offsetParent()返回第一个匹配元素用于定位的父节点。
+	console.log($("button").click(function(){
+    $("p").offsetParent().css("background-color","red");
+	}));
+	//查找    parent([expr])取得一个包含着所有匹配元素的唯一父元素的元素集合
+	console.log($("p").parent(".selected"));
+	//查找    parents([expr])取得一个包含着所有匹配元素的祖先元素的元素集合（不包含根元素）。可以通过一个可选的表达式进行筛选。
+	console.log($("span").parents());
+	//查找    parentsUntil([expr|element][,filter])查找当前元素的所有的父辈元素，直到遇到匹配的那个元素为止。
+	console.log($('li.item-a').parentsUntil('.level-1')
+    .css('background-color', 'red'));
+    //查找    prev([expr])取得一个包含匹配的元素集合中每一个元素紧邻的前一个同辈元素的元素集合。
+	console.log($("p").prev());
+	//查找    prevAll([expr])查找当前元素之前所有的同辈元素可以用表达式过滤。。
+	console.log($("div:last").prevAll().addClass("before"));
+	//查找    siblings([expr])取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。可以用可选的表达式进行筛选。
+	console.log($("div").siblings());
+	//串联    add(expr|ele|html|obj[,con]) 把与表达式匹配的元素添加到jQuery对象中。这个函数可以用于连接分别与两个表达式匹配的元素结果集。
+	console.log($("p").add("span"));
+	//串联    addBack() 添加堆栈中元素集合到当前集合，一个选择性的过滤选择器。
+	console.log($('li.third-item').nextAll().addBack()
+  	.css('background-color', 'red'));
+	//串联    contents()添加堆栈中元素集合到当前集合，一个选择性的过滤选择器。
+	console.log($("iframe").contents().find("body")
+  .append("I'm in an iframe!"));
+	//串联    end()回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态
+	console.log($("p").find("span").end());
+		//style getComputedStyle  =====css
+		$(".demo").html(function(index,oldvalue){
+			return oldvalue+(index+1)//设置的内容
+		});
+		//style getComputedStyle  =====css
+		$(".demo").css("width");//必须得传参数，获取的是集合中的第一个
+		$(".demo").css("background","red");//必须得传参数，获取的是集合中的第一个
+		$(".demo").css("width",300);//必须得传参数，获取的是集合中的第一个
+		$(".demo").css("width",function(index,oldvalue){
+			return(index+1)*100
+		})
+		$(".demo").css({
+			color: "#fff",
+			fontSize: "16px",
+			textAlign: "center",
+			lineHeight: "100px"
+		})
+		//classList  className  ====>addClass()  removeClass()  toggleClass()
+		$(".demo").addClass(function(index,oldvalue){
+			return "text"+(index+1)
+		})
+</script>
+	
+</body>
+</html>
