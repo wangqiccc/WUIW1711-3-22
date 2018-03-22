@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		li{
+			width: 300px;
+			height: 20px;
+			margin: 5px;
+		}
+		.box{
+			width: 100px;
+			height: 50px;
+			background-color: yellow;
+			margin: 10px;
+		}
+		.small{
+
+		}
+	</style>
+</head>
+<body>
+	<h1>header 1</h1>
+	<h2>header2</h2>
+	<h3>header 3</h3>
+	<h4>header4</h4>
+	<input type="text" name="ni" value="dianji">
+	<input type="text" name="ni" value="xiazai">
+	<input type="text" name="wo" value="jiazai">
+	<input type="text" name="no" value="jiazai">
+	<ul id="aa">
+		<li class="three">1</li>
+		<li class="four"></li>
+		<li><p>2</p></li>
+		<li class="one">4</li>
+		<li class="two">5</li>
+		<li class="one">6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li class="five">10</li>
+	</ul>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li class="six">3</li>
+		<li>4</li>
+		<li>5</li>
+		<li class="one">6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li style="display: none">none</li>
+		<li>3</li>
+		<li class="sveen">4</li>
+		<li></li>
+		<li></li>
+		<li>5</li>
+		<li class="two">6</li>
+		<li>7</li>
+		<li>8</li>
+		<li class="one">9</li>
+		<li>10</li>
+	</ul>
+	<ul>
+		<li>11</li>
+	</ul>
+	<div><p>爱你</p></div>
+	<div class="box">
+		<div class="small">一定是特别的缘分</div>
+	</div>
+	<div class="box">
+		<div class="big"></div>
+	</div>
+</body>
+
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+//选择器
+	// 基本
+		console.log($("#aa"))//查找id为aa的元素
+		console.log($("li"))//查找给定的标签名
+		console.log($(".one"))//查找给定的css匹配元素，可以一个可以多个
+		console.log($("*"))//找到每一个元素
+		console.log($("li.one,li.two"))//找到符合条件群组选择器的匹配的元素
+	//层级
+		console.log($("body ul"))//在给定的祖先元素下匹配所有的元素
+		console.log($("body>ul"))//在给定的父元素下匹配所有的子元素
+		console.log($(".one+.two"))//在匹配所有给定的前一个元素的后一个元素
+		console.log($("body~ul"))//在匹配所有给定的前一个元素的后一个元素
+			// 这个不对
+	//基本筛选器
+		console.log($("li:first"))//在匹配所有给定的前一个元素的后一个元素
+		console.log($("li:not(.one)"))//筛选的选择器，筛选除了这类元素以外的元素
+		console.log($("li:even"));//筛选所有的偶数元素
+		console.log($("li:odd"))//筛选所有的奇数元素
+		console.log($("li:eq(1)"))//查找第二个元素
+		console.log($("li:gt(15)"))//查找比指定元素大的元素
+		console.log($("li:lang(it)"))//指出指定元素的所有元素
+		console.log($("li:last"))//指出最后一个元素
+		console.log($("li:lt(15)"))//查找比指定元素小的元素
+		$(":header").css("background","red")//给页面所有标题加上背景颜色
+		$(".three").focus(function(){
+  			$(".three").css("background","#ff6700");
+			})
+		//获取焦点事件改变样式
+				// 这个不对
+		console.log($("ul>li").css("border","1px solid red"))//改变样式
+		
+		console.log($("li:root").css("backgrount","yellow"))//查找文档的根元素
+		//target
+	//内容
+		console.log($("li:contains('5')"))//指出所有含有指定元素的匹配元素
+		console.log($("li:empty"))//指出所有不含子元素或者文本的空元素
+		console.log($("li:has(p)").addClass("four"))//筛选所有的匹配的元素添加元素class
+		console.log($("ul:parent"))//指出含有子元素和文本的元素即ul的孩子
+	// 可见性
+		console.log($("li:hidden"))//指出所有隐藏的子元素
+		console.log($("li:visible"))//指出所有可见的子元素
+	//属性
+		console.log($("ul[id]"))//指出给定属性的元素
+		console.log($("li[class]"))//指出给定属性的元素
+		console.log($("input[name='ni']").attr("text", true))//匹配给定的属性是某个特定值的元素
+		console.log($("input[name!='ni']").attr("text", true));//匹配给定的属性不是某个特定元素的元素
+		console.log($("input[name^='ni']"))	//匹配给定的值开头的元素
+		console.log($("input[name$='o']"))	//匹配给定的值结尾的元素
+		console.log($("input[name*='o']"))	//匹配含有给定的值的元素
+	//子元素
+		console.log($("ul li:first-child"))	//匹配所给选择器的对应的第一个子元素
+		console.log($("ul li:last-child"))	//匹配所给选择器的对应的最后一个子元素
+		console.log($("ul li:nth-child(2)"))	//匹配所给选择器的对应的子元素
+		console.log($("ul li:nth-last-child(2)"))	//匹配所给选择器的对应倒数的子元素
+		console.log($("ul li:nth-last-of-type(2)"))	//选择的所有他们的父级元素的第n个子元素，计数从最后一个元素到第一个。
+		console.log($("ul li:nth-last-child(2)"))	//匹配所给选择器的对应倒数的子元素
+		console.log($("ul li:nth-of-type(2)"))	//选择同属于一个父元素之下，并且标签名相同的子元素中的第n个。
+		console.log($("ul li:only-child"))	//匹配所给选择器的只有一个元素的父元素
+//筛选
+	//过滤
+		console.log($("ul li").eq(5))	//获取所给选择器的对应的元素
+		console.log($('li').first())	//获取第一个元素
+		console.log($('li').last())	//获取最后一个元素
+		$("li").click(function(){
+  			alert($("five").hasClass("five"));
+		});//检查被选中的元素是否含有指定的class
+		console.log($('li').filter(".six"))	//筛选出指定表达式匹配的元素
+		console.log($('li').is(".two"))	//筛选出满足指定表达式匹配的元素就返回ture
+		console.log($("p").append( $("input").map(function(){
+  				return $(this).val();
+			}).get().join(", ") ));//将元素转换为其他数组
+				//不太懂
+		console.log($(".box").has(".small").css("background", "red"))	//去掉不含指定元素的子元素
+		console.log($("li").not( $(".sveen")[0] ))	//删除含有指定元素的子元素
+		console.log($("li").slice(3, 5))//截取指定位置的元素
+	// 查找
+		console.log($("div").children())	//查找符合条件的所有子元素
+		console.log($("li:first").closest(["ul"]))	//查找并返回最先匹配的元素
+			//结果不对
+		console.log($("div").find("p"))	//查找符合指定条件的元素
+		console.log($("ul").next())	//查找匹配元素的同辈元素的集合
+		console.log($("ul").nextAll())	//查找匹配元素的所有同辈元素
+		//offsetParent()
+		console.log($("ul").parent())	//查找符合指定条件的元素的父元素
+		console.log($("li").parents())	//查找符合指定条件的元素的父元素的集合
+		//parentsUntil([expr|element][,filter])
+		console.log($("ul").prev())	//取得一个包含匹配的元素集合中每一个元素紧邻的前一个同辈元素的元素集合。
+		console.log($(".five").prevUntil(".one").css('background-color', 'red'))//直到指定元素之前的到另一个元素
+		console.log($("li").siblings(".six"))//取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合
+	// 串联
+		console.log($("p").add(document.getElementById("a")))	//添加元素到匹配的jQuery中
+		
+		console.log($("div").find("small").end())	//回到最近的一个"破坏性"操作之前
+		
+
+
+//innerHTML===>html
+	console.log($("demo").html())//获取
+	$("demo").html("1111");//传数值
+	$("demo").html(function(index,oldVal){//传函数，设置不同的值
+		return oldVal+(index+1);
+	})
+//style get===>css
+	console.log($("demo").css("width"));  //获取集合中的第一个
+	$("demo").css("width",300);//设置
+	$("demo").css("bacground","red");//设置
+	$("demo").css("width",function(index,oldVal){
+		return (index+1)*100;
+	});//设置不同的值
+	$("demo").css({
+		color:"#fff",
+		fontsize:"20px",
+		lineHeight:"100px",
+		textAlign:"center"
+	})//一次设置多个
+//classList className===>addClass() removeClass()toggleClass()
+	$("demo").addClass(function(index,oldVal){
+		return "test"+(index+1);
+	});//移除使用回调函数
+	$("demo").removeClass(function(index,oldVal){
+		return "test"+(index+1);
+	});//移除使用回调函数							 
+	</script>
+
+</html>
