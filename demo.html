@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    div{
+        background-color: black;
+        height: 800px;
+    }
+    li{
+        margin-top: 10px;
+    }
+</style>
+<body>
+<div id="fir">idname</div>
+<div class="one">
+    <li id="woc">teshu </li>
+    <ul class="one">
+        <li class="one"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul class="one"></ul>
+    <ul>
+        <li class="two"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li class="three"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <input type="text">
+    <div><li></li></div>
+</div>
+</body>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    $("#fir").css({background:"red",width:"300px",}); //获取id选择器设置两个css属性
+    $("div").css("width","800px");                     //获取标签选择器
+    console.log($(".one"));                       //获取类名选择器
+    console.log($("*"));                     //获取所有元素标签
+    console.log($("div#fir,ul.one,li"));         //获取多个指定选择器
+    console.log($("div ul"));             //在给定的祖先元素下匹配所有的后代元素
+    console.log($("div >li"));            //在给定的父元素下匹配所有的子元素
+    console.log($("li+ul"));          //匹配所有紧接在 li元素后的 ul 元素
+    console.log($("li~ul"));         //找到所有与li同辈的 ul元素
+    console.log($("li").eq(6));     //获取li元素的第七个；
+    console.log($("li").first());     //获取li元素的第1个；
+
+    console.log($("ul").hasClass("one")); //判断ul元素是否含有one类名
+    console.log($("li").filter(".one"));   //保留li的带有one类的元素
+    console.log($("li").parent().is("ul"));  //判断li标签的父元素是否有ul标签
+     console.log($("ul").has("li"));     //含有li元素的ul
+    console.log($("ul").not($(".one")));  //删除含有one类的ul标签
+    console.log($("li").slice(1,3));  //选取第2,3个li元素
+    console.log($("div").children());  //查找div的每个子元素
+
+    $("li:even").css("background" ,"yellow");//li索引值为偶数的对象设置CSS样式
+    $("li:odd").css("background" ,"red");//li索引值为奇数的对象设置CSS样式
+    $("li:gt(5)").css("background" ,"blue");//li索引值大于5的对象设置CSS
+    $("li:lt(8)").css("background" ,"#ff6700");//li索引值小于8的对象设置CSS
+    $(":header").css("background" ,"yellow");//文档下的所有标题元素设置CSS
+    $(":focus").css("background" ,"pink");//给获得焦点的对象设置css
+
+    console.log($("div:contains(idname)"));//获取内容为hanlei的div标签元素
+    console.log($(":empty"))//获取所有html为空或者是空元素的标签元素
+    console.log($("div:has(li)"));//判断div标签是否含有li标签元素
+    console.log($("li:parent"));//获取有文本的li元素
+    console.log($("li:hidden"));//获取li标签中有隐藏属性的那个元素
+    console.log($("div:visible"));//获取div标签中显示的元素
+    console.log($("div[id]"));//获取div中设置有ID属性的元素
+    console.log($("div[class='one']"));//获取div中class名为sss的div标签元素
+    console.log($("div[class!='one']"))//获取所有div元素中class名不是sss的标签元素
+    console.log($("div[class^='o']"))//获取所有div元素中class名为SS开头的div标签
+    console.log($("div[class$='e']"))//获取所有div元素中class名为w结尾的div标签
+    console.log($("div[class*='n']"))//获取所有div元素中class名中含有s的div标签
+    console.log($("div[id][class^='o']"))//获取所有div元素中有ID属性并且class名是o开头的div标签
+    console.log($("ul li:first-child"))//获取每个UL中li子元素的第一个
+    console.log($("li:first-of-type"))//获取P作为子元素时的父元素中的第一个子元素
+    console.log($("li:last-of-type"))//获取P作为子元素时的父元素中的倒数第一个子元素
+    console.log($("ul li:last-child"))//获取每个UL中li子元素的最后一个
+    console.log($("ul li:nth-child(2)"))//获取ul中第2个li元素
+    console.log($("ul li:nth-last-child(9)"))//获取ul中倒数第9个li元素
+    console.log($("li:nth-last-of-type(2)"))//获取li作为子元素时的父元素中的倒数第2个子元素
+    console.log($("li:nth-of-type(1)"))//获取li作为子元素时的父元素中的第一个子元素
+    console.log($("div li:only-child"))//获取div标签z只有唯一子元素的li元素  只有一个子元素li
+    console.log($("div li:only-of-type"))//获取div标签只有唯一子元素的li元素  可以有多个子元素
+    console.log($(":input"))//获取所有input标签元素
+    console.log($(":text"))//获取所有类型为text的input
+    console.log($(":submit"))//获取所有类型为submit的input
+    console.log($(":reset"))//获取所有类型为reset的input
+    console.log($(":button"))//获取所有类型为button的input
+    console.log($(":file"))//获取所有类型为file的input
+    console.log($("input:enabled"))//获取所有可用元素
+    console.log($("input:disabled"))//获取所有不可用元素
+    console.log($("input:checked"))//获取所有选中的被选中元素
+    console.log($("select option:selected"));//获取所有的选中的选项元素
+
+    console.log( $("ul").children(".one"))//查找ul中类名为aaa的子元素
+    console.log($("li:first").closest("ul"))//寻找第一个li元素的元素  只找一个
+    console.log($("ul").find("li"))//从所有的ul开始，进一步搜索下面的li元素
+    console.log($("ul").next())//找到每个ul后面紧邻的同辈元素
+    console.log($("ul").nextAll().addClass("other"))//给第一个ul之后的所有同级元素加个类
+    console.log($("div").nextUntil("ul").addClass("min"))//给第一个div之后  ul之前的同级元素加类名PP
+    console.log($("div").offsetParent())//获取div标签元素的最近的定位元素ul
+    console.log($("li").parent())//查找每个li的父元素
+    console.log($("li").parent("ul")); //查找每个li的父元素是ul的父元素
+    console.log($("li").parentsUntil('body'))//查找每个li的父元素  除了body
+    console.log($("li").prev(".one"))//查找每个li紧邻的前一个类名为one的同辈元素
+    console.log($("li:last").prevAll())//获取最后一个li之前的所有li，同一父元素下
+    $('.one li').prevUntil('.one').css('background-color', 'red');//给同父元素下给li前到类名为one的li元素前的li加红背景
+    console.log( $("ul").siblings())//获取当前ul所有同辈元素
+    $('p').add("span")
+    $('li.one').nextAll().addBack()
+        .css('background-color', 'red');//为类名为one后的li元素添加红背景 包括one元素
+    console.log( $("li").contents())//获取当前li内所有的字节 包括inner和子元素
+    console.log( $("li").end())//回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态。
+
+</script>
+</html>
