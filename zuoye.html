@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.content{
+            width: 800px;
+            height: 500px;
+            position: relative;
+        }
+        .demo1{
+			width: 100%;
+			height: 99px;
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div id="aa">
+		<div></div>
+		<div></div>
+	</div>
+	<div class="box"></div>
+	<div class="one">
+		<p>
+			<span>
+				
+			</span>
+		</p>
+	</div>
+	<p></p>
+	<p></p>
+	<ul>
+		<li>1</li>
+		<li class="first">2</li>
+		<li class="second">3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+	<ul>
+		<li class="first">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li name="a">4</li>
+		<li>5</li>
+		<li name="a">6</li>
+		<li>7</li>
+		<li name="a">8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+	<p name="newsasd"></p>
+	<p name="asdnews"></p>
+	<p name="newsasd"></p>
+	<h1></h1>
+	<h2></h2>
+	<h3></h3>
+	<div class="img" style="display: none"></div>
+	<div class="img2" style="display:block"></div>
+	<input type="text" autofocus>	
+	<div class="content">hello</div>
+	<div class="bao">
+		<div class="demo"></div>
+	</div>
+	<form>
+		<input type="text" />
+		<input type="checkbox" />
+		<input type="radio" />
+		<input type="image" />
+		<input type="file" />
+		<input type="submit" />
+		<input type="reset" />
+		<input type="password" />
+		<input type="button" />
+		<select><option/></select>
+		<textarea></textarea>
+		<button></button>
+	</form>
+	<form>
+  		<input name="email" disabled="disabled" />
+  		<input name="id" />
+	</form>
+	<form>
+  		<input type="checkbox" name="newsletter" checked="checked" value="Daily" />
+  		<input type="checkbox" name="newsletter" value="Weekly" />
+  		<input type="checkbox" name="newsletter" checked="checked" value="Monthly" />
+	</form>
+	<select>
+  		<option value="1">Flowers</option>
+  		<option value="2" selected="selected">Gardens</option>
+  		<option value="3">Trees</option>
+	</select>
+	<div class="demo active"></div>
+	<div class="box">
+		<div class="box">
+			<div class="item"></div>
+		</div>
+	</div>
+
+	<div class="content">
+        <span>222</span>
+        <div class="demo1">1</div>
+       	<div class="demo1">2</div>
+        <div class="demo1">3</div>
+        <div class="demo1">4</div>
+		<div class="demo1">5</div>
+	 </div>
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script>
+	//1.选择器
+	
+	console.log($("#aa"));//获取id名为aa的div
+	console.log($("div"));//根据标签名获取元素
+	console.log($(".box"));//根据类名获取元素
+	console.log($("*"));//获取任何元素
+	console.log($(".one,p,span"));//将每一个选择器匹配到的元素合并后一起返回
+	console.log($("#aa div"));//获取父类元素下所有的后代
+	console.log($(".one>p"));//获取父类下的子元素
+	console.log($(".box+.one"))//获取紧接的元素
+	console.log($("div~p"))//获取div之后的p元素
+	console.log($("div:first"));//获取第一个元素
+	console.log($("div:last"));//获取最后一个div元素
+	console.log($("ul>li:not(.first)"));//获取除了类名为first的li
+	console.log($("ul>li:even").css("background","red"));//获取所有索引中为偶数的元素
+	console.log($("ul>li:odd").css("background","pink"));
+	//获取所有索引中为奇数的元素
+	console.log($("ul>li:eq(2)").css("background","blue"))
+	//获取指定索引的元素
+	console.log($("ul>li:gt(5)").css("background","green"));//获取索引值大于5的所有元素
+	console.log($("ul>li:lt(5)").css("background","plum"))
+	//获取索引值小于5的所有元素
+	console.log($(":focus").css("background","red"));
+	//获取当前获得焦点的元素
+	console.log($(":header"));//获取 h1, h2, h3之类的标题元素
+	console.log($(":root").css("background","yellowgreen"))//获取该文档的根元素
+	console.log($(":target"));
+	console.log($("div:contains(hello)"))//获取指定文本的元素
+	console.log($("div:empty"))//获取所有不包含子元素和内容的元素
+	console.log($("div:has(.demo)"))//获取包含该子元素的元素
+	console.log($("div:hidden"))//匹配所有不可见元素
+	console.log($("div:visible"))//匹配所有可见元素
+	console.log($(".first:parent"))//获取所有first的元素
+	console.log($("ul>li:first-child"));
+	//在ul中查找第一个li
+	console.log($("li:first-of-type"));
+	console.log($("ul>li:last-child"));
+	//在ul中查找最后一个li
+	console.log($("ul>li:nth-child(4)"));
+	//在匹配的ul中查找倒数第四个li
+	console.log($("ul>li:nth-last-of-type(2)"));
+	//在匹配的ul中查找倒数第二个li
+	console.log($("ul>li:only-child"));
+ 	//在ul中查找是唯一子元素的 li
+ 	console.log($("div[id]"))//查找所有含有 id 属性的 div 元素
+ 	console.log($("ul>li[name='a']"))
+ 	//查找所有name属性是a的元素
+ 	console.log($("ul>li[name!='a']"))
+ 	//查找所有name属性不是a的元素
+ 	console.log($("p[name^='news']"))
+ 	//查找所有name以'news'开始的元素
+ 	console.log($("p[name$='news']"))
+ 	//查找所有name以'news'结束的元素
+	console.log($(":input"));//查找所有的input元素
+	console.log($(":text"));//查找所有文本框
+	console.log($(":password"));//查找所有密码框
+	console.log($(":radio"));//查找所有单选按钮
+	console.log($(":checkbox"));//匹配所有复选框
+	console.log($(":submit"));//查找所有提交按钮
+	console.log($(":image"));//匹配所有图像域
+	console.log($(":reset"));//查找所有重置按钮
+	console.log($(":button"));//查找所有按钮
+	console.log($(":file"));//查找所有文件域
+	console.log($("input:enabled"));
+	//查找所有可用的input元素
+	console.log($("input:disabled"));
+	// 查找所有不可用的input元素
+	console.log($("input:checked"));
+	//查找所有选中的复选框元素
+	console.log($("select option:selected"));
+	//查找所有选中的选项元素
+	//2.过滤
+	let obj=$(".one")
+    let ele=document.querySelector(".one")
+    $("ul>li")
+    	.css("border","1px solid red")
+    	// .eq(0)
+    	// .filter(".one")//选择器
+    	// .filter(obj)//jQuery对象
+    	// .filter(ele)//原生对象
+    	.filter(function(index,val) {
+    		if(index%3===0){
+    		return true;
+    		}
+    	})//函数
+	console.log($(".demo").hasClass("active"))//检查当前的元素是否含有某个特定的类，如果有，则返回true。
+	console.log($("ul>li").first())//获取第一个元素
+	console.log($("ul>li").last())//获取最后一个元素
+	console.log($("p").eq(2))//获取指定的p元素
+	let div=document.querySelector(".demo");
+	console.log($(".demo").is("active"));//判断该元素是否符合给定的条件
+	console.log($(".demo").is($("div")))
+	console.log($(".demo").is(div))
+	console.log($(".demo").is(function(index,ele){
+		if(ele.innerHTML==="123"){
+			return true;
+		}
+	}))
+	console.log($("ul>li").map(function(index,ele){
+		return ele.innerHTML;
+	}))//将一组元素转换成其他数组,获取li里的内容
+	console.log($("ul").has(".first"));//获取含有该元素的元素
+	console.log($("ul>li").not(".first"))//获取元素里不含有该类名的元素
+	console.log($("ul>li").slice(5,8))//获取索引值为5~8之间的元素
+	// 3.查找
+	console.log($("ul").children(".second")); //获取父元素的子元素
+	console.log($("item").closest(".box"));//获取符合条件的元素，先找本身，向上找
+	console.log($(".box").find(".item"))
+	//搜索该元素中符合条件的元素
+	console.log($(".first").css("background","red").next(".second").css("background","blue"))
+	//获取指定元素紧接的同级元素
+	console.log($(".first").css("background","red").nextUntil(".second").css("background","pink"))
+	// 查找当前元素之后所有的同辈元素，直到遇到匹配的那个元素为止
+	console.log($(".item").offsetParent())
+	// 返回第一个指定元素用于定位的父元素
+	console.log($(".first").parent())
+	// 获取一个包含着所有指定元素的唯一父元素的元素集合
+	console.log($(".first").parents())
+	// 获取包含着所有匹配元素的祖先元素的元素集合
+	console.log($(".second").parentsUntil())
+	// 查找当前元素的所有的父辈元素，直到遇到匹配的那个元素为止
+	console.log($("ul").prev());//取得一个包含匹配的元素集合中每一个元素紧邻的前一个同辈元素的元素集合
+    console.log($("div:last").prevAll().addClass(".box"));//查找当前元素之前所有的同辈元素
+    console.log($("ul>li").prevUntil(".second").css('background-color', 'red'));//查找当前元素之前所有的同辈元素，直到遇到匹配的那个元素为止。
+	console.log($(".one").siblings())
+	// 获取包含指定的元素集合中每一个元素的所有唯一同辈元素的元素集合
+	// 4.串联
+	console.log($(".first").add(".second"));
+	// 把与指定的元素添加到jQuery对象中
+	console.log($(".one").next().addBack())
+	// 添加堆栈中元素集合到当前集合
+	console.log($(".one").contents())
+	// 查找匹配元素内部所有的子节点
+	$("ul>li").eq(2).css("background","black").end().eq(4)
+	// 将匹配的元素列表变为前一次的状态
+	// 5.innerHTML===========html
+	console.log($(".demo").html())//获取内容
+	$(".demo").html("111")//设置内容
+	$(".demo1").html(function(index,oldval){
+		return oldval+(index+1);
+	})
+	// 6.style  getComputedStyle=====css
+	console.log($(".demo").css("width"))//获取css样式
+	$(".demo").css("width",300)//设置css样式
+	$(".demo").css("width",function(index,oldVal){
+		return (index+1)*100;
+	})
+	$(".demo1").css({
+		color:"#fff",
+		fontSize:"18px",
+		background:"red",
+	})
+	//一次设置多个样式
+	// classList  className======addClass() removeClass()
+	$(".demo1").addClass(function(index,oldVal){
+		return "text"+(index+1)
+	})
+	$(".demo1").removeClass(function(index,oldVal){
+		return "text"+(index+1)
+	})
+</script>
+</html>
