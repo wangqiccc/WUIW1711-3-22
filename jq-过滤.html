@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p> This is just a test.</p> <p> So is this</p>
+	<p> This is just a test.</p> <p> So is this</p>
+	<div class="protected"></div><div></div>
+	<p>Hello</p><p>Hello Again</p><p class="selected">And Again</p>
+	<p><ol><li>Hello</li></ol></p><p>How are you?</p>
+	<form>
+		<input type="checkbox" />
+	</form>
+	<p><b>Values: </b></p>
+	<form>
+	  <input type="text" name="name" value="John"/>
+	  <input type="text" name="password" value="password"/>
+	  <input type="text" name="url" value="http://ejohn.org/"/>
+	</form>
+	
+	<ul>
+	  <li><strong>list</strong> item 1 - one strong tag</li>
+	  <li><strong>list</strong> item <strong>2</strong> - two <span>strong tags</span></li>
+	  <li>list item 3</li>
+	</ul>
+
+	<ul>
+	    <li>list item 1</li>
+	    <li>list item 2
+			<ul>
+		      <li>list item 2-a</li>
+		      <li>list item 2-b</li>
+		    </ul>
+	    </li>
+	    <li>list item 3</li>
+	    <li>list item 4</li>
+	    <li>list item 5</li>
+	</ul>
+	<div class="protected"></div><div></div>
+<script src="jquery-3.3.1.min.js"></script>
+	<script>
+		//获取匹配的第二个元素
+		console.log($("p").eq(1));
+
+		//获取匹配的第二个元素
+		console.log($("p").eq(-2));
+
+		//获取匹配的第一个元素
+		console.log($('li').first());
+
+		//获取匹配的最后个元素
+		console.log($('li').last());
+		
+		//给包含有某个类的元素进行一个动画。
+		$("div").click(function(){
+		  if ( $(this).hasClass("protected") )
+		    $(this)
+		      .animate({ left: -10 })
+		      .animate({ left: 10 })
+		      .animate({ left: -10 })
+		      .animate({ left: 10 })
+		      .animate({ left: 0 });
+		});
+		
+		//保留带有select类的元素
+		console.log($("p").filter(".selected"));
+		
+		//保留子元素中不含有ol的元素。
+		$("p").filter(function(index) {
+		  return $("ol", this).length == 0;
+		});
+		
+		//由于input元素的父元素是一个表单元素，所以返回true。
+		console.log($("input[type='checkbox']").parent().is("form"));
+		
+		//判断点击li标签增加背景色为红色，如果点击的是第2个strong,当前的li增加背景色为绿色，
+		$("li").click(function() {
+		  var $li = $(this),
+		    isWithTwo = $li.is(function() {
+		      return $('strong', this).length === 2;
+		    });
+		  if ( isWithTwo ) {
+		    $li.css("background-color", "green");
+		  } else {
+		    $li.css("background-color", "red");
+		  }
+		});
+		
+		//把form中的每个input元素的值建立一个列表。
+		$("p").append( $("input").map(function(){
+		  return $(this).val();
+		}).get().join(", ") );
+		
+		//给含有ul的li加上背景色
+		$('li').has('ul').css('background-color', 'red');
+		
+		//从p元素中删除带有 select 的ID的元素
+		console.log($("p").not( $("#selected")[0] ));
+		
+		//选择第一个p元素
+		$("p").slice(0, 1).wrapInner("<b></b>");
+		
+	</script>
+</body>
+</html>
