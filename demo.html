@@ -12,35 +12,28 @@
 <body>
 <div id="box" class="opop">
     <p>1</p>
-    <p>
-        3
-    </p>
 </div>
 <div class=".box">
-
-    <p class="kkkk">dddd</p>
+    <p class="con">2222</p>
 </div>
 <div></div>
 <div class="ssbox">
-    <p>hanleilei</p>
+    <p>111</p>
     <p></p>
     <p class="ssitem" style="display: none"></p>
 </div>
 <div></div>
-<h1>111</h1>
-<span>ddd</span>
+<h1>1111</h1>
+<span>2222</span>
 <ul>
-    <li>1
-    </li>
+    <li>1</li>
     <li>2</li>
     <li class="opopopd">3</li>
     <li>4</li>
     <li>5</li>
     <li>6</li>
     <li>7</li>
-    <li>8
-    </li>
-
+    <li>8</li>
     <li>9<li>
     <li>10</li>
 </ul>
@@ -62,7 +55,8 @@
 <button></button>
 <ul>
     <li class="cont">
-        <ul>1</ul></li>
+        <ul>1</ul>
+    </li>
     <li>2</li>
     <li>3</li>
     <li>4</li>
@@ -110,6 +104,7 @@
 </body>
 <script src="jquery-3.3.1.min.js"></script>
 <script>
+    //获取
     console.log($("#box"));//获取ID对象
     console.log($("p"));//获取元素对象
     console.log($(".box"));//获取类名对象
@@ -122,6 +117,8 @@
     console.log($("div:first"))//div标签的第一个子元素
     console.log($("p:last"))//p标签下的最后一个子元素
     console.log($("div:not(.box)"))//除了box类名的div的标签 对象
+
+
     $("li:even").css("background" ,"yellow")//li索引值为偶数的对象设置CSS样式
     $("li:odd").css("background" ,"red")//li索引值为奇数的对象设置CSS样式
     $("li:eq(4)").css("background" ,"pink")//li索引值为4的对象设置CSS
@@ -129,7 +126,10 @@
     $("li:lt(8)").css("background" ,"#ff6700")//li索引值小于8的对象设置CSS
     $(":header").css("background" ,"yellow")//文档下的所有标题元素设置CSS
     $(":focus").css("background" ,"pink")//给获得焦点的对象设置css
-    console.log($("p:contains(hanlei)"))//获取内容为hanlei的P标签元素
+
+
+
+    console.log($("p:contains(111)"))//获取内容为111的P标签元素
     console.log($(":empty"))//获取所有html为空或者是空元素的标签元素
     console.log($("div:has(p)"))//判断div标签是否含有p标签元素
     console.log($("p:parent"))//获取P标签的所有父元素
@@ -152,6 +152,8 @@
     console.log($("p:nth-of-type(1)"))//获取P作为子元素时的父元素中的第一个子元素
     console.log($("div p:only-child"))//获取只有一个P标签子元素的div元素  只有一个子元素P
     console.log($("div p:only-of-type"))//获取只有一个P标签子元素的div元素  可以有多个子元素
+
+
     console.log($(":input"))//获取所有input标签元素
     console.log($(":text"))//获取所有类型为text的input
     console.log($(":password"))//获取所有类型为password的input
@@ -187,19 +189,18 @@
     console.log($("ul").find("li"))//从所有的ul开始，进一步搜索下面的li元素
     console.log($("ul").next())//找到每个ul后面紧邻的同辈元素
     console.log($("ul").nextAll().addClass("pp"))//给第一个ul之后的所有同级元素加个类
-    console.log($("ul").nextUntil("p").addClass("pp"))//给第一个UL之后  P之前的同级元素加类名PP
+    console.log($("ul").nextUntil("p").addClass("pp"))//给第一个UL之后  P之前的同级元素加类名pp
     console.log($("p").offsetParent())//获取P标签元素的最近的定位元素ul
-    console.log($("p").parent())//查找每个P的父元素
-    console.log($("p").parent('ul'))//查找每个P的父元素是ul的父元素
-    console.log($("p").parentsUntil('body'))//查找每个P的父元素  除了body
+    console.log($("p").parent())//查找第一个P的父元素
+    console.log($("p").parent('ul'))//查找每个P的父元素是ul
+    console.log($("p").parentsUntil('body'))//查找每个P的父元素  直到body
     console.log($("li").prev(".cont"))//查找每个li紧邻的前一个类名为cont的同辈元素
     console.log($("li:last").prevAll())//获取最后一个li之前的所有li，同一父元素下
     console.log($("#box").prevUntil(".cont"))
     $('.boxs li').prevUntil('.cont').css('background-color', 'red');//给同父元素下给li前到类名为cont的li元素前的li加红背景
    console.log( $("ul").siblings())//获取当前ul所有同辈元素
     $('p').add("span")
-    $('li.lili').nextAll().addBack()
-        .css('background-color', 'red');//为类名为qaq后的li元素添加红背景 包括lili元素
+    $('li.lili').nextAll().addBack().css('background-color', 'red');//为类名为lili后的li元素添加红背景 包括lili元素
     console.log( $("li").contents())//获取当前li内所有的字节 包括inner和子元素
     console.log( $("li").end())//回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态。
 
