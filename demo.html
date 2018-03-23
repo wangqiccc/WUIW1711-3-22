@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+    <style>
+        * {
+            border-sizing: border-box;
+        }
+
+        .container {
+            width: 600px;
+            height: 500px;
+            /*background-color:;*/
+            margin: 0 auto;
+            border: 2px solid #ff6666;
+            border-collapse: collapse;
+
+        }
+
+        .row {
+            width: 600px;
+            height: 100px;
+            background-color: darkslategrey;
+        }
+
+        .btn {
+            width: 200px;
+            height: 100px;
+            float: left;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        .row1 {
+            width: 600px;
+            height: 400px;
+            background-color: aliceblue;
+            position: relative;
+        }
+
+        .img {
+            width: 100%;
+            height: 400px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 9;
+
+        }
+
+        .active {
+            background-color: #ff6666;
+            color: seagreen;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="btn active">1</div>
+        <div class="btn">2</div>
+        <div class="btn">3</div>
+    </div>
+    <div class="row1">
+        <img src="img/1.webp" alt="" class="img active">
+        <img src="img/2.webp" alt="" class="img">
+        <img src="img/3.webp" alt="" class="img">
+    </div>
+</div>
+<div class="demo"></div>
+<div class="demo"></div>
+<div class="demo"></div>
+
+<div id="aa">diva</div>
+<div class="op">divn</div>
+<div>conn</div>
+<p class="p1">pi1</p>
+<h1>Header 1</h1>
+<p class="p2">pi2</p>
+<h2>Header 2</h2>
+<span>sdvs</span>
+<div><p>Hello</p></div>
+<div>Hello again!</div>
+
+<form>
+    <label>Name:</label>
+    <input name="name" checked="checked"/>
+    <fieldset>
+        <label>Newsletter:</label>
+        <input name="newsletter" />
+    </fieldset>
+</form>
+<input name="none" checked="checked"/>
+
+<table>
+    <tr style="display:none"><td>Header 1</td><td></td></tr>
+    <tr><td>Value 1</td><td></td></tr>
+    <tr><td>Value 2</td><td></td></tr>
+</table>
+<button id="run">Run</button><div></div>
+<div id="content">
+    <input tabIndex="1">
+    <input tabIndex="2">
+    <select tabIndex="3">
+        <option>select menu</option>
+    </select>
+    <div tabIndex="4">
+        a div
+    </div>
+</div>
+
+
+<!-- 子元素开始 -->
+<ul>
+    <li>John</li>
+    <li>Karl</li>
+    <li>Brandon</li>
+</ul>
+<ul>
+    <li>Glen</li>
+    <li>Tane</li>
+    <li>Ralph</li>
+</ul>
+<div id="n1">
+    <div id="n2" class="abc">
+        <label id="n3">label1</label>
+        <span id="n4">span1</span>
+        <span id="n5" class="abc">span2</span>
+        <span id="n6">span3</span>
+    </div>
+    <div id="n7">
+        <span id="n8" class="abc">span1</span>
+        <span id="n9">span2</span>
+    </div>
+</div>
+<!--选择器  表单-->
+<form>
+    <input type="checkbox" name="newsletter" value="Hot Fuzz" />
+    <input type="checkbox" name="newsletter" value="Cold Fusion" />
+    <input type="checkbox" name="accept" value="Evil Plans" />
+    <input name="man-news" />
+    <input id="letterman" name="new-letterman" />
+    <input type="text"/>
+    <input type="checkbox"/>
+    <input type="radio"/>
+    <input type="image"/>
+    <input type="file"/>
+    <input type="submit"/>
+    <input type="reset"/>
+    <input type="password"/>
+    <input type="button"/>
+    <select>
+        <option></option>
+    </select>
+    <textarea></textarea>
+    <button></button>
+</form>
+<!--表单对象属性-->
+<!--:enabled :disabled -->
+<form>
+    <input name="email" disabled="disabled"/>
+    <input name="id"/>
+</form>
+<!--:checked-->
+<form>
+    <input type="checkbox" name="newsletter" checked="checked" value="Daily"/>
+    <input type="checkbox" name="newsletter" value="Weekly"/>
+    <input type="checkbox" name="newsletter" checked="checked" value="Monthly"/>
+</form>
+<!--:selected-->
+<select>
+    <option value="1">Flowers</option>
+    <option value="2" selected="selected">Gardens</option>
+    <option value="3">Trees</option>
+</select>
+<!--混淆选择器-->
+<div class="notMe">notMe</div>
+<div class=".box myClass">box myClass</div>
+<div class=".box">box</div>
+<!--串联-->
+<!--add-->
+<p>Hello</p>
+<!--addBack-->
+<ul>
+    <li>list item 1</li>
+    <li>list item 2</li>
+    <li class="third-item">list item 3</li>
+    <li>list item 4</li>
+    <li>list item 5</li>
+</ul>
+<!--contents-->
+<h1>Hello <a href="http://ejohn.org/">John</a>, how are you doing?</h1>
+<!--ends-->
+<h2><span>Hello</span>,how are you?</h2>
+</body>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+
+    $(".btn").click(function () {
+        // 获取btn并给它添加一个点击事件
+        //在jq把原生对象转化为jq对象的方法。
+        //$(原生对象)
+        //1
+        // $(".btn").removeClass("active");
+        // 为匹配的btn元素移除 'active' 类
+        // $(this).addClass("active");
+        // 为匹配的btn元素再加上 'active' 类
+        //2
+        // $(".btn").removeClass("active").filter(this).addClass("active");
+        //3
+        //$(this).addClass("active").siblings(".active").removeClass("active");
+        //4
+        $(".btn.active").removeClass("active").parent().find(this).addClass("active");
+        var index = $(this).index();
+        //当前元素在这个里面的下标
+        $(".img").removeClass("active").eq(index).addClass("active");
+    });
+
+
+    $(".demo").html(function (index, oldVal) {
+        // 用回调函数设置所有demo元素的内容
+        return oldVal + (index + 1);
+    })
+    $(".demo").css("background", "red");
+    // 将所有的demo的背景设置为红色。
+    $(".demo").css("width", 300)
+    // 将demo的宽设置为300
+    $(".demo").css("width", function (index, oldval) {
+        return (index + 1) * 100
+        // 使用回调函数来给所有的demo设置不同的宽度
+    })
+    $(".demo").css({
+        color: "#fff",
+        fontSize: "16px",
+        textAlign: "center"
+    });
+
+    //查找 id 为"aa"的元素。
+    console.log($("#aa"));
+    //查找所有类是 "op" 的元素.
+    console.log($(".op"));
+    //查找一个div 元素。
+    console.log($("div"));
+    //找到每一个元素
+    console.log($("*"));
+    // 找到匹配任意一个类的元素。
+    console.log($("div,span,p.p1"));
+    //找到表单中所有的 input 元素
+    console.log($("form input"));
+    //匹配表单中所有的子级input元素。
+    console.log($("form > input"));
+    //匹配所有跟在 label 后面的 input 元素
+    console.log($("label + input"));
+    // 找到所有与表单同辈的 input 元素
+    console.log($("form ~ input"));
+    //获取匹配的第一个元素
+    console.log($('li:first'));
+    // 查找所有未选中的 input 元素
+    console.log($("input:not(:checked)"));
+    //查找表格的1、3、5...行（即索引值0、2、4...）
+    console.log($("tr:even"));
+    //查找表格的2、4、6行（即索引值1、3、5...）
+    console.log($("tr:odd"));
+    //查找第二行
+    console.log($("tr:eq(1)"));
+    //查找第二第三行，即索引值是1和2，也就是比0大
+    console.log($("tr:gt(0)"));
+    //选择所有<p> 的语言属性:
+    console.log($("p:lang(it)"));
+    //获取匹配的最后个元素
+    console.log($('li:last'));
+    // 查找第一第二行，即索引值是0和1，也就是比2小
+    console.log($("tr:lt(2)"));
+    //给页面内所有标题加上背景色
+    $(":header").css("background", "#pink");
+    //只有对不在执行动画效果的元素执行一个动画特效
+    $("#run").click(function(){
+        $("div:not(:animated)").animate({ left: "+=20" }, 1000);
+    });
+    //添加一个"focused"的类名给那些有focus方法的元素
+    $( "#content" ).delegate( "*", "focus blur", function( event ) {
+        var elem = $( this );
+        setTimeout(function() {
+            elem.toggleClass( "focused", elem.is( ":focus" ) );
+        }, 0);
+    });
+    //设置<html>背景颜色为黄色
+    $(":root").css("background-color","skyblue");
+    //target选择器将匹配ID和标识符相匹配的元素
+    console.log( $( "p:target" ));
+    //查找所有包含 "conn" 的 div 元素
+    console.log($("div:contains('conn')"));
+    //查找所有不包含子元素或者文本的空元素
+    console.log($("td:empty"));
+    //给所有包含 p 元素的 div 元素添加一个 text 类
+    $("div:has(p)").addClass("test");
+    //查找所有含有子元素或者文本的 td 元素
+    console.log($("td:parent"));
+    // 查找隐藏的 tr
+    console.log($("tr:hidden"));
+    //查找所有可见的 tr 元素
+    console.log($("tr:visible"));
+
+
+
+
+    //子元素
+    console.log($("ul li:first-child"));
+    // 在每个 ul 中查找第一个 li
+    console.log($("span:first-of-type"));
+    //查找作为父元素的span类型子元素中的"长子"的span标签
+    console.log($("ul li:last-child"));
+    // 在每个 ul 中查找最后一个 li
+    console.log($("span:last-of-type"));
+    //查找作为父元素的span类型子元素中的"最后一个孩子"的span标签
+    console.log($("ul li:nth-child(2)"));
+    // 在每个 ul 查找第 2 个li
+    console.log($("ul li:nth-last-child(2)"));
+    // 在每个匹配的ul中查找倒数第二个li
+    console.log($("ul li:nth-last-of-type(2)"));
+    // 在每个匹配的ul中查找倒数第二个li
+    console.log($("span:nth-of-type(2)"));
+    // 查找每个span，这个 span 是 其所有兄弟span元素中的第二个元素。
+    console.log($("ul li:only-child"));
+    // 在 ul 中查找是唯一子元素的 li
+    console.log($("ul li:only-of-type"));
+    //选择所有没有兄弟元素，且具有相同的元素名称的元素。
+
+{
+        //选择器 input
+        console.log($(":input"));
+        //选择器 text
+        console.log($(":text"));
+        //选择器  password
+        console.log($(":password"));
+        //选择器  radio
+        console.log($(":radio"));
+        //选择器 checkbox
+        console.log($(":checkbox"));
+        //选择器 submit
+        console.log($(":submit"));
+        //选择器  image
+        console.log($(":image"));
+        //选择器  reset
+        console.log($(":reset"));
+        //选择器  button
+        console.log($(":button"));
+        //选择器  file
+        console.log($(":file"));
+        //表单对象属性 :enabled
+        console.log($("input:enabled"));
+        //表单对象属性 :disabled
+        console.log($("input:disabled"));
+        //表单对象属性 :checked
+        console.log($("input:checked"));
+        //表单对象元素 :selected
+        console.log($("select option:selected"));
+ }
+    {
+        //混淆选择器
+        $("div").find("." + $.escapeSelector(".box"));
+    }
+    {
+        //串联
+        //串联  add
+        console.log($("p").add("<span>Again</span>"));
+        //串联  addBack()
+        console.log($('li.third-item').nextAll().addBack()
+            .css('background-color', 'red')
+        );
+        //串联 contents
+        console.log($("h1").contents().not("[nodeType=1]").wrap("<b/>"));
+        //串联 ends
+        console.log($("h2").find("span").end());
+    }
+</script>
+</html>
