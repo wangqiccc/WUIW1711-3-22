@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="item"></div>
+    <div class="item one"></div>
+    <div class="item">
+        <p></p>
+        <p></p>
+        <a href=""></a>
+        <h1></h1>
+    </div>
+    <div class="item one">
+        <h2>wo</h2>
+    </div>
+    <div class="item"></div>
+    <div class="item" ></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item" id="aa"></div>
+    <div class="item" id="last"></div>
+</div>
+<p><b>Values: </b></p>
+<form>
+    <input type="text" name="name" value="John"/>
+    <input type="text" name="password" value="password"/>
+    <input type="text" name="url" value="http://ejohn.org/"/>
+</form>
+<div class="demo">div</div>
+<div class="demo">div</div>
+<div class="demo">div</div>
+<ul>
+    <li>1</li>
+    <li class="one">2</li>
+    <li>
+        <ul>
+            <li class="two">aa</li>
+            <li>bb</li>
+        </ul>
+        <ul>
+            <li class="two">aa</li>
+            <li>bb</li>
+        </ul>
+    </li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li class="a">6</li>
+    <li class="one">7</li>
+    <li class="b">8</li>
+    <li>9</li>
+</ul>
+
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    //选择器
+    console.log($("#last"));//通过id来获取
+    console.log($("div"));//通过标签名来获取
+    console.log($(".one"));//通过类名来获取
+    console.log($("*"));//获取所有标签
+    console.log($("div,p"));//通过群组来获取
+    console.log($("div a"));//通过后代选择器来获取
+    console.log($("div>"));//给定的父元素获取子元素
+    console.log($("div+p"));//匹配所有紧接在 prev 元素后的 next 元素
+    console.log($("div~p"));//匹配 prev 元素之后的所有 siblings 元素
+    console.log($("div:first"));//获取第一个元素
+    console.log($("div:not(#aa)"));//去除所有与给定选择器匹配的元素
+    console.log($("div:even"));//匹配所有索引值为偶数的元素，从 0 开始计数
+    console.log($("div:odd"));//匹配所有索引值为奇数的元素，从 0 开始计数
+    console.log($("div:eq(2)"));//匹配一个给定索引值的元素,,,,,,
+    console.log($("div:gt(1)"));//匹配所有大于给定索引值的元素
+    //console.log($("div:lang(en)"));//
+    console.log($("div:last"));//获取最后一个元素
+    console.log($("div:lt(3)"));//匹配所有小于给定索引值的元素
+    console.log($(":header"));//匹配如 h1, h2, h3之类的标题元素
+    console.log($(":animated"));//匹配所有正在执行动画效果的元素
+    console.log($("div:focus"));//匹配当前获取焦点的元素。
+    console.log($("div:root"));//选择该文档的根元素。
+    console.log($("div:contains(wo)"));//获取包含给定文本的元素
+    console.log($("div:empty "));//匹配所有不包含子元素或者文本的空元素
+    console.log($("div:has(h2)"));//匹配含有选择器所匹配的元素的元素
+    console.log($("div:parent"));//匹配含有子元素或者文本的元素
+    console.log($("div:hidden "));//匹配所有不可见元素，或者type为hidden的元素
+    console.log($("div:visible"));//匹配所有可见元素
+
+    //innerHTML   ==== html
+     console.log($(".demo").html());//获取div标签
+     $(".demo").html("111");//设置div的内容
+     $(".demo").html(function (index,oldVal) {
+         return oldVal+(index+1);
+     });
+
+    //style  getComputedStyle   ======>css
+     console.log($(".demo").css("width"));//获取div的宽度
+    $(".demo").css("background","yellow");//设置div的css样式
+     $(".demo").css("width",300);
+    //接受函数
+     $(".demo").css("width",function (index,oldVal) {
+         return (index+1)*100;
+     });
+    //接受一个对象
+     $(".demo").css({
+         color:"#fff",
+         fontsize:"16px",
+         textAlign:"center",
+         lineHeight:"100px"
+     });
+
+
+    //classList  className=====addClass()   removeClass()   toggleClass()
+    //给div添加/删除对应的test类名
+     $(".demo").addClass(function (index,oldVal) {
+         return "test"+(index+1);
+     });
+     $(".demo").removeClass(function (index,oldVal) {
+         return "test"+(index+1);
+     });
+
+    //过滤
+    //eq(index|-index)  获取当前链式操作中第N个jQuery对象  参数可以是正数也可以是负数
+     $("ul li").eq(2).css("background","red");//获取下标为2的li
+     $("ul li").eq(-2).css("background","red");//获取下标为-2的li,倒着数从-1开始数
+     console.log($("ul li").first());//获取第一个li
+     console.log($("ul li").last());//获取最后一个li
+     console.log($("ul li").hasClass("one"));//判断li是否含有.one属性
+     console.log($("ul li").filter(".one"));//删选出含有.one属性的li
+     console.log($("ul li").is(".one"));//判断li解中是否有li含有one属性的li
+     console.log($("ul").map(function (index,oldval) {
+         return $("li")
+     }));//将一组元素转换成其他数组（不论是否是元素数组）
+     $("li").has("ul").css("background","blue");//保留含有特定的属性的元素
+     console.log($("li").not(".one"));//保留不含有特定的属性的元素
+     $("li").slice(0, 1).css("background","red");//截取下标0到1的li元素
+    console.log($("li").children());//获取li的子元素，只是一级子元素
+     console.log($("li").closest(".two"));//匹配符合条件的元素，如果自身不是，会一直向上找，直到找到符合的
+     console.log($("ul").find(".one"));//找到符合特定条件的元素
+    console.log($(".a").next());//匹配a后边的一个元素   one
+    console.log($(".a").nextAll());//匹配a后边的所有同级元素
+    console.log($(".a").nextUntil(".b"));//从a开始向下匹配，一直到找到b停止，不包含b
+    console.log($(".a").prev());//匹配a上边的一个同级元素
+    console.log($(".a").prevAll());//匹配a上边的所有同级元素
+    console.log($(".a").prevUntil(".one"));//从a开始向上匹配同级元素，一直到找到one停止，不包含one
+    console.log($(".a").parent());//匹配a的父元素，只匹配最近的一个
+    console.log($(".a").parents());//匹配a的所有父元素，一直到html才停止
+    console.log($(".a").parentsUntil("body"));//匹配a的父元素，匹配到body为止，不包含body
+    console.log($(".a").siblings());//匹配a的所有的兄弟元素，不包括自己
+    console.log($(".a").add("input"));//把input添加到a中
+    console.log($(".a").addBack());//添加元素集合到当前集合，一个选择性的过滤选择器
+    console.log($(".one").contents());//查找匹配元素内部所有的子节点（包括文本节点）。如果元素是一个iframe，则查找文档内容
+    console.log($(".one").end());//回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态。
+
+
+</script>
+</body>
+</html>
