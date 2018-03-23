@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #a{
+        width: 100%;
+        height: 120px;
+        overflow: hidden;
+    }
+    .a{
+        width: 100px;
+        height: 100px;
+        margin:10px;
+        float: left;
+        border:5px solid red;
+    }
+</style>
+<body>
+<div id="a">
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+</div>
+
+<div><p>Hello</p></div>
+<div>Hello again!</div>
+
+<p>
+    <span>Hello</span>
+    <span>how are you?</span>
+</p>
+
+<p>Hello <a href="http://ejohn.org/">John</a>, how are you doing?</p>
+
+<ul>
+    <li>list item 1</li>
+    <li>list item 2</li>
+    <li class="third-item">list item 3</li>
+    <li>list item 4</li>
+    <li>list item 5</li>
+</ul>
+
+<p>Hello</p><span>Hello Again</span>
+
+<p>Hello</p><div><span>Hello Again</span></div><p>And Again</p>
+
+<dl>
+    <dt>term 1</dt>
+    <dd>definition 1-a</dd>
+    <dd>definition 1-b</dd>
+    <dd>definition 1-c</dd>
+    <dd>definition 1-d</dd>
+
+    <dt id="term-2">term 2</dt>
+    <dd>definition 2-a</dd>
+    <dd>definition 2-b</dd>
+    <dd>definition 2-c</dd>
+
+    <dt>term 3</dt>
+    <dd>definition 3-a</dd>
+    <dd>definition 3-b</dd>
+</dl>
+
+<div></div><div></div><div></div><div></div>
+
+<p>Hello</p><div><span>Hello Again</span></div><p>And Again</p>
+
+<ul class="level-1">
+    <li class="item-i">I</li>
+    <li class="item-ii">II
+        <ul class="level-2">
+            <li class="item-a">A</li>
+            <li class="item-b">B
+                <ul class="level-3">
+                    <li class="item-1">1</li>
+                    <li class="item-2">2</li>
+                    <li class="item-3">3</li>
+                </ul>
+            </li>
+            <li class="item-c">C</li>
+        </ul>
+    </li>
+    <li class="item-iii">III</li>
+</ul>
+
+<div><p><span>Hello</span></p><span>Hello Again</span></div>
+
+<div><p>Hello</p><p>Hello</p></div>
+
+<div style="width:70%;position:absolute;left:100px;top:100px">
+    <div style="margin:50px;background-color:yellow">
+        <p>点击下面的按钮可以设置本段落的最近的父（祖先）元素的背景色。</p>
+        <div>
+        </div>
+        <button>点击这里</button>
+
+        <dl>
+            <dt>term 1</dt>
+            <dd>definition 1-a</dd>
+            <dd>definition 1-b</dd>
+            <dd>definition 1-c</dd>
+            <dd>definition 1-d</dd>
+
+            <dt id="term-2">term 2</dt>
+            <dd>definition 2-a</dd>
+            <dd>definition 2-b</dd>
+            <dd>definition 2-c</dd>
+
+            <dt>term 3</dt>
+            <dd>definition 3-a</dd>
+            <dd>definition 3-b</dd>
+        </dl>
+
+        <div></div><div></div><div></div><div></div>
+
+        <p>Hello</p><p>Hello Again</p><div><span>And Again</span></div>
+
+        <p><span>Hello</span>, how are you?</p>
+
+        <ul><li></li><li></li></ul>
+
+        <p>Hello</p><div><span>Hello Again</span></div><p>And Again</p>
+
+        <script src="js/jQuery.js"></script>
+<script>
+
+    //end
+    $("span").clone().prependTo("p").end();
+
+    //contents
+    $("p").contents().not("[nodeType=1]").wrap("<b/>");
+
+    //addBack
+    $('li.third-item').nextAll().addBack().css('background-color', 'red');
+
+    //add
+    $("p").add("span");
+
+    //siblings
+    $("div").siblings();
+
+    //prevUntil
+    $('#term-2').prevUntil('dt').css('background-color', 'red');
+
+    //prevAll
+    $("div:last").prevAll().addClass("before");
+
+    //prev
+    $("p").prev();
+
+    //parentsUntil
+    $('li.item-a').parentsUntil('.level-1').css('background-color', 'red');
+
+    //parents
+    $("span").parents();
+
+    //parent
+    $("p").parent();
+
+    //offsetParent
+    $("button").click(function(){
+        $("p").offsetParent().css("background-color","red");
+    });
+
+    //nextUntil
+    $('#term-2').nextUntil('dt').css('background-color', 'red');
+    var term3 = document.getElementById("term-3");
+    $("#term-1").nextUntil(term3, "dd").css("color", "green");
+
+    //nextAll
+    $("div:first").nextAll().addClass("after");
+
+    //next
+    $("p").next();
+
+    //find
+    $("p").find("span");
+
+    //closest
+    $("li:first").closest(["ul", "body"]);
+
+    //children
+    $("div").children();
+</script>
+</body>
+</html>
