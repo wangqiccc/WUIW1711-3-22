@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery练习</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            margin:0 auto;
+            text-align: center;
+            font-size: 50px;
+            line-height: 100px;
+            color:white;
+        }
+        *{
+            background: white;
+            margin:0;
+            padding:0;
+        }
+        element.style{
+            background: #fff;
+        }
+        ul{
+            width: 300px;
+            height: 300px;
+            margin:0 auto;
+            margin:50px;
+        }
+        li{
+            width: 100%;
+            height: 10%;
+            line-height: 30px;
+            text-align: center;
+            color:white;
+        }
+        .active{
+            background: white;
+        }
+        .box{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="aa">1</div>
+<div>2
+    <p></p>
+    <span></span>
+</div>
+<p></p>
+<div class="one">3</div>
+<div>4</div>
+<div>5</div>
+<div class="one">6
+    <p></p>
+</div>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li class="one">8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<ul>
+    <li class="one">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li class="one">6</li>
+    <li>7<p class="two"0></p></li>
+    <li >8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<table>
+    <input type="text" >
+    <input type="password" >
+    <input type="radio" >
+    <input type="checkbox" >
+    <input type="submit" >
+    <input type="image" >
+    <input type="reset" >
+    <input type="button" >
+    <input type="file" >
+</table>
+<div class="box">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    //基本
+    console.log($("#aa"));//通过id获取
+    console.log($("div"));//通过标签名获取
+    console.log($(".one"));//通过类名
+    console.log($("*"));//获取所有元素
+    console.log($("div,p"));//群组选择
+
+    //层级
+    console.log($("div p"));//获取div中所有span
+    console.log($("#aa>div"));//获取id为aa下的所有div子元素
+    console.log($("div+p"));//匹配紧跟在div后的p
+    console.log($("div~p"));//匹配与div同辈的p
+
+    //筛选
+    console.log($("div:first"));//获取div中第一个元素
+    console.log($("div:not(.one)"));//获取div中类名
+    console.log($('li:first'));//获取匹配的第一个元素
+    console.log($('li:last'));//获取匹配的最后一个元素
+    console.log($("li:not(.one)"));//查找所有未选中的li元素
+    $("ul>li:even").css("background","red");//索引值偶数，奇数行颜色改变
+    $("ul>li:odd").css("background","yellow");//索引值奇数偶数行颜色改变
+    $("ul>li:eq(2)").css("background","blue");//查找第二行,括号内为下标值
+    $("ul>li:gt(6)").css("background","orange");//下标值大于6
+    $("ul>li:lt(5)").css("background","green");//下标值小于5
+
+    //子元素
+    console.log($("ul li:first-child"));//匹配所给选择器的第一个子元素
+    console.log($("ul li:last-child"));//在每个ul中查找最后一个li
+    console.log($("ul li:nth-child(2)"));//在每个 ul 查找第 2 个li
+    console.log($("ul li:nth-last-child(2)"));//在每个匹配的ul中查找倒数第二个li
+    console.log($("ul li:nth-last-of-type(2)"));//在每个匹配的ul中查找倒数第二个li
+    console.log($("ul li:only-child"));//在 ul 中查找是唯一子元素的 li
+    console.log($(":only-of-type"));//选择所有没有兄弟元素，且具有相同的元素名称的元素
+
+    //表单
+    console.log($(":input"));//匹配所有 input, textarea, select 和 button 元素
+    console.log($(":text"));//查找所有文本框
+    console.log($(":password"));//匹配所有的密码框
+    console.log($(":radio"));//匹配所有的单选按钮
+    console.log($(":checkbox"));//查找所有复选框
+    console.log($(":submit"));//查找所有提交按钮
+    console.log($(":image"));//匹配所有图像域
+    console.log($(":reset"));//查找所有重置按钮
+    console.log($(":button"));//查找所有按钮.
+    console.log($(":file"));//查找所有文件域
+
+    //表单对象属性
+    console.log($("input:enabled"));//匹配所有可用input元素
+    console.log($("input:disabled"));//查找所有不可用的input元素
+    console.log($("input:checked"));//查找所有选中的复选框元素
+    console.log($("select option:selected"));//匹配所有选中的option元素
+
+    //筛选
+    let obj=$(".one");//通过类名获取元素
+    $("ul>li")
+    	.css("border","1px solid red")
+    	.filter(".one")//筛选匹配的元素集合，四种参数
+    	.filter(obj)
+    	// .filter(ele)
+    	.filter(function (index,ele) {
+    		if(index%3===2){
+    			return true;
+    		}
+    	});
+    let div=document.querySelector(".demo");
+    //hasClass(class)检查当前的元素是否含有某个特定的类，如果有，返回true
+    console.log($(".demo").hasClass("active"));
+    console.log($(".demo").is(".active"));
+    console.log($(".demo").is($("div")));
+    console.log($(".demo").is(div));
+    console.log($(".demo").is(function(index,ele){
+        if(ele.innerHTML==="123"){
+    		return true;
+    	}
+     }));// 根据选择器、DOM元素或 jQuery 对象来检测匹配元素集合，如果其中至少有一个元素符合这个给定的表达式，返回true。
+    console.log($("ul>li").map(function(index,ele){
+    	return  ele.innerHtml;
+    }));// 将一组元素转换成其他数组（不论是否是元素数组）
+    console.log($("ul").has(".one").css("background","yellow"));// 保留包含特定后代的元素，去掉那些不含有指定后代的元素
+    console.log($("ul").slice(0, 2));// $("p").slice(0, 2).wrapInner("<b></b>");选取一个匹配的子集
+    console.log($("li").not( $(".one") ));
+    console.log($("ul").children( $(".one") ));// 取得一个包含匹配的元素集合中每一个元素的所有子元素的元素集合 查找ul中类名为one的元素
+    console.log($("item").closest( $(".box") ));//离类名box最近的类名为item的元素
+    console.log($(".box").find( $(".item") ));//查找类名为box的元素中所有item的元素
+    console.log($(".one").css("background","yellow").next(".two").css("background","plum"));// 取得一个包含匹配的元素集合中每一个元素紧邻的后面同辈元素的元素集合。
+    console.log($(".one").css("background","red").nextUntil(".two").css("background","pink"));// 查找当前元素之后所有的同辈元素，直到遇到匹配的那个元素为止。
+    console.log($(".item").offsetParent().css("background","yellow"));// 返回第一个匹配元素用于定位的父节点
+    console.log($(".one").parent()); // 取得一个包含着所有匹配元素的唯一父元素的元素集合
+    console.log($(".one").parents()); // 取得一个包含着所有匹配元素的祖先元素的元素集合（不包含根元素）。
+    console.log($(".one").parentsUntil("body"));
+    console.log($(".one").siblings());//查找所有和类名为one的兄弟元素
+    console.log($(".one").add(".two"));//在类名为one后面加类名为two的元素
+    console.log($(".one").next().addBack().css("background","orange"));
+    console.log($("ul>li").eq(2).css("background","black").end().eq(2));
+</script>
+</body>
+</html>
