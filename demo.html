@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		input{
+			background-color: none;
+		}
+		#aa{
+			position: absolute;
+		}
+		/*.one{
+			position: absolute;
+		}*/
+	</style>
+</head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<body>
+	<div id="aa">
+		<div class="one" id="ones">
+			<div class="oness"></div>
+		</div>
+		<div>456</div>
+		<p class="w"></p>
+		<p></p>
+		<a href=""id="foo"></a>
+		<p ></p>
+	</div>
+	<ul>
+		<li class="one">1</li>
+		<li class="one">2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+	</ul>
+	<ul>
+		<li >1</li>
+		<li class="one">2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+	</ul>
+	<h1>1</h1>
+	<h2>2</h2>
+	<h3>3</h3>
+	<div class="box">
+		<div></div>
+	</div>
+	<input type="text" autofocus="autofocus">
+	<input type="hidden" >
+	<input type="textarea">
+	<input type="password" >
+	<input type="checkbox" checked="checked">
+	<input type="radio" checked="checked">
+	<input type="submit">
+	<input type="button">
+	<input type="reset">
+	<input type="file">
+	<input type="image">
+	<input type="reset" disabled="disabled">
+	<h4 style="display:none;"></h4>
+	<select name="" id="">
+		<option value="" selected="selected"></option>
+		<option value=""></option>
+		<option value="" selected="selected"></option>
+	</select>
+</body>
+<script>
+	//选择器
+		console.log($("div"));  //通过标签获取元素
+		console.log($("#aa"));  //通过id获取元素
+		console.log($(".one")); //通过类名获取元素
+		console.log($("*"));    //获取所有元素
+		console.log($("div,p")); //获取多个元素合并后的结果
+console.log($("#aa div")); //在给定的祖辈元素下，获取所有的后代元素
+console.log($("#aa>div")); //在给定父元素下，匹配所有的子元素
+console.log($("div+p")); //匹配所有紧接在div后的p元素
+console.log($("div~p")); //匹配所有在div后的p元素
+console.log($("div:first")); //获取第一个元素
+console.log($("div:not(.one)")); //获取除去类名onediv的其他div
+console.log($("ul>li:even").css("background","blue")); //匹配所有索引值为偶数的元素，给它加相应的背景色 
+console.log($("ul>li:odd").css("background","red")); //匹配所有索引值为奇数的元素，给它加相应的背景色 
+console.log($("ul>li:eq(5)").css("background","yellow"));
+//匹配给定索引值的元素，给它加相应的背景色 
+console.log($("ul>li:gt(5)").css("background","pink"));
+// 匹配所有大于给定索引值的元素,给它加相应的背景色
+console.log($("ul>li:lt(5)").css("background","yellow"));
+// 匹配所有小于给定索引值的元素,给它加相应的背景色
+console.log($("ul>li:last").css("background","red"));
+//获取匹配的最后一个元素，给它加相应的背景色。
+console.log($(":header").css("background","red"));
+//匹配标题元素
+console.log($(":focus").css("background","pink"));
+//匹配当前获取焦点的元素
+console.log($(":root"));
+//选择该文档的根元素。
+console.log($("a:target"));
+//选择由文档URI的格式化识别码表示的目标元素
+console.log($("div:contains('456')"));
+//匹配包含给定文本的元素
+console.log($("div:empty"));
+//匹配所有不包含子元素或者文本的空元素
+console.log($("div:has(p)"));
+//匹配含有选择器所匹配的元素的元素
+console.log($("div:parent"));
+//匹配含有子元素或者文本的元素
+console.log($(":hidden"));
+//匹配所有不可见元素，或者type为hidden的元素
+console.log($(":visible"));
+//匹配所有的可见元素
+console.log($("div[class]"));
+//匹配包含给定属性的元素
+console.log($("div[class=one]"));
+//匹配给定的属性是某个特定值的元素
+console.log($("div[class!=one]"));
+//属性不等于特定值的元素。
+console.log($("div[class^=one]"));
+//匹配给定的属性是以某些值开始的元素
+console.log($("div[class$=s]"));
+//匹配给定的属性是以某些值结尾的元素
+console.log($("div[class*=o]"))
+//匹配给定的属性是以包含某些值的元素
+console.log($("div [id][class=one]"));
+//复合属性选择器，需要同时满足多个条件时使用。
+console.log($("ul>li:first-child"));
+//每个父级元素匹配第一个子元素
+console.log($("ul>li:first-of-type"));
+//匹配E的父元素的第一个E类型的孩子。
+console.log($("ul>li:last-child"));
+//每个父元素匹配最后一个子元素
+console.log($("ul>li:last-of-type"));
+//匹配E的父元素的最后一个E类型的孩子
+console.log($("ul>li:nth-child(2)"));
+console.log($("ul>li:nth-child(even)"));
+//父元素下的第N个子或奇偶元素
+console.log($("ul>li:nth-last-child(2)"));
+//父元素的第n个子元素。计数从最后一个元素开始到第一个。
+console.log($("ul>li:nth-last-of-type(1)"))
+//父级元素的第n个子元素，计数从最后一个元素到第一个。
+console.log($("ul>li:nth-of-type(2)"));
+//选择同属于一个父元素之下，并且标签名相同的子元素中的第n个。
+console.log($("div:only-child"));
+//如果某个元素是父元素中唯一的子元素，那将会被匹配
+console.log($("div:only-of-type"));
+//选择所有没有兄弟元素，且具有相同的元素名称的元素。
+console.log($("input"));
+//匹配所有 input, textarea, select 和 button 元素
+console.log($(":text"));
+//匹配所有的单行文本框
+console.log($(":password"));
+//匹配所有的密码框
+console.log($(":radio"));
+//匹配所有的单选按钮
+console.log($(":checkbox"));
+//匹配所有的复选框
+console.log($(":submit"));
+//匹配所有的提交按钮
+console.log($(":image"));
+//匹配所有的图像域
+console.log($(":reset"));
+//匹配所有的重置按钮
+console.log($(":button"));
+//匹配所有的按钮
+console.log($(":file"));
+//匹配所有文件域
+console.log($(":enabled"));
+//匹配所有可用元素
+console.log($(":disabled"));
+//匹配所有不可用元素
+console.log($(":checked"));
+//匹配所有选中的被选中元素(复选框、单选框等，select中的option)，对于select元素来说，获取选中推荐使用 :selected
+console.log($("select>option:selected"));
+console.log($(":selected"));
+//匹配所有选中的option元素
+
+
+//筛选
+console.log($("ul>li").eq(0).css("background","pink"));
+console.log($("ul>li").eq(-1).css("background","pink"));
+//一个正数元素基于0的位置,这个元素的位置是从0算起。一个负数基于-1的位置，倒着开始。
+console.log($("ul>li").first());
+//获取第一个元素
+console.log($("ul>li").last());
+//获取最后一个元素
+console.log($("ul>li").hasClass("one"));
+//检查当前的元素是否含有某个特定的类，如果有，则返回true。
+console.log($("ul>li").filter(":first,.one"));
+//筛选出与指定表达式匹配的元素集合。
+console.log($("ul>li").is(".one"));
+//如果其中至少有一个元素符合这个给定的表达式就返回true。
+console.log($("ul>li").map(function(index,value){
+	return $(this).index;
+
+}));
+//将一组元素转换成其他数组
+console.log($("ul").has(".one"));
+//保留包含特定后代的元素，去掉那些不含有指定后代的元素。
+console.log($("ul>li").not(".one"));
+//从匹配元素的集合中删除与指定表达式匹配的元素
+console.log($("ul>li").slice(1,2));
+//选取一个匹配的子集
+console.log($("div").children());
+console.log($("div").children(".one"));
+//取得一个包含匹配的元素集合中每一个元素的所有子元素的元素集合。
+console.log($(".one").closest("div"));
+//从元素本身开始，逐级向上级元素匹配，并返回最先匹配的元素。
+console.log($(".one").find("div"));
+//搜索所有与指定表达式匹配的元素。这个函数是找出正在处理的元素的后代元素的好方法
+console.log($(".one").next());
+//取得一个包含匹配的元素集合中每一个元素紧邻的后面同辈元素的元素集合.
+console.log($(".one").nextAll());
+//查找当前元素之后所有的同辈元素。
+console.log($(".one").nextUntil(".w"));
+//查找当前元素之后所有的同辈元素，直到遇到匹配的那个元素为止。
+console.log($(".oness").offsetParent())//返回第一个匹配元素用于定位的父节点。
+console.log($(".oness").parent());
+console.log($(".oness").parents());
+//取得一个包含着所有匹配元素的祖先元素的元素集合
+console.log($(".oness").parentsUntil("#aa"));
+//查找当前元素的所有的父辈元素，直到遇到匹配的那个元素为止。
+console.log($("div").prev());
+//取得一个包含匹配的元素集合中每一个元素紧邻的前一个同辈元素的元素集合。
+console.log($("p").prevAll());
+//查找当前元素之前所有的同辈元素
+console.log($("p").prevUntil(".w"));
+//查找当前元素之前所有的同辈元素，直到遇到匹配的那个元素为止。
+console.log($("div").siblings(''));
+//取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。可以用可选的表达式进行筛选
+console.log($("h1").add('h5'));
+//连接分别与两个表达式匹配的元素结果集
+// console.log($("div").find("p").andSelf());
+console.log($("div").contents());
+//找匹配元素内部所有的子节点（包括文本节点）。如果元素是一个iframe，则查找文档内容
+console.log($(".one").find("div").end());
+//回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态。
+//
+//
+//
+//
+//// innerHtml 	 html()
+			// console.log($(".demo").html());
+			// console.log($(".demo").html("1111"));
+			// console.log($(".demo").html(function(a,b){
+			// 		return b+(index+);
+			// }))
+			// 
+			// 
+			// getComputedStyle       css()
+			// console.log($(".demo").css("width"));
+			// console.log($(".demo").css("width","100px"));
+			// console.log($(".demo").css("width",function(index,oddvalue){
+			// 		return (index+1)*100;
+			// }));
+			// console.log($(".demo").css({
+			// 	color:"#fff",
+			// 	fontSize:"15px",
+			// 	textAlign:"center";
+			// 	lineHeight:"100px";
+
+			// }));
+			// 
+			// 
+			// 
+			// 
+			// 
+			// 
+			// classList className ====> addClass('class_name') removeClass('class name'),toggleClass('selector');
+			// $(".demo").addClass(function(index,oldValue){
+			// 		return "test"+(index+1);
+			// })
+			// $(".demo").removeClass(function(index,oldValue){
+			// 		return "test"+(index+1);
+			// })
+</script>
+</html>
